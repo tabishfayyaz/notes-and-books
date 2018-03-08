@@ -7,6 +7,7 @@ I own this book and made these notes for my own learning. Please [purchase the b
 *All of the techniques and guidelines presented in this book are the result of programmers asking themselves two questions over & over again, year after year, for every bug found in their code:*
 
 *1. How could I have automatically detected this bug?*
+
 *2. How could I have prevented this bug?*
 
 ### 1. A Hypothetical Compiler
