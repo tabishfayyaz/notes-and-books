@@ -21,11 +21,11 @@ Observable passes items down a chain to an Observer and works by passing three t
 
 1. **onNext:** passes each item one at a time from the source Observable all the way down to the Observer
 2. **onComplete:** communicates a completion event all the way down to the Observer, indicating that no more onNext calls will occur
-3. **onError:** communicates an error up the chain to the Observer, where the Observer typically defines how to handle it. Unless retry() operator is used to intercept the error, the Observable schain typically terminates and no more emissions will occur
+3. **onError:** communicates an error to the Observer, where the Observer typically defines how to handle it. Unless retry() operator is used to intercept the error, the Observable chain typically terminates and no more emissions will occur
 
 **Observable** contract dictates that emissions must be passed sequentially and one at a time. Emissions cannot be passed by an Observable concurrently or in parallel. This is not a limitation but a simplification to reason with.
 
-**onComplete** communicates up the chain to the Observer that no more items are coming. Observables can indeed be infinite, and if this is the case, the onComplete event will never be called.
+**onComplete** communicates to the Observer that no more items are coming. Observables can indeed be infinite, and if this is the case, the onComplete event will never be called.
 
 Technically, a source could stop emitting onNext calls and never call onComplete -> likely a bad design
 
@@ -37,7 +37,7 @@ onNext, onComplete and onError do not necessarily push directly to the final Obs
 
 Since operators such as **map** and **filter** yield new Observables (derived off the original Observable and which internally use Observer implementations to receive emissions), we can chain all our returned Observables with the next operator rather than unnecessarily saving each one to an intermediary variable
 
-**Observable.create()** can be useful in hooking into certain sources that are not reactive but you likely won’t need to use it instead we can use Observable.just() that will call onNext for each item and then invoke onComplete
+**Observable.create()** can be useful in hooking into certain sources that are not reactive but you likely won’t need to use it instead we can use **Observable.just()** that will call onNext for each item and then invoke onComplete
 
 **Observable.fromIterable()** to emit the items from any Iterable type such as List
 
@@ -55,7 +55,7 @@ Most data driven Observables (databases, text files, JSON) are cold including .j
 
 **Hot Observable** broadcasts the same emissions to all Observers at the same time. If an observer comes in afterwards some emissions were pushed, the second Observer will have missed those emissions
 
-Hot Observable often represent events rather than finite datasets. There is a time-sensitive component where late observers can miss previously emitted date.
+Hot Observable often represent events rather than finite datasets. There is a time-sensitive component where late observers can miss previously emitted data.
 
 **ConnectableObservable** will take any observable even if it is cold and make it hot so that all emissions are played to all Observers at once: publish() to get ConnectableObservable and then call connect()
 
@@ -75,15 +75,21 @@ Hot Observable often represent events rather than finite datasets. There is a ti
 
 **Completable** is concerned with action being completed, it does not receive emissions and does not have onNext or onSuccess to receive emissions, but it does have onError and onComplete
 
+When we are done with a stream that is processing emissions through the chain, we want to dispose of these resources so they can be garbage collected.
+
 When you are working with infinite or long-running Observables, you likely will run into situations where you want to explicitly stop the emissions and dispose of everything associated with that subscription.
+
 Finite Observables that call onComplete will typically dispose of themselves safely when they are done
 
 The Disposable is a link between an Observable and an active Observer, and you can call its dispose method to stop emissions and dispose of all resources used for that Observer
 
 subscribe() method will actually return a **Disposable**
+
 **isDisposed** indicates whether it has been disposed already
+
 **CompositeDisposable:** If you have several subscriptions that need to be disposed all at once
-ObservableEmitter: Abstraction over an Observer that allows associating a resource with it
+
+**ObservableEmitter:** Abstraction over an Observer that allows associating a resource with it
 
 You should strive to use operators to express business logic so your code stays as reactive as possible. Operators themselves are Observers to the Observable they are called on
 
@@ -103,7 +109,7 @@ The **takeUntil()** operator is similar to takeWhile(), but it accepts another O
 
 The **skipUntil()** operator has similar behavior. It also accepts another Observable as an argument but it will keep skipping until the other Observable emits something
 
-- **distinct():** will emit each unique emission, but it will suppress any duplicates that follow. Equality is based on hashCode/equals implementation of the emitted objects.
+- **distinct():** will emit each unique emission, but it will suppress any duplicates that follow (Equality is based on hashCode/equals implementation of the emitted objects).
 - **distinctUntilChanged():** will ignore duplicate “consecutive” emissions. 
 - **elementAt():** You can get a specific emission by its index specified by a Long, starting at 0, it returns a MayBe instead of a Observable because if there are fewer emissions than the sought index will be empty
 - **elementAtOrError():** return a Single and will emit an error if an element at that index is not found
@@ -133,6 +139,12 @@ startWithArray(): if you want to start with more than one emission
 - **toSortedList():** will collect the emissions into a list that sorts the items naturally based on their Comparator
 - **toMap():** operator will collect emissions into Map\<K,T> where K is the key type derived off a lambda argument producing the key for each emission
 - **toMultiMap():** will maintain a List of corresponding values for each key
-- **collect():**
+- **collect():** to collection emissions into any arbitrary type (e.g. ImmutableList, HashSet) that RxJava does not provide out of box
 
+**Error Recovery Operators:**
 
+- **onErrorReturn() & onErrorReturnItem():** you want to return a default value when an exception occurs
+- **onErrorResumeNext():** similar to onErrorReturn/onErrorReturnItem except it accepts another Observable as a parameter to emit potentially multiple values
+- **retry():** calling retry with no arguments will resubscribe an infinite number of times for each error so you need to be careful with it. The safer route is to specify number of times to retry. There is also **retryUntil()** and **retryWhen()** for delaying retries.
+
+**Action Operators:**
