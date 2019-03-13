@@ -95,6 +95,8 @@ You should strive to use operators to express business logic so your code stays 
 
 The operators can suppress emissions by simply not calling the onNext function downstream for a disqualified emission and therefore does not go down the chain to Observer
 
+**Suppressing Operators:**
+
 The **filter()** operator accepts Predicate\<T> for a given Observable\<T>. This means that you provide it a lambda that qualifies each emission by mapping it to a Boolean value and emissions with false will not go forward
 
 Note that if all emissions fail to meet your criteria, the returned Observable will be empty, with no emissions occurring before onComplete is called
@@ -113,6 +115,9 @@ The **skipUntil()** operator has similar behavior. It also accepts another Obser
 - **distinctUntilChanged():** will ignore duplicate “consecutive” emissions. 
 - **elementAt():** You can get a specific emission by its index specified by a Long, starting at 0, it returns a MayBe instead of a Observable because if there are fewer emissions than the sought index will be empty
 - **elementAtOrError():** return a Single and will emit an error if an element at that index is not found
+
+**Transforming Operators:**
+
 - **map():** does a one-to-one conversion for each emission
 - **cast():** map-like operator to cast each emission to a different type
 - **startWith():** allows you to insert a T emission that precedes all the other emissions
@@ -148,3 +153,17 @@ startWithArray(): if you want to start with more than one emission
 - **retry():** calling retry with no arguments will resubscribe an infinite number of times for each error so you need to be careful with it. The safer route is to specify number of times to retry. There is also **retryUntil()** and **retryWhen()** for delaying retries.
 
 **Action Operators:**
+
+- **doOnNext(), doOnComplete(), doOnError():** allows you to do something to each emission at certain point in the emission chain
+- **doOnSubscribe():** fired when subscription occurs
+- **doOnDispose():** fired when disposal occurs, it can fire multiple times for redundant disposal requests or not at all if it is not disposed of
+- **doOnSuccess:** MayBe and Single do not have an onNext but an onSuccess so doOnSuccess plays a similar role to doOnNext
+
+**Combining Observables**
+
+## References
+- <https://rxmarbles.com/> (marble diagrams, a popular form of Rx documentation)
+- <http://reactivex.io/documentation/operators.html> (comprehensive list of operators)
+
+
+
