@@ -161,6 +161,10 @@ startWithArray(): if you want to start with more than one emission
 
 **Combining Observables**
 
+**Observable.merge() & mergeWith():** to combine multiple Observable sources emitting same type, do not rely on ordering when using merge factories/operators even if it seems ordering is preserved, for that purpose use concatentation factories/operators
+
+**flatMap:**
+
 ## References
 - <https://rxmarbles.com/> (marble diagrams, a popular form of Rx documentation)
 - <http://reactivex.io/documentation/operators.html> (comprehensive list of operators)
