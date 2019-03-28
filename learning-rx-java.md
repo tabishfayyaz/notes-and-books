@@ -91,7 +91,7 @@ subscribe() method will actually return a **Disposable**
 
 **ObservableEmitter:** Abstraction over an Observer that allows associating a resource with it
 
-You should strive to use operators to express business logic so your code stays as reactive as possible. Operators themselves are Observers to the Observable they are called on
+**Operators** themselves are Observers to the Observable they are called on. You should strive to use operators to express business logic so your code stays as reactive as possible. 
 
 The operators can suppress emissions by simply not calling the onNext function downstream for a disqualified emission and therefore does not go down the chain to Observer
 
@@ -163,7 +163,14 @@ startWithArray(): if you want to start with more than one emission
 
 **Observable.merge() & mergeWith():** to combine multiple Observable sources emitting same type, do not rely on ordering when using merge factories/operators even if it seems ordering is preserved, for that purpose use concatentation factories/operators
 
-**flatMap:**
+**flatMap:** to map one emission to many emissions (transform one event to zero or more events vs map transform one event to another). It behaves very much like map except that the function it applies returns an Observable so it is well suited for asynchronous operations
+
+There is also **flatMapIterable** (emission into Iterable instead of an Observable), **flatMapSingle, flatMapMaybe, flatMapCompletable**
+
+Prefer **concatenation** when you care about ordering of emissions otherwise merging
+
+
+
 
 ## References
 - <https://rxmarbles.com/> (marble diagrams, a popular form of Rx documentation)
