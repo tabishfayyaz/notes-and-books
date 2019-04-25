@@ -45,3 +45,5 @@
 - Have you analyzed and handled when the whole system fails (irrespective of the reason)
 
 - Have you analyzed and handled the case when any sub-component of the system fails (irrespective of the reason)
+
+- Have you examined that you have not over architectured or under architectured the system
