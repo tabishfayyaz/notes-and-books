@@ -38,7 +38,7 @@
 
 -  Have you verified that your design can be tested
 
--  Have you cautiously inspected if you can make your dependencies more loose
+-  Have you cautiously inspected if you can make your dependencies more loosely coupled
 
 -  Is your design open for extension but minimizes modifications by relying upon principles of abstraction and polymorphism
 
