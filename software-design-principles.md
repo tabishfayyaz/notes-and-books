@@ -4,7 +4,7 @@
 
 - Stage 1, Learning: start the work based on your best knowledge and resources
 - Stage 2, Optimization: change things based on what worked and what didn't work
-- Stage 3, Perfection: Use your findings, experience till now to build something that balances quality and reality
+- Stage 3, Perfection: Use your findings & experience till now to build something that balances quality and reality
 
 ## Software Design Checklist
 
