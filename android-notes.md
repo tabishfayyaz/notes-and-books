@@ -5,4 +5,6 @@
 
 **_minSdkVersion_** - earliest version of Android that the app can run on
 
-**Ideally:** `minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)`
+**ideally:** `minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)`
+
+
