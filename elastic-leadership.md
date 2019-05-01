@@ -38,6 +38,25 @@ Learning something truly new is neither easy nor simple, many times it's scary, 
 
 A great challenge can be taken either gravely ("I'm facing an awful great challenge") or enthusiastically ("Wow, great challenge")
 
+**LEADERSHIP MANIFESTO**
+
+![Leadership Manifesto](https://github.com/tabishfayyaz/book-club/blob/master/images/leadership-manifesto.jpg)
+
+The way to **measure our success** is through the overall growth in skills of self-organization & self-maintenance in each member of our team as well as the team as a whole.
+
+We accept that what the team needs from us changes continuously based on their skills for handling the reality of work
+
+We believe in challenging ourselves and our teams to always improve so:
+- We create slack time for the team to learn and be challenged
+- We embrace taking risks for our team over staying safe
+- We embrace fear and discomfort while learning new skills over keeping people within their comfort zone
+- We embrace experimentation (with people, tools, processes, work environment) over maitaining the status quo
+- We believe our core practice is leading people so we welcome spending more time with our team than in meetings, treating software problems as people problems, learning people skills and communication techniques
+
+There are three team phases: 
+- Survival mode 
+- Learning mode 
+- Self-organization
 
 It is hard to make positive changes in the work environment without the leadership skills and practiced outlined below.
 
