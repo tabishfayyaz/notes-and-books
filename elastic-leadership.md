@@ -53,10 +53,22 @@ We believe in challenging ourselves and our teams to always improve so:
 - We embrace experimentation (with people, tools, processes, work environment) over maitaining the status quo
 - We believe our core practice is leading people so we welcome spending more time with our team than in meetings, treating software problems as people problems, learning people skills and communication techniques
 
-There are three team phases: 
+**It is hard to make positive changes in the work environment without the leadership skills and practiced outlined below.**
+
+There are three team phases and each phase requires a certain leadership type: 
 - Survival mode 
 - Learning mode 
 - Self-organization
 
-It is hard to make positive changes in the work environment without the leadership skills and practiced outlined below.
+Note that the words **_Mode_** and **_phase_** are almost used interchangeably:
+
+_Phase_: where you think your team is
+_Mode_: how you react to which phase you are in e.g. in learning phase you go into learning mode
+
+
+
+
+
+
+
 
