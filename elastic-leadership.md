@@ -1,6 +1,7 @@
 _The reasonable man adapts himself to the world; the **unreasonable** one persists in trying to adapt the world to himself. Therefore all progress depends on the **unreasonable** man - George Bernard Shaw_
 
 _Do one thing every day that scares you - Eleanor Roosevelt_
+
 _Get rejected at least once a day - Rejection Therapy_
 
 ## Elastic Leadership: Growing self-organizing teams
