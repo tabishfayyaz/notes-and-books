@@ -8,7 +8,7 @@ _Get rejected at least once a day - Rejection Therapy_
 by Roy Osherove
 
 
-Please [purchase the book](https://www.amazon.com/Elastic-Leadership-Growing-self-organizing-teams/dp/1617293083) and support the author.
+Please [purchase the book](https://www.amazon.com/Elastic-Leadership-Growing-self-organizing-teams/dp/1617293083) like I did and support the author.
 
 Elastic leadership is a framework and philosophy to help create self-organizing teams and realizing that leadership needs to change based on which phase your team is in.
 
@@ -64,6 +64,40 @@ Note that the words **_Mode_** and **_phase_** are almost used interchangeably:
 
 _Phase_: where you think your team is
 _Mode_: how you react to which phase you are in e.g. in learning phase you go into learning mode
+
+When we recognize we are in survival phase then we initiate survival mode.
+
+**What team leader is _NOT_:** someone who provides everything their team needs and get out of their way as then you become their guy for everything. Are you a bottleneck now? If team has to wait for you to solve problems, you're the bottleneck and you'll never have time to do the things that matter the most.
+
+**What team leader is:** helps develop quality people on the team and delivering value flows naturally from developing your team skills. When you develop valuable working individuals, you generate internal value for them personally.
+
+To grow people at work means to help them acquire new skills and in order to do that you need to _challenge_ them and coach them to solve problems on their own.
+
+Three style of leadership that are good at different point in time:
+- Coaching/Challenging (challenging to encourage growth isn't always a good idea)
+- Command & Control
+- Facilitating (self-organizing teams)
+
+**Coaching** If your team don't have enough free time to practice or learn then this style of leadership won't work. **If team is putting out fire all the time they don't have time to refactor or do test-driven development.**
+
+**Command & Control:** sometimes a good idea because at times a team leader must be able to direct their team down a path such as when fighting many fires and team has no time to learn new skills.
+
+If you're team expect to learn new things and be challenged to become better then Command & Control leadership style won't work.
+
+**Facilitation:** A good idea when team already knows how to do the work and solve their own problems. Agile methdologies called this a **SELF-ORGANIZING** team.
+
+It won't work if the team doesn't have sufficient skills to solve their own problems.
+
+It is very important to know when _NOT_ to use a certain leadership style. They all belong to a different phase of the team and that question should be asked very frequently.
+
+1. Survival mode requires Command & Control style
+2. Learning mode requires Coach/Dictator style
+3. Self-organizing mode requires Facilitator style
+
+
+## References
+- https://www.5whys.com/articles/team-leader-manifesto-take-4.html
+
 
 
 
