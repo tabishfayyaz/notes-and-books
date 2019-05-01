@@ -26,3 +26,18 @@ Management done right is a very tough job.
 
 It takes time to challenge people and most teams don't have time in abundance. Making slack time to grow the team's skill will be necessary.
 
+You and your team should always be getting out of your comfort zone to learn new things, nothing beats gaining new skills.
+
+You can experiment with goals, constraints and the different leadership style described in this book. 
+
+Experimentation is one of the most enjoyable and interesting things about being a leader.
+
+Sometimes you must be the person who gets up and does something, 90% of success is stepping up to the plate.
+
+Learning something truly new is neither easy nor simple, many times it's scary, annoying or discouraging to make you give up half way through the challenge.
+
+A great challenge can be taken either gravely ("I'm facing an awful great challenge") or enthusiastically ("Wow, great challenge")
+
+
+It is hard to make positive changes in the work environment without the leadership skills and practiced outlined below.
+
