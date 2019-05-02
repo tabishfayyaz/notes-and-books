@@ -89,12 +89,42 @@ If you're team expect to learn new things and be challenged to become better the
 
 It won't work if the team doesn't have sufficient skills to solve their own problems.
 
-It is very important to know when _NOT_ to use a certain leadership style. They all belong to a different phase of the team and that question should be asked very frequently.
+It is very important to know when _NOT_ to use a certain leadership style. They all belong to a different phase of the team and that question should be asked frequently as team can get in & out of these phases:
 
-1. Survival mode requires Command & Control style
-2. Learning mode requires Coach/Dictator style
-3. Self-organizing mode requires Facilitator style
+1. **Learning mode** requires Coach/Dictator style
+2. **Survival mode** requires Command & Control style
+3. **Self-organizing** mode requires Facilitator style
 
+**SURVIVAL PHASE** 
+  - your team does not have enough time to learn
+  - constantly putting out fires
+  - late and overcomitted
+
+**LEARNING PHASE** 
+  - your team has enough time to learn and experiment
+  - learning new skills, removing technical debt or both
+  - implementing test-driven development (with people who have no experience in it)
+  - enhancing/building continuous integration cycle (with people who have no experience in it)
+  - enhancing test coverage (with people who have no experience in it)
+  - refactoring code (with people who have no experience in it)
+  - do anything constructive (with people who have no experience in it)
+  
+  In short grow the team to be self-organizing by teaching & challenging them to solve their own problems
+
+**SELF ORGANIZING**
+  - if you can leave work for few days, switch off your phone and have no fear you are in this phase
+  - goal is to keep things as they are by being a facilitator and keeping an eye on team to handle current reality
+  - choose a leadership style based on when team dynamics change
+  - in this phase you get to do things that matter most and execute your vision
+  - 80% of the software teams are probably in survival mode and keep putting out fire and never have time to do "the right thing"
+  
+Team has two important assets and any event (new team members, changing deadlines/goals) that can shift balance of the following assets would require a new type of leadership:
+1. knowledge and skill to solve their own problems
+2. slack time
+
+_Survival mode -> (making slack time, removing overcommitment, re-estimating with slack time) -> Learning mode -> (teaching people to solve their own problems) -> (team requirements change, company dynamics change) -> Survival mode_
+
+Move between the states rapidly based on the current situation and makeup of team.
 
 ## References
 - https://www.5whys.com/articles/team-leader-manifesto-take-4.html
