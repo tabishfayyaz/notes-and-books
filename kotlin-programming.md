@@ -2,7 +2,6 @@
 
 by David Greenhalgh, Josh Skeen
 
-
 Please [purchase the book](https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-Guide-ebook/dp/B07FXQ7SQN) and support the authors.
 
 ### CHAPTER 1
@@ -12,7 +11,7 @@ The **Sandbox.iml** file contains configuration information specific to your s
 The **.idea** folder contains settings files for the entire project as well as those specific to your interaction with the project in the IDE
 
 
-### CHAPTER 2
+## Variables, Constants & Types
 
 **static type checking:** type checking performed as code is entered or edited, and it tells you about programming mistakes before you even compile the program
 
@@ -31,7 +30,7 @@ Press the Shift key twice to open the Search Everywhere dialog. Begin entering *
 Unlike Java, Kotlin provides only one kind of type: reference types.
 The Kotlin compiler will, where possible, use primitives in the Java bytecode, because they do indeed offer better performance
 
-### CHAPTER 3
+## Conditionals
 
 `===`	Evaluates whether the two instances point to the same reference.
 `!==`	Evaluates whether the two instances do not point to the same reference.
@@ -45,7 +44,7 @@ a **_when_** expression behaves as though there were a == equality operator betw
 
 **String templates:** `println("$name $healthStatus"), println("(Aura: $auraColor) (Blessed: ${if (isBlessed) "YES" else "NO"})")`
 
-### CHAPTER 4
+## Functions
 
 **single-expression-functions** - you can omit the return type, curly braces and return statement:
 `private fun foo(number: Int = 2) = println("")`
@@ -55,11 +54,62 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
 **named function arguments** - you can pass arguments in any order:
 `foo(healthStatus = "status", auraColor = "NONE", name = "Madrigal", isBlessed = true)`
 
-### CHAPTER 5
+## Anonymous Function and the Function Type
+  - have no name, are commonly passed around or returned from other functions
+  - similar to normal function, an anonymous function will only execute when it's called with ()
+  - variable of function type can hold anonymous function
+  - last line in method body is used as return value & writing `return` keyword is not allowed to reduce confusion between functions
+  - it can accept at-least 0 arguments
+  - `it` can be used when there is only one parameter involved however bad for readability when complexity involved
+  - `it` cannot be used when more than one parameter involved then you use multiple named parameters
 
+### To count letters in a string
+```
+val numLetters = "Mississippi".count()
+print(numLetters)
+```
 
+### To provide logic to a function via anonymous function:
+```
+val numLetters = "Mississippi".count({ letter ->
+        letter == 's'
+    })
+    print(numLetters)
+```
 
-### CHAPTER 
+### Calling an anonymous function:
+```
+{
+  val currentYear = 2019
+  "Welcome to My World! (copyright $currentYear)"
+}()
+```
+
+### An anonymous function that can return string and stored in a variable:
+```
+val greetingFunction: () -> String = {
+        val currentYear = 2018
+        "Welcome to SimVillage, Mayor! (copyright $currentYear)"
+}
+```
+
+### A single parameter anonymous function:
+```
+val greetingFunction: (String) -> String = { playerName ->
+  val currentYear = 2018
+  "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+}
+```
+
+### A single parameter anonymous function using it keyword:
+```
+val greetingFunction: (String) -> String = {
+        val currentYear = 2018
+        "Welcome to SimVillage, $it! (copyright $currentYear)"
+}
+```
+
+## TOPIC
 
 Within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
 
@@ -80,4 +130,5 @@ Another safe index access function, **getOrNull**, returns null instead of throw
 You could create a read-only version of the mutable patronList using **toList**
 
 **forEach, forEachIndexed**
+
 
