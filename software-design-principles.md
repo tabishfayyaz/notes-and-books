@@ -14,7 +14,9 @@
 
 - Have you inspected your data objects and graphed the flow of data
 
-- Have you analyzed and optimized flow of data to be as unidirectional as possible
+- Have you used two-way data flow with discretion so that flow of data is as unidirectional as possible? 
+
+- Have you inspected that your singletons are also encouraging one-way data flow and not necessarily enforcing anyone to take action
 
 - Have you removed as much business logic as you can from data model objects (except if it is part of object own state)
 
@@ -25,10 +27,6 @@
 - Are you able to quickly describe responsibility of a component/class/method/module and provide a single unambiguous representation of it
 
 - Have you inspected and graphed the ownership of objects and inspected their lifecycle
-
-- Have you inspected that your singletons are encouraging one-way data flow, not involved in two-way communication and not necessarily enforcing anyone to take action
-
-- Have you used two-way data flow with discretion
 
 - Have you used inheritance with caution and prefered composition over inheritance
 
