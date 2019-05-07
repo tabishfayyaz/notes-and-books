@@ -109,6 +109,23 @@ val greetingFunction: (String) -> String = {
 }
 ```
 
+### An anonymous function type can be inferred:
+```
+val greetingFunction = {
+        val currentYear = 2018
+        "Welcome to SimVillage, Mayor! (copyright $currentYear)"
+}
+```
+
+### Type inference using parameters type:
+```
+val greetingFunction = { playerName: String, numBuildings: Int ->
+        val currentYear = 2018
+        println("Adding $numBuildings houses")
+        "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+}
+```
+
 ## TOPIC
 
 Within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
