@@ -10,11 +10,17 @@
 
 - Have you identified what problem are you really trying to solve
 
+- Are you able to quickly describe responsibility of a component/class/method/module and provide a single unambiguous representation of it
+
 - Have you broken it down into independent components and identified *key* dependencies between components 
+
+- Have you analyzed that the design is highly cohesive, loosely coupled and components have clearly defined communication boundaries that are not poorly selected
+
+- Have you inspested and abstracted the communication between sub-components
 
 - Have you inspected your data objects and graphed the flow of data
 
-- Have you used two-way data flow with discretion so that flow of data is as unidirectional as possible? 
+- Have you used two-way data flow with discretion so that flow of data is as unidirectional as possible
 
 - Have you inspected that your singletons are also encouraging one-way data flow and not necessarily enforcing anyone to take action
 
@@ -24,15 +30,9 @@
 
 - Have you inspected views are not communicating any data upstream and they do not have business logic
 
-- Are you able to quickly describe responsibility of a component/class/method/module and provide a single unambiguous representation of it
-
 - Have you inspected and graphed the ownership of objects and inspected their lifecycle
 
 - Have you used inheritance with caution and prefered composition over inheritance
-
-- Have you inspested and abstracted the communication between sub-components
-
-- Have you analyzed that the design is highly cohesive and loosely coupled and components have clearly defined communication boundaries that are not poorly selected
 
 - Have you inspected there are no God objects in the design and you don't have high coupling AND high cohesion
 
@@ -41,8 +41,6 @@
 - Have you eliminated any non-essential complexity e.g. concurrency
 
 - Have you verified that your design can be tested
-
-- Have you cautiously inspected if you can make your dependencies more loosely coupled
 
 - Is your design open for extension but minimizes modifications by relying upon principles of abstraction and polymorphism
 
