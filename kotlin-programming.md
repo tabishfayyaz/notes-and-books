@@ -62,7 +62,9 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
   - it can accept at-least 0 arguments
   - `it` can be used when there is only one parameter involved however bad for readability when complexity involved
   - `it` cannot be used when more than one parameter involved then you use multiple named parameters
-
+  - anonymous functions are referred to as **lambdas** and their defintion as *lambda expressions*.
+  - anonymous function return is referred to as *lambda result*
+  
 ### To count letters in a string
 ```
 val numLetters = "Mississippi".count()
@@ -123,6 +125,39 @@ val greetingFunction = { playerName: String, numBuildings: Int ->
         val currentYear = 2018
         println("Adding $numBuildings houses")
         "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+}
+```
+
+### Passing lambda as argument to another function:
+```
+fun main(args: Array<String>) {
+    val greetingFunction = { playerName: String, numBuildings: Int ->
+        val currentYear = 2018
+        println("Adding $numBuildings houses")
+        "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+    }
+    runSimulation("Guyal", greetingFunction)
+}
+
+fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+    val numBuildings = (1..3).shuffled().last()   // Randomly selects 1, 2, or 3
+    println(greetingFunction(playerName, numBuildings))
+}
+```
+
+### Omitting parentheses when function type is last argument:
+```
+fun main(args: Array<String>) {
+    runSimulation("Guyal") { playerName, numBuildings ->
+        val currentYear = 2018
+        println("Adding $numBuildings houses")
+        "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+   }
+}
+
+fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+   val numBuildings = (1..3).shuffled().last()   // Randomly selects 1, 2, or 3
+   println(greetingFunction(playerName, numBuildings))
 }
 ```
 
