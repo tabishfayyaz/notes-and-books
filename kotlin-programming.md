@@ -67,6 +67,8 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
   - lambda is an object instance on the JVM so it has a memory cost for itself and all the variables accessible to it but _inline_ enables to remove lambda memory overhead. 
   - an inline lambda body is just copy pasted by the compiler instead of invoking an object instance
   - function references (::) can be useful for named function
+  - you can return a function
+  - lambdas also called closures because they "close over" the variables in the outer scope that they are defined within
   
 ### To count letters in a string
 ```
@@ -184,6 +186,25 @@ fun main(args: Array<String>) {
     runSimulation("Guyal", ::printConstructionCost) { playerName, numBuildings ->
         val currentYear = 2018
         println("Adding $numBuildings houses")
+        "Welcome to SimVillage, $playerName! (copyright $currentYear)"
+    }
+}
+```
+
+### Return a function
+```
+fun runSimulation() {
+    val greetingFunction = configureGreetingFunction()
+    println(greetingFunction("Guyal"))
+}
+
+fun configureGreetingFunction(): (String) -> String {
+    val structureType = "hospitals"
+    var numBuildings = 5
+    return { playerName: String ->
+        val currentYear = 2018
+        numBuildings += 1
+        println("Adding $numBuildings $structureType")
         "Welcome to SimVillage, $playerName! (copyright $currentYear)"
     }
 }
