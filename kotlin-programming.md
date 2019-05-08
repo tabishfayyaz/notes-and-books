@@ -174,6 +174,7 @@ inline fun runSimulation(playerName: String,
 ```
 
 ### Passing function reference:
+```
 fun printConstructionCost(numBuildings: Int) {
     val cost = 500
     println("construction cost: ${cost * numBuildings}")
@@ -186,6 +187,7 @@ fun main(args: Array<String>) {
         "Welcome to SimVillage, $playerName! (copyright $currentYear)"
     }
 }
+```
 
 ## TOPIC
 
