@@ -64,6 +64,8 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
   - `it` cannot be used when more than one parameter involved then you use multiple named parameters
   - anonymous functions are referred to as **lambdas** and their defintion as *lambda expressions*.
   - anonymous function return is referred to as *lambda result*
+  - lambda is an object instance on the JVM so it has a memory cost for itself and all the variables accessible to it but _inilining_ enables to remove lambda memory overhead. 
+  - an inlined lambda body is just copy pasted by the compiler instead of invoking an object instance
   
 ### To count letters in a string
 ```
@@ -158,6 +160,15 @@ fun main(args: Array<String>) {
 fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
    val numBuildings = (1..3).shuffled().last()   // Randomly selects 1, 2, or 3
    println(greetingFunction(playerName, numBuildings))
+}
+```
+
+### An inline method
+```
+inline fun runSimulation(playerName: String,
+                        greetingFunction: (String, Int) -> String) {
+    val numBuildings = (1..3).shuffled().last()   // Randomly selects 1, 2, or 3
+    println(greetingFunction(playerName, numBuildings))
 }
 ```
 
