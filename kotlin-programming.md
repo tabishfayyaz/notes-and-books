@@ -191,7 +191,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-### Return a function
+### Return a function and lambda as Closure
 ```
 fun runSimulation() {
     val greetingFunction = configureGreetingFunction()
