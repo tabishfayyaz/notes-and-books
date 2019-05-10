@@ -224,7 +224,8 @@ fun configureGreetingFunction(): (String) -> String {
 - **_let_** returns the results of your expression implicitly
 - _double bang operator_ or _non-null assertion operator_ (!!.): when a call is made to a non-existent thing you demand that a null pointer exception be thrown, generally advised not to be used unless you want to assert for non-null
 - _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
-- In kotlin variables are non-nullable by default
+- in kotlin variables are non-nullable by default
+- throwing an exception signals that the issue must be handled before execution continues
 
 ### A function that returns nullable string
 ```
