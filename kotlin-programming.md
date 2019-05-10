@@ -71,7 +71,6 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
   - lambdas also called closures because they "close over" the variables in the outer scope that they are defined within
   - anonymous function can modify and reference variable outside of its scope
   - You cannot pass a function as parameter or define function variable in Java 8 the way you can in Kotlin, you always need to define an interface to be able to pass around an anonymous inner class
-  - In kotlin variables are non-nullable by default
   
 ### To count letters in a string
 ```
@@ -225,6 +224,7 @@ fun configureGreetingFunction(): (String) -> String {
 - **_let_** returns the results of your expression implicitly
 - _double bang operator_ or _non-null assertion operator_ (!!.): when a call is made to a non-existent thing you demand that a null pointer exception be thrown, generally advised not to be used unless you want to assert for non-null
 - _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
+- In kotlin variables are non-nullable by default
 
 ### A function that returns nullable string
 ```
