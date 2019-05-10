@@ -212,6 +212,13 @@ fun configureGreetingFunction(): (String) -> String {
 }
 ```
 
+## Null Safety & Exceptions
+- if a _var_ or _val_ can accept null then kotlin requires a special declaration which helps with avoiding crashes
+- _null_ is not 0 but the absence of any value
+- _nullable_: can be assigned a value of null, _non-nullable_: cannot be assigned a value of null
+- 
+
+
 ## TOPIC
 
 Within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
