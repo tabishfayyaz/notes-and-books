@@ -71,6 +71,7 @@ Kotlin uses the **_Unit_** return type to signify exactly this: a function that 
   - lambdas also called closures because they "close over" the variables in the outer scope that they are defined within
   - anonymous function can modify and reference variable outside of its scope
   - You cannot pass a function as parameter or define function variable in Java 8 the way you can in Kotlin, you always need to define an interface to be able to pass around an anonymous inner class
+  - In kotlin variables are non-nullable by default
   
 ### To count letters in a string
 ```
