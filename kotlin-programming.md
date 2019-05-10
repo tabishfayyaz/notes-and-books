@@ -216,12 +216,58 @@ fun configureGreetingFunction(): (String) -> String {
 - if a _var_ or _val_ can accept null then kotlin requires a special declaration which helps with avoiding crashes
 - _null_ is not 0 but the absence of any value
 - _nullable_: can be assigned a value of null, _non-nullable_: cannot be assigned a value of null
-- 
+- Kotlin is a _compiled language_ (the program is translated into machine-language instructions before execution by the compiler) so compiler checks whether null is assigned correctly type or not. 
+- Compile-time errors are preferable to _runtime errors_ (mistakes that happen when program is already running) so you find the problem earlier than later
+- Use non-nullable type, if at all possible
+- _safe call operator_ (?) will only call the function if and only if the variable it acts on is not null
+- within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
+- **_let_** returns the results of your expression implicitly
+- _double bang operator_ or _non-null assertion operator_ (!!.): when a call is made to a non-existent thing you demand that a null pointer exception be thrown, generally advised not to be used unless you want to assert for non-null
+- _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
+
+### A function that returns nullable string
+```
+public fun readLine(): String?
+```
+
+### Using the safe call operator:
+```
+fun main(args: Array<String>) {
+    var beverage = readLine()?.capitalize()
+    println(beverage)
+}
+```
+
+### Using let with a safe call operator:
+```
+var beverage = readLine()?.let {
+        if (it.isNotBlank()) {
+            it.capitalize()
+        } else {
+            "Buttered Ale"
+        }
+    }
+```
+
+### Using the double-bang operator:
+```
+var beverage = readLine()!!.capitalize()
+```
+
+### Using the null coalescing operator:
+```
+val beverageServed: String = beverage ?: "Buttered Ale"
+```
+
+### null coalescing operator with let function 
+```
+beverage?.let {
+        beverage = it.capitalize()
+    } ?: println("I can't do that without crashing - beverage was null!")
+```
 
 
 ## TOPIC
-
-Within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
 
 In Kotlin, all exceptions are **unchecked**. This means that the Kotlin compiler does not force you to wrap all code that could produce an exception in a try/catch statement.
 
