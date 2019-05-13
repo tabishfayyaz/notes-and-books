@@ -225,7 +225,15 @@ fun configureGreetingFunction(): (String) -> String {
 - _double bang operator_ or _non-null assertion operator_ (!!.): when a call is made to a non-existent thing you demand that a null pointer exception be thrown, generally advised not to be used unless you want to assert for non-null
 - _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
 - in kotlin variables are non-nullable by default
-- throwing an exception signals that the issue must be handled before execution continues
+- exception represents an unrecoverable state unless it is handled, throwing an exception signals that the issue must be handled before execution continues
+- in Kotlin, all exceptions are **unchecked**. This means that the Kotlin compiler does not force you to wrap all code that could produce an exception in a try/catch statement
+- precondition are conditions that must be true before proceeding:
+- `checkNotNull` (throw IllegalStateException if argument is null)
+- `require` (throw IllegalArgumentException if argument is false)
+- `requireNotNull` (throw IllegalArgumentException if argument is null otherwise return the non-null value)
+- `error` (throw IllegalArgumentException with a provided message if argument is null)
+- `assert` (throw AssertionError if argument is false and the assertion compiler flag is enabled)
+
 
 ### A function that returns nullable string
 ```
@@ -261,17 +269,41 @@ var beverage = readLine()!!.capitalize()
 val beverageServed: String = beverage ?: "Buttered Ale"
 ```
 
-### null coalescing operator with let function 
+### null coalescing operator with let function:
 ```
 beverage?.let {
         beverage = it.capitalize()
     } ?: println("I can't do that without crashing - beverage was null!")
 ```
 
+### throwing an illegal state exception:
+```
+fun proficiencyCheck(swordsJuggling: Int?) {
+    swordsJuggling ?: throw IllegalStateException("Player cannot juggle swords")
+}
+```
+
+### to define a custom exception inherited from some other exception:
+```
+class UnskilledSwordJugglerException() : IllegalStateException("Player cannot juggle swords")
+```
+
+### try-catch block:
+```
+try {
+
+    } catch (e: Exception) {
+        println(e)
+    }
+```
+
+### preconditions:
+```
+checkNotNull(swordsJuggling, { "Player cannot juggle swords" })
+require(swordsJuggling >= 3, { "Juggle at least 3 swords to be exciting." })
+```
 
 ## TOPIC
-
-In Kotlin, all exceptions are **unchecked**. This means that the Kotlin compiler does not force you to wrap all code that could produce an exception in a try/catch statement.
 
 Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
 
