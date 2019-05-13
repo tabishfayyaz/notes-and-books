@@ -226,7 +226,7 @@ fun configureGreetingFunction(): (String) -> String {
 - _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
 - in kotlin variables are non-nullable by default
 - exception represents an unrecoverable state unless it is handled, throwing an exception signals that the issue must be handled before execution continues
-- in Kotlin, all exceptions are **unchecked**. This means that the Kotlin compiler does not force you to wrap all code that could produce an exception in a try/catch statement
+- in Kotlin, all exceptions are **unchecked** so you are not forced by Kotlin to wrap all code that could produce an exception in a try/catch statement
 - precondition are conditions that must be true before proceeding:
 - `checkNotNull` (throw IllegalStateException if argument is null)
 - `require` (throw IllegalArgumentException if argument is false)
