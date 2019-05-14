@@ -227,6 +227,7 @@ fun configureGreetingFunction(): (String) -> String {
 - in kotlin variables are non-nullable by default
 - exception represents an unrecoverable state unless it is handled, throwing an exception signals that the issue must be handled before execution continues
 - in Kotlin, all exceptions are **unchecked** so you are not forced by Kotlin to wrap all code that could produce an exception in a try/catch statement
+- modern languages experience showed that **checked** exceptions lead to problems: code duplication, complexity in error recovering logic and swallowed exceptions
 - precondition are conditions that must be true before proceeding:
 - `checkNotNull` (throw IllegalStateException if argument is null)
 - `require` (throw IllegalArgumentException if argument is false)
