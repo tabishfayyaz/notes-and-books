@@ -304,6 +304,43 @@ checkNotNull(swordsJuggling, { "Player cannot juggle swords" })
 require(swordsJuggling >= 3, { "Juggle at least 3 swords to be exciting." })
 ```
 
+## Strings
+- escape sequences: `\t` tab character, `\b` backspace character, `\n` newline character, `\r` carriage return, `\"` double quotation mark, `\'` single quotation mark, `\\` backslash, `\$` dollar sign, `\u` unicode character
+- whether you define one with _var_ or _val_ all strings in Kotlin are immutable just like java, anything that seems like is changing value of string (like `replace`) in reality creates a new string
+- for checking string equality use `==` for checking string referential equality use `===`, java uses `==` for referential equality of objects
+- a **Char** is a Unicode Character which is designed to support diverse languages, string consists of an ordered sequence of characters
+- not all characters are available on keyboard so then you use unicode
+
+
+
+### replacing a string:
+```
+private fun toDragonSpeak(phrase: String) =
+    phrase.replace(Regex("[aeiou]")) {
+        when (it.value) {
+            "a" -> "4"
+            "e" -> "3"
+            "i" -> "1"
+            "o" -> "0"
+            "u" -> "|_|"
+            else -> it.value
+        }
+    }
+```
+
+### multiple ways to declare a character:
+```
+    val capitalA: Char = 'A'
+    val unicodeCapitalA: Char = '\u0041'
+```
+
+### traversing a string/list:
+```
+"Dragon's Breath".forEach {
+        println("$it\n")
+    }
+```
+
 ## TOPIC
 
 Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
