@@ -341,6 +341,21 @@ private fun toDragonSpeak(phrase: String) =
     }
 ```
 
+## Numbers
+- all numeric types in Kotlin are signed, Byte: 8 Bits; Short: 16 Bits; Int: 32 Bits; Long: 64 Bits; Float: 32 Bits; Double: 64 Bits
+- neighter _Short_ or _Byte_ is a common use case
+- 
+
+### Formatting a Double:
+```
+println("Remaining balance: ${"%.2f".format(remainingBalance)}")
+```
+
+### Double to Int:
+```
+val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
+```
+
 ## TOPIC
 
 Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
