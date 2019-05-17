@@ -402,31 +402,31 @@ val menuFile = File("menu-file.txt")
 - safe index access functions: **getOrElse**, **getOrNull**
 - add, addAll, removeIf, +=, -= are called _mutator functions_ as they change contents of a mutable list
 
-## Creating a read-only or mutable list:
+### Creating a read-only or mutable list:
 ```
 val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
 val patronList: List<String> = mutableListOf("Eli", "Mordoc", "Sophie")
 ```
 
-## first or last element:
+### first or last element:
 ```
 patronList.first()
 patronList.last()
 ```
 
-## Example of getOrElse:
+### Example of getOrElse:
 ```
 val patronList = listOf("Eli", "Mordoc", "Sophie")
 patronList.getOrElse(4) { "Unknown Patron" }
 ```
 
-## Example of getOrNull:
+### Example of getOrNull:
 ```
 val fifthPatron = patronList.getOrNull(4) ?: "Unknown Patron"
 fifthPatron
 ```
 
-## Examples of Mutator Functions 
+### Examples of Mutator Functions 
 ```
 patronList[4] = "Reggie"
 patronList.add("Reggie")
