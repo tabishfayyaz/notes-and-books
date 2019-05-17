@@ -455,6 +455,7 @@ patronList.removeIf { it.contains("o") }
 - _Set_ also comes in read - only and mutable flavors
 - **toSet, toList, toMutableSet, toMutableList** can be used to convert between collections
 - _IntArray_ is backed by a primitive type when compiled to bytecode unlike _List_
+- It is up to you to use _List_ in an immutable fashion, Kotlin does not enforce it
 
 ### Examples of Iteration:
 ```
@@ -495,7 +496,7 @@ val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").toSet().toLis
 val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").distinct() // achieves same result
 ```
 
-### Declare Primite Integer Array
+### Declare Primitive Integer Array
 ```
 static void displayPlayerAges(int[] playerAges) {
         for(int i = 0; i < ages.length; i++) {
@@ -505,4 +506,10 @@ static void displayPlayerAges(int[] playerAges) {
 
 val playerAges: IntArray = intArrayOf(34, 27, 14, 52, 101)
 displayPlayerAges(playerAges)
+```
+
+### Immutability not enforced example:
+```
+ var myList: List<Int> = listOf(1,2,3)
+    (myList as MutableList)[2] = 1000
 ```
