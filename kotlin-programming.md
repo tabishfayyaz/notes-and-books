@@ -408,7 +408,7 @@ val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
 val patronList: List<String> = mutableListOf("Eli", "Mordoc", "Sophie")
 ```
 
-### first or last element:
+### _first_ or _last_ element:
 ```
 patronList.first()
 patronList.last()
