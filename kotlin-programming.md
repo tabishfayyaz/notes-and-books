@@ -356,16 +356,51 @@ println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
 ```
 
+## Standard Functions
+- **apply**  : returns the object (receiver) itself, passes nothing
+- **let** : returns the result of lambda, passes in receiver as it (read-only)
+- **run** : similar to apply except that doesn’t return the object, can also be used to execute a function reference on a receiver. Chained calls using run are easier to read and follow than nested function calls.
+- **with** : same as run except you pass argument as first parameter to lambda, should be avoided
+- **also** : same as let but returns the object rather than result of lambda
+- **takeif** : evaluates a condition provided in a lambda (called predicate). If the condition evaluates as true, the receiver is returned otherwise null is returned
+- _relative scoping:_ all the function calls within the lamda are now called relative to the receiver
+ 
+### Example for apply:
+```
+val menuFile = File("menu-file.txt").apply {
+        setReadable(true)  // Implicitly, menuFile.setReadable(true)
+        setWritable(true)  // Implicitly, menuFile.setWritable(true)
+        setExecutable(false)  // Implicitly, menuFile.setExecutable(false)
+}
+```
+
+### Example for let:
+```
+val firstItemSquared = listOf(1,2,3).first().let {
+        it * it
+}
+```
+
+### Example for run:
+```
+val menuFile = File("menu-file.txt")
+     val servesDragonsBreath = menuFile.run {
+         readText().contains("Dragon's Breath")
+     }
+```
+
+### run on a function reference
+```
+"Polarcubis, Supreme Master of NyetHack"
+        .run(::nameIsLong)
+        .run(::playerCreateMessage)
+        .run(::println)
+```
+
 ## TOPIC
 
 Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
 
-**apply**  - returns the object (receiver) itself, passes nothing
-**let** - returns the result of lambda, passes in receiver as it (read-only)
-**run** - similar to apply except that doesn’t return the object, can also be used to execute a function reference on a receiver
-**with** - same as run except you pass argument as first parameter to lambda, should be avoided
-**also** - same as let but returns the object rather than result of lambda
-**takeif** - evaluates a condition provided in a lambda (called predicate). If the condition evaluates as true, the receiver is returned otherwise null is returned
 
 One of these safe index access functions, **getOrElse**
 Another safe index access function, **getOrNull**, returns null instead of throwing an exception
