@@ -345,6 +345,7 @@ private fun toDragonSpeak(phrase: String) =
 - all numeric types in Kotlin are signed, Byte: 8 Bits; Short: 16 Bits; Int: 32 Bits; Long: 64 Bits; Float: 32 Bits; Double: 64 Bits
 - neighter _Short_ or _Byte_ is a common use case
 - Binary Operations: _Integer.toBinaryString, shl(bitcount), shr(bitcount), inv(), xor(number), and(number)_
+- _toDoubleOrNull_ and _toIntOrNull_ are used for safe conversion
 
 ### Formatting a Double:
 ```
@@ -354,6 +355,11 @@ println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 ### Double to Int:
 ```
 val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
+```
+
+### Safe Conversion that will Throw Exception
+```
+val gold: Int =  "5.91".toIntOrNull() ?: 0
 ```
 
 ## Standard Functions
@@ -444,12 +450,59 @@ val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 patronList.removeIf { it.contains("o") }
 ```
 
-## TOPIC
+## Iterations
+- _List, Set, Map, IntRange (0..9)_ are category of types called _Iterable_
+- _Set_ also comes in read - only and mutable flavors
+- **toSet, toList, toMutableSet, toMutableList** can be used to convert between collections
+- _IntArray_ is backed by a primitive type when compiled to bytecode unlike _List_
 
-Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
+### Examples of Iteration:
+```
+for (patron in patronList) {
+        println("Good evening, $patron")
+}
+    
+patronList.forEach { patron ->
+        println("Good evening, $patron")
+}
 
-You could create a read-only version of the mutable patronList using **toList**
+patronList.forEachIndexed { index, patron ->
+        println("Good evening, $patron - you're #${index + 1} in line.")
+}
+```
 
-**forEach, forEachIndexed**
+### Reading file into List:
+```
+val menuList = File("data/tavern-menu-items.txt").readText().split("\n")
+```
 
+### Destructuring a List:
+```
+val (type, name, price) = menuData.split(',')  // type, name, price are string variables
 
+val (goldMedal, _, bronzeMedal) = patronList  // the middle element is skipped
+```
+
+### Create a Set:
+```
+val planets = setOf("Mercury", "Venus", "Earth")
+```
+
+### Convert a set back to list and remove duplicates:
+```
+val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").toSet().toList()
+
+val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").distinct() // achieves same result
+```
+
+### Declare Primite Integer Array
+```
+static void displayPlayerAges(int[] playerAges) {
+        for(int i = 0; i < ages.length; i++) {
+            System.out.println("age: " + ages[i]);
+        }
+}
+
+val playerAges: IntArray = intArrayOf(34, 27, 14, 52, 101)
+displayPlayerAges(playerAges)
+```
