@@ -389,7 +389,7 @@ val menuFile = File("menu-file.txt")
      }
 ```
 
-### run on a function reference
+### _run_ on a function reference:
 ```
 "Polarcubis, Supreme Master of NyetHack"
         .run(::nameIsLong)
@@ -397,14 +397,57 @@ val menuFile = File("menu-file.txt")
         .run(::println)
 ```
 
+## List and Sets:
+- list, sets and map come in two distinct varieties: mutable and read-only
+- safe index access functions: **getOrElse**, **getOrNull**
+- add, addAll, removeIf, +=, -= are called _mutator functions_ as they change contents of a mutable list
+
+## Creating a read-only or mutable list:
+```
+val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
+val patronList: List<String> = mutableListOf("Eli", "Mordoc", "Sophie")
+```
+
+## first or last element:
+```
+patronList.first()
+patronList.last()
+```
+
+## Example of getOrElse:
+```
+val patronList = listOf("Eli", "Mordoc", "Sophie")
+patronList.getOrElse(4) { "Unknown Patron" }
+```
+
+## Example of getOrNull:
+```
+val fifthPatron = patronList.getOrNull(4) ?: "Unknown Patron"
+fifthPatron
+```
+
+## Examples of Mutator Functions 
+```
+patronList[4] = "Reggie"
+patronList.add("Reggie")
+patronList.add(0, "Reggie")
+patronList.addAll(listOf("Reginald", "Alex"))
+mutableListOf("Eli","Mordoc", "Sophie") += listOf("Alex", "Shruti")
+mutableListOf("Eli", "Mordoc", "Sophie") += "Reginald"
+
+val patronList = mutableListOf("Eli","Mordoc","Sophie")
+patronList -= listOf("Eli", Mordoc")
+
+mutableListOf("Eli", "Mordoc", Sophie").clear()
+
+val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
+patronList.removeIf { it.contains("o") }
+```
+
 ## TOPIC
 
 Kotlin also provides the safe conversion functions **_toDoubleOrNull_** and **_toIntOrNull_**
 
-
-One of these safe index access functions, **getOrElse**
-Another safe index access function, **getOrNull**, returns null instead of throwing an exception
-**mutableListOf, listOf**
 You could create a read-only version of the mutable patronList using **toList**
 
 **forEach, forEachIndexed**
