@@ -517,14 +517,29 @@ displayPlayerAges(playerAges)
 ## Maps
 - The keys of map are gauranteed to be unique just like the elements of a set
 - If a key is already in map, the key-value pair will be replaced with new one
+- Map accessor functions: ```[] (get/index operator)```, ```getValue```, ```getOrElse```, ```getOrDefault```
 
-### Creating a read-only map:
+### Creating a map:
 ```
 val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5)
 
 val patronGold = mapOf(Pair("Eli", 10.75),
     Pair("Mordoc", 8.00),
     Pair("Sophie", 5.50))
+    
+val patronGold = mutableMapOf<String, Double>()
 ```
 
-
+### Mutable map mutator functions:
+```
+patronGold["Mordoc"] = 5.0  //assignment
+patronGold += "Eli" to 5.0  //plus assign operator
+patronGold += mapOf("Eli" to 7.0,"Mordoc" to 1.0, "Jebediah" to 4.5)  //plus assign operator
+patronGold.put("Mordoc", 5.0) //put
+patronGold.putAll(listOf("Jebediah" to 5.0, "Sahara" to 6.0)) //putAll
+patronGold.getOrPut("Randy"){5.0} //getOrPut
+val mordocBalance = patronGold.remove("Mordoc"){} //remove
+val newPatrons = mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0) - "Mordoc"  //minus operator
+mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0) -= "Mordoc" //minus assign operator
+mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
+```
