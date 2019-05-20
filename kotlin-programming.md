@@ -513,3 +513,18 @@ displayPlayerAges(playerAges)
  var myList: List<Int> = listOf(1,2,3)
     (myList as MutableList)[2] = 1000
 ```
+
+## Maps
+- The keys of map are gauranteed to be unique just like the elements of a set
+- If a key is already in map, the key-value pair will be replaced with new one
+
+### Creating a read-only map:
+```
+val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5)
+
+val patronGold = mapOf(Pair("Eli", 10.75),
+    Pair("Mordoc", 8.00),
+    Pair("Sophie", 5.50))
+```
+
+
