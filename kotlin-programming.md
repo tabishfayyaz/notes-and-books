@@ -543,3 +543,37 @@ val newPatrons = mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0) - "Mordoc"  //
 mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0) -= "Mordoc" //minus assign operator
 mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 ```
+
+## Classes
+- _class functions:_ functions defined within a class
+- _class properties:_ data defintions within a class
+- When an instance of a class is constructed, all of its properties must have values i.e. class properties must be assigned an initial value
+- for each property you define, Kotlin will generate a _field_, a _getter_ and if needed a _setter_. Data for the property is stored in the field
+- You can define your own custom getters & setters
+- Any function or property without a visibility modifier is public
+- visibility modifiers: public (default, accessible outside of the class), private (accessible only within the same class), protected (accessible only within the same class or its subclass), internal (accessible within the same module)
+
+### Calling a class Primary Constructor
+```
+val player = Player()
+```
+
+### Defining a class
+```
+class Player {
+    val name = "madrigal"
+    fun castFireball(numFireballs: Int = 2) =
+            println("A glass of Fireball springs into existence. (x$numFireballs)")
+}
+```
+
+### Custom getter and a private setter
+```
+class Player {
+    var name = "madrigal"
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }    
+}
+```
