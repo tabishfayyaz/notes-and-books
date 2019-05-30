@@ -357,7 +357,7 @@ println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
 ```
 
-### Safe Conversion that will Throw Exception
+### Safe Conversion that will Throw Exception:
 ```
 val gold: Int =  "5.91".toIntOrNull() ?: 0
 ```
@@ -432,7 +432,7 @@ val fifthPatron = patronList.getOrNull(4) ?: "Unknown Patron"
 fifthPatron
 ```
 
-### Examples of Mutator Functions 
+### Examples of Mutator Functions:
 ```
 patronList[4] = "Reggie"
 patronList.add("Reggie")
@@ -496,7 +496,7 @@ val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").toSet().toLis
 val patrons = listOf("Eli Baggins", "Eli Baggins", "Eli Ironfoot").distinct() // achieves same result
 ```
 
-### Declare Primitive Integer Array
+### Declare Primitive Integer Array:
 ```
 static void displayPlayerAges(int[] playerAges) {
         for(int i = 0; i < ages.length; i++) {
@@ -552,13 +552,15 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - You can define your own custom getters & setters
 - Any function or property without a visibility modifier is public
 - visibility modifiers: public (default, accessible outside of the class), private (accessible only within the same class), protected (accessible only within the same class or its subclass), internal (accessible within the same module)
+- Internal visibility is useful for sharing classes within a module (include such things as source code, build scripts, unit tests, and so on). It is a great choice for building libraries in Kotlin as your classes are shared only within a module.
+- Java by default uses _package private_ visibility but Kotlin differs from Java in that aspect
 
-### Calling a class Primary Constructor
+### Calling a class Primary Constructor:
 ```
 val player = Player()
 ```
 
-### Defining a class
+### Defining a class:
 ```
 class Player {
     val name = "madrigal"
@@ -567,7 +569,7 @@ class Player {
 }
 ```
 
-### Custom getter and a private setter
+### Custom getter and a private setter:
 ```
 class Player {
     var name = "madrigal"
@@ -575,5 +577,14 @@ class Player {
         private set(value) {
             field = value.trim()
         }    
+}
+```
+
+### Prevent a check and act null race condition:
+```
+fun printWeaponName() {
+  weapon?.also {
+    println(it.name)  //it variable is guaranteed to not be changed by another part of the program
+  }
 }
 ```
