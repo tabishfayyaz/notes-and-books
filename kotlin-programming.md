@@ -554,6 +554,7 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - visibility modifiers: public (default, accessible outside of the class), private (accessible only within the same class), protected (accessible only within the same class or its subclass), internal (accessible within the same module)
 - Internal visibility is useful for sharing classes within a module (include such things as source code, build scripts, unit tests, and so on). It is a great choice for building libraries in Kotlin as your classes are shared only within a module.
 - Java by default uses _package private_ visibility but Kotlin differs from Java in that aspect
+- The difference between using the _var_ and _val_ keyword is the absence of a setter in decompiled bytecode
 
 ### Calling a class Primary Constructor:
 ```
