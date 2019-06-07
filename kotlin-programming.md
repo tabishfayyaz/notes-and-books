@@ -590,3 +590,42 @@ fun printWeaponName() {
 }
 ```
 ## Initialization
+- _instantiated_: when memory is allocated, _initialized_: when value is assigned however the typical usage of initialization is when everything required to make a variable, property or class instance ready to use whereas instantiation is creating an instance of a class
+- constructor allows its caller to specify the initial values that an instance of a class will require in order to be constructed
+- temporary variables, including parameters that you do not need to reference more than once, are often given a name starting with an underscore to signify they are single-use
+- for class properties that use the default getter & setter, kotlin allows to specify both in one definition, rather than having to assign them using temporary variables
+- for each constructor parameter you can specify whether it is writable (_var_) or read-only (_val_)
+
+### primary constructor:
+```
+class Player(_name: String,
+            _healthPoints: Int,
+            _isBlessed: Boolean,
+            _isImmortal: Boolean) {
+    var name = _name
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
+
+    var healthPoints = _healthPoints
+    val isBlessed = _isBlessed
+    private val isImmortal = _isImmortal
+}
+
+fun main(args: Array<String>) {
+    val player = Player("Madrigal", 89, true, false)
+}
+
+```
+
+### primary constructor with default and custom getter/setter:
+```
+class Player(_name: String, var healthPoints: Int, val isBlessed: Boolean, private val isImmortal: Boolean) {
+    var name = _name
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
+}
+```
