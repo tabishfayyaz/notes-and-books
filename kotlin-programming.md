@@ -589,3 +589,4 @@ fun printWeaponName() {
   }
 }
 ```
+## Initialization
