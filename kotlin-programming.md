@@ -595,8 +595,12 @@ fun printWeaponName() {
 - temporary variables, including parameters that you do not need to reference more than once, are often given a name starting with an underscore to signify they are single-use
 - for class properties that use the default getter & setter, kotlin allows to specify both in one definition, rather than having to assign them using temporary variables
 - for each constructor parameter you can specify whether it is writable (_var_) or read-only (_val_)
+- There are two flavors of constructors (primary & secondary), _primary:_ these parameters are requires for any instance of this class, _secondary:_ alternative ways to construct the class however requirements of the primary constructor are still met
+- Secondary constructors cannot be used to define properties like primary constructors can. Class properties have to be defined in the primary constructor or at the class level
+- Kotlin provides named constructor arguments similar to named arguments for calling functions
+- _initializer block_ is a way to set up variables/values as well as perform validation. The initializer code is executed when the class is constructed
 
-### primary constructor:
+### Primary Constructor:
 ```
 class Player(_name: String,
             _healthPoints: Int,
@@ -619,13 +623,94 @@ fun main(args: Array<String>) {
 
 ```
 
-### primary constructor with default and custom getter/setter:
+### Primary constructor with default and custom getter/setter:
 ```
-class Player(_name: String, var healthPoints: Int, val isBlessed: Boolean, private val isImmortal: Boolean) {
+class Player(_name: String, var healthPoints:Int, val isBlessed:Boolean, private val isImmortal:Boolean) {
     var name = _name
         get() = field.capitalize()
         private set(value) {
             field = value.trim()
         }
+}
+```
+
+### Defining a secondary constructor:
+```
+class Player(_name: String,
+            var healthPoints: Int
+            val isBlessed: Boolean
+            private val isImmortal: Boolean) {
+    var name = _name
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
+
+    constructor(name: String) : this(name, healthPoints = 100, isBlessed = true, isImmortal = false)
+}
+
+fun main(args: Array<String>) {
+    val player = Player("Madrigal")
+}
+```
+
+### Defining a constructor with default argument:
+```
+class Player(_name: String,
+            var healthPoints: Int = 100
+            val isBlessed: Boolean
+            private val isImmortal: Boolean) {
+    var name = _name
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
+
+    constructor(name: String) : this(name,            
+            isBlessed = true,
+            isImmortal = false) {
+        if (name.toLowerCase() == "kar") healthPoints = 40
+    }
+}
+```
+
+### Defining an initializer block:
+```
+class Player(_name: String,
+            var healthPoints: Int = 100
+            val isBlessed: Boolean
+            private val isImmortal: Boolean) {
+    var name = _name
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
+
+    init {
+        require(healthPoints > 0, { "healthPoints must be greater than zero." })
+        require(name.isNotBlank(), { "Player must have a name." })
+    }    
+}
+```
+
+### Property initialization:
+```
+class Player(_name: String,
+            var healthPoints: Int = 100
+            val isBlessed: Boolean
+            private val isImmortal: Boolean) {
+    var name = _name
+        get() = "${field.capitalize()} of $hometown"
+        private set(value) {
+            field = value.trim()
+        }
+
+    val hometown = selectHometown()
+    ...
+    private fun selectHometown() = File("data/towns.txt")
+            .readText()
+            .split("\n")
+            .shuffled()
+            .first()
 }
 ```
