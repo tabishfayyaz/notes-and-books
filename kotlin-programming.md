@@ -787,3 +787,28 @@ var className = when(townSquare) {
 }
 ```
 
+## Objects
+- _object_ keyword is used to specify that a class will be single instance (singleton). The instance will persist as long as program is running
+- Three ways to use object keyword: object declarations, object expressions, companion objects
+- As the object is instantiated for you, you do not add a custom constructor but need an initializer block
+- A function defined in an object declaration is called using name of the object and not an instance of a class
+
+
+### 
+```
+fun main(args: Array<String>) {
+    Game.play()
+}
+
+object Game {
+    init {
+        println("Welcome, adventurer.")
+    }
+
+    fun play() {
+        while (true) {
+        }
+    }
+}
+```
+
