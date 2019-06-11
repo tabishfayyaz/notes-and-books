@@ -599,6 +599,11 @@ fun printWeaponName() {
 - Secondary constructors cannot be used to define properties like primary constructors can. Class properties have to be defined in the primary constructor or at the class level
 - Kotlin provides named constructor arguments similar to named arguments for calling functions
 - _initializer block_ is a way to set up variables/values as well as perform validation. The initializer code is executed when the class is constructed
+- a property must be initialized when the class instance is constructed (this is part of Kotlin's null safety system because that means that all non-nullable properties of a class are initialized and can reference any property of that class instance)
+- _late initialization:_ helpful for bending initilization rules in frameworks like Android where constructor of an _Activity_ is not in our control
+- One could use nullable to initialize properties with null but that would be more taxing on code/maintenance
+- _lazy initialization:_ hold off initializing a variable until it is accessed for the first time, implemented in Kotlin using a mechanism called **delegate** (_by_ keyword)
+- Kotlin includes some delegates that are already implemented for us: **lazy** being one of them that takes a lambda. The code in lambda is executed only once and future access depends on a cached result
 
 ### Primary Constructor:
 ```
@@ -714,3 +719,39 @@ class Player(_name: String,
             .first()
 }
 ```
+### late initialization:
+```
+class Player {
+        lateinit var alignment: String
+        fun determineFate() {
+            alignment = "Good"
+        }
+
+        fun proclaimFate() {
+            if (::alignment.isInitialized) println(alignment)
+        }
+    }
+```
+### lazy initialization:
+```
+class Player(_name: String,
+            var healthPoints: Int = 100
+            val isBlessed: Boolean
+            private val isImmortal: Boolean) {
+    var name = _name
+        get() = "${field.capitalize()} of $hometown"
+        private set(value) {
+            field = value.trim()
+        }
+
+    val hometown = by lazy { selectHometown() }   //hometown remains uninitialized until it is referenced for the first time
+    ...
+    private fun selectHometown() = File("towns.txt")
+            .readText()
+            .split("\n")
+            .shuffled()
+            .first()
+}
+```
+
+## Inheritance
