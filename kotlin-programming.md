@@ -755,3 +755,35 @@ class Player(_name: String,
 ```
 
 ## Inheritance
+- to define hierarchical relationships between types and define common things in a shared class
+- classes are closed by default i.e. they prohibit subclassing so it has be to be marked with _open_ to allow subclassing
+- a function also has to be marked _open_ in order to override it
+- a function cannot be overridden if _final_ keyword is specified
+- you can check whether an object is instance of a class using _is_ operator
+- you can cast an object to another one using _as_ operator
+- every class in Kotlin comes from a common subclass **Any** and that is why you can use it as function parameter
+- **Any** enables kotlin to be platform independent depending upon what you target for compilation e.g. _toString_ implementation is java.lang.Object.toString when you target JVM, it could be something completely different if compiling to JavaScript
+
+### Declaring a subclass and open function to override:
+```
+open class Room(val name: String) {
+    fun description() = "Room: $name"
+
+    open fun load() = "Nothing much to see here..."
+}
+
+class TownSquare : Room("Town Square") {
+    override fun load() = "The villagers rally and cheer as you enter!"
+}
+```
+
+### type checking with when:
+```
+var townSquare = TownSquare()
+var className = when(townSquare) {
+    is TownSquare -> "TownSquare"
+    is Room -> "Room"
+    else -> throw IllegalArgumentException()
+}
+```
+
