@@ -792,9 +792,11 @@ var className = when(townSquare) {
 - Three ways to use object keyword: object declarations, object expressions, companion objects
 - As the object is instantiated for you, you do not add a custom constructor but need an initializer block
 - A function defined in an object declaration is called using name of the object and not an instance of a class
+- object expression if declared at the file level is initialized immediately or if declared within another class, it is initialized when its enclosing class is initialized
+- companion objects are initialized when its enclosing class is initialized or when one of its properties/function are accessed directly
+- Data classes are classes designed specifically for holding data
 
-
-### 
+### Object Declaration (State Management):
 ```
 fun main(args: Array<String>) {
     Game.play()
@@ -812,3 +814,37 @@ object Game {
 }
 ```
 
+### Object Expression (One-Off purpose):
+```
+val abandonedTownSquare = object : TownSquare() {
+        override fun load() = "You anticipate applause, but no one is here..."
+}
+```
+
+### Companion Object (initialization tied to a class instance):
+```
+class PremadeWorldMap {
+  companion object {
+    private const val MAPS_FILEPATH = "nyethack.maps"
+      fun load() = File(MAPS_FILEPATH).readBytes()
+  }
+}
+```
+
+### Nested Class:
+```
+object Game {
+    private class GameInput(arg: String?) {
+        private val input = arg ?: ""
+        val command = input.split(" ")[0]
+        val argument = input.split(" ").getOrElse(1, { "" })
+    }
+}
+```
+
+### Defining a data class:
+```
+data class Coordinate(val x: Int, val y: Int) {
+    val isInBounds = x >= 0 && y >= 0
+}
+```
