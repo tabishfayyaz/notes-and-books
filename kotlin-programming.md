@@ -763,6 +763,7 @@ class Player(_name: String,
 - you can cast an object to another one using _as_ operator
 - every class in Kotlin comes from a common subclass **Any** and that is why you can use it as function parameter
 - **Any** enables kotlin to be platform independent depending upon what you target for compilation e.g. _toString_ implementation is java.lang.Object.toString when you target JVM, it could be something completely different if compiling to JavaScript
+- **Any** provides default implementation of _toString_, _equals_ and _hashCode_ which improves the speed a value can be retrieved with a key when using a Map
 
 ### Declaring a subclass and open function to override:
 ```
@@ -794,7 +795,14 @@ var className = when(townSquare) {
 - A function defined in an object declaration is called using name of the object and not an instance of a class
 - object expression if declared at the file level is initialized immediately or if declared within another class, it is initialized when its enclosing class is initialized
 - companion objects are initialized when its enclosing class is initialized or when one of its properties/function are accessed directly
-- Data classes are classes designed specifically for holding data
+- Data classes are classes designed specifically for holding data. it's _toString_ implementation is more useful
+- By default, objects are compared by references (==) as that is default implementation of **equals** in _Any_ however data classes provide an implementation that bases equality on all properties declared in primary constructor
+- Data classes also make it easy to create a new copy of an object
+- Data classes enable destructuring declaration (creating multiple variables at once) out of the box
+- Data classes must have: primary constructor with at-least one parameter and parameters be marked with either a val/var, they cannot be abstract, open, sealed or inner
+- Enumerated class is a special type of class for defining a collection of constants, are more descriptive than other types of constants and they can also hold function declarations
+- Common operators that can be over-loaded: plus for +, plusAssign for +=, equals for ==, compareTo for >, get for [], rangeTo for .., contains for in
+
 
 ### Object Declaration (State Management):
 ```
@@ -846,5 +854,50 @@ object Game {
 ```
 data class Coordinate(val x: Int, val y: Int) {
     val isInBounds = x >= 0 && y >= 0
+}
+```
+
+### Making a class support destructuring declaration:
+```
+class PlayerScore(val experience: Int, val level:Int ){
+        operator fun component1() = experience    //under the hood how destructuring declaration is implemented
+        operator fun component2() = level
+    }
+
+    val (experience, level) = PlayerScore(1250, 5)
+```
+
+### Defining a function in an enum:
+```
+enum class Direction(private val coordinate: Coordinate) {
+    NORTH(Coordinate(0, -1)),
+    EAST(Coordinate(1, 0)),
+    SOUTH(Coordinate(0, 1)),
+    WEST(Coordinate(-1, 0));
+
+    fun updateCoordinate(playerCoordinate: Coordinate) =
+            Coordinate(playerCoordinate.x + coordinate.x, playerCoordinate.y + coordinate.y)
+}
+
+data class Coordinate(val x: Int, val y: Int) {
+    val isInBounds = x >= 0 && y >= 0
+}
+```
+
+### Overloading + operator:
+```
+enum class Direction(private val coordinate: Coordinate) {
+    NORTH(Coordinate(0, -1)),
+    EAST(Coordinate(1, 0)),
+    SOUTH(Coordinate(0, 1)),
+    WEST(Coordinate(-1, 0));
+
+    fun updateCoordinate(playerCoordinate: Coordinate) = coordinate + playerCoordinate
+}
+
+data class Coordinate(val x: Int, val y: Int) {
+    val isInBounds = x >= 0 && y >= 0
+
+    operator fun plus(other: Coordinate) = Coordinate(x + other.x, y + other.y)
 }
 ```
