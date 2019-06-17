@@ -789,8 +789,9 @@ var className = when(townSquare) {
 ```
 
 ## Objects
-- _object_ keyword is used to specify that a class will be single instance (singleton). The instance will persist as long as program is running
-- Three ways to use object keyword: object declarations, object expressions, companion objects
+- _object_ keyword is used to specify that a class will be single instance (singleton). The instance will persist as long as program is running. An _object_ represents a single static instance.
+- Three ways to use object keyword: object declarations, object expressions, companion objects (always declared inside of another class)
+- The main use for companion objects is to replace static fields/methods known from Java
 - As the object is instantiated for you, you do not add a custom constructor but need an initializer block
 - A function defined in an object declaration is called using name of the object and not an instance of a class
 - object expression if declared at the file level is initialized immediately or if declared within another class, it is initialized when its enclosing class is initialized
@@ -802,7 +803,10 @@ var className = when(townSquare) {
 - Data classes must have: primary constructor with at-least one parameter and parameters be marked with either a val/var, they cannot be abstract, open, sealed or inner
 - Enumerated class is a special type of class for defining a collection of constants, are more descriptive than other types of constants and they can also hold function declarations
 - Common operators that can be over-loaded: plus for +, plusAssign for +=, equals for ==, compareTo for >, get for [], rangeTo for .., contains for in
-
+- ADB (abstract data types) allow you to represent a closed set of possible subtypes that can be associated with a given type. Enum classes are a simple form of ADT
+- Sealed classes are designed to be used when there are a very specific set of possible options for a value, and where each of these options is functionally different. 
+- Anytime you have multiple options and they only different in the meaning of the data, you may be better off using enum classes
+- Anytime you have an unknown number of options, you can not use a sealed class because this will stop you adding options outside of the original source file
 
 ### Object Declaration (State Management):
 ```
@@ -899,5 +903,14 @@ data class Coordinate(val x: Int, val y: Int) {
     val isInBounds = x >= 0 && y >= 0
 
     operator fun plus(other: Coordinate) = Coordinate(x + other.x, y + other.y)
+}
+```
+
+### Sealed class:
+```
+sealed class ScreenState {
+    class Error : ScreenState()
+    class Loading : ScreenState()
+    data class Data(val someData: SomeData) : ScreenState()
 }
 ```
