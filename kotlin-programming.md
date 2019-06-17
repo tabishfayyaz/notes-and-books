@@ -804,7 +804,7 @@ var className = when(townSquare) {
 - Enumerated class is a special type of class for defining a collection of constants, are more descriptive than other types of constants and they can also hold function declarations
 - Common operators that can be over-loaded: plus for +, plusAssign for +=, equals for ==, compareTo for >, get for [], rangeTo for .., contains for in
 - ADB (abstract data types) allow you to represent a closed set of possible subtypes that can be associated with a given type. Enum classes are a simple form of ADT
-- Sealed classes are designed to be used when there are a very specific set of possible options for a value, and where each of these options is functionally different. 
+- Sealed classes (https://stackoverflow.com/a/50779528) are designed to be used when there are a very specific set of possible options for a value, and where each of these options is functionally different. Sealed class allow you to exhaust possibilities
 - Anytime you have multiple options and they only different in the meaning of the data, you may be better off using enum classes
 - Anytime you have an unknown number of options, you can not use a sealed class because this will stop you adding options outside of the original source file
 
