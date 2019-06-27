@@ -966,4 +966,82 @@ class Goblin(name: String = "Goblin",
     override val diceSides = 8
 }
 ```
+## Generics
+- Lists can hold any type because of _generics_
+- A _generic type_ is a class that accepts an input of any type in its constructor
+- Generics types, like other types in Kotlin, support type inference
+- TODO: in and out, reified keyword
 
+### List of Generics
+```
+val listOfInts: List<Int> = listOf(1,2,3)
+val listOfStrings: List<String> = listOf("string one", "string two")
+val listOfRooms: List<Room> = listOf(Room(), TownSquare())
+```
+
+### Creating a Generic Type:
+```
+class LootBox<T>(item: T) {
+    private var loot: T = item
+}
+```
+
+### Adding a Generic function:
+```
+class LootBox<T>(item: T) {
+    var open = false
+    private var loot: T = item
+
+    fun fetch(): T? {
+       return loot.takeIf { open }
+    }
+}
+```
+
+### Using multiple generic type parameters:
+```
+fun <R> fetch(lootModFunction: (T) -> R): R? {
+        return lootModFunction(loot).takeIf { open }
+}
+```
+
+### Constraining a generic parameter to specific class:
+```
+class LootBox<T : Loot>(item: T) {
+
+}
+```
+
+### Adding vararg:
+```
+class LootBox<T : Loot>(vararg item: T) {
+
+}
+```
+
+### Adding a get operator:
+```
+class LootBox<T : Loot>(vararg item: T) {
+   operator fun get(index: Int): T? = loot[index].takeIf { open }
+}
+```
+
+## Extensions
+
+## Functional Programming
+- functional programming style relies on data that is returned from a small number of higher-order functions (functions that accept or return another function) designed specifically to work on collections, and it favors composing chains of operations
+- Kotlin supports multiple programming style so you can mix OOP and functional programming
+- Three broad categories of functional programs: _transforms, filters_ and _combines_
+- Functions in functional programming are also designed to be _composable_, meaning that simple functions can be combined to build complex behavior
+
+### Converting a list of animals to babies (transform):
+```
+val animals = listOf("zebra", "giraffe", "elephant", "rat")
+val babies = animals
+    .map{ animal -> "A baby $animal" }
+    .map{ baby -> "$baby, with the cutest little tail ever!"}
+println(babies)
+```
+
+
+## Coroutines
