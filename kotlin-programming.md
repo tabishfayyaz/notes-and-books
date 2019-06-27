@@ -914,3 +914,56 @@ sealed class ScreenState {
     data class Data(val someData: SomeData) : ScreenState()
 }
 ```
+
+## Interfaces & Abstract Classes
+- Interface: specifying _what_ without the _how_, Abstract class: hybrid between interface and class
+- Use : operator to implement an interface
+- You can provide a default implementation for a property getters & functions in an interface
+- Abstract class cannot be instantiated but provide function implementation, they can also include abstract functions
+
+### Define an interface
+```
+interface Fightable {
+    var healthPoints: Int
+    val diceCount: Int
+    val diceSides: Int
+    val damageRoll: Int
+
+    fun attack(opponent: Fightable): Int
+}
+```
+
+### Implementing an interface
+```
+class Player(_name: String,
+        override var healthPoints: Int = 100,
+        var isBlessed: Boolean = false,
+        private var isImmortal: Boolean) : Fightable {
+}
+```
+
+### Defining an abstract class
+```
+abstract class Monster(val name: String,
+                       val description: String,
+                       override var healthPoints: Int) : Fightable {
+
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = damageRoll
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
+}
+```
+
+### Subclassing an abstract class
+```
+class Goblin(name: String = "Goblin",
+             description: String = "A nasty-looking goblin",
+             healthPoints: Int = 30) : Monster(name, description, healthPoints) {
+
+    override val diceCount = 2
+    override val diceSides = 8
+}
+```
+
