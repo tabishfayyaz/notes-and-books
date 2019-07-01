@@ -1043,5 +1043,14 @@ val babies = animals
 println(babies)
 ```
 
+## Java Interoperability
+- Kotlin compiles down to java bytecode and kotlin and java files can exist in the same project, side by side
+- You can invoke java methods from Kotlin and vice-versa this means existing java libraries can be used from Kotlin
+- String!: The exclamation mark means that the return value could either be String or String?
+- Kotlin types often correspond one to one with Java types e.g a String in Kotlin is a String when compiled down to Java
+- Primitive types are not objects in Java, but all types are objects in Kotlin - including the basic data types. Kotlin compiler will map java primitives onto the most similar kotlin type
+- Kotlin gives you the power of objects when you want them but the performance of primitive types when you need them (types are mapped back to their java counterparts at runtime)
+- Java uses fields and typically gates access via accessor and mutator methods. Kotlin features properties which restrict access to backing fields and may automatically expose accessors and mutators
+- Kotlin can by pass the need for using getter/setter syntax, meaning that you can use syntax that looks like you are accessing fields or properties directly while still maintaining encapsulation
 
 ## Coroutines
