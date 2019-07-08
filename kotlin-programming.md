@@ -49,10 +49,16 @@ a **_when_** expression behaves as though there were a == equality operator betw
 **single-expression-functions** - you can omit the return type, curly braces and return statement:
 `private fun foo(number: Int = 2) = println("")`
 
-Kotlin uses the **_Unit_** return type to signify exactly this: a function that returns no value.
+Kotlin uses the **_Unit_** return type to signify exactly this: a function that returns no value. Another type that is related to Unit is the **_Nothing_** type
 
 **named function arguments** - you can pass arguments in any order:
 `foo(healthStatus = "status", auraColor = "NONE", name = "Madrigal", isBlessed = true)`
+
+### Anatomy of a Function:
+```
+private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) : String {
+}
+```
 
 ## Anonymous Function and the Function Type
   - have no name, are commonly passed around or returned from other functions
