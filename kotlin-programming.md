@@ -548,7 +548,8 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - _class functions:_ functions defined within a class
 - _class properties:_ data defintions within a class
 - When an instance of a class is constructed, all of its properties must have values i.e. class properties must be assigned an initial value
-- for each property you define, Kotlin will generate a _field_, a _getter_ and if needed a _setter_. Data for the property is stored in the field
+- for each property you define, Kotlin will generate a _field_, a _getter_ and if needed a _setter_. 
+- Data for the property is stored in the field. You cannot directly define a field on a class. Kotlin encapsulates the fields for you, protecting the data in the field and exposing it via getters and setters
 - You can define your own custom getters & setters
 - Any function or property without a visibility modifier is public
 - visibility modifiers: public (default, accessible outside of the class), private (accessible only within the same class), protected (accessible only within the same class or its subclass), internal (accessible within the same module)
