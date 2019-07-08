@@ -966,6 +966,7 @@ class Goblin(name: String = "Goblin",
     override val diceSides = 8
 }
 ```
+
 ## Generics
 - Lists can hold any type because of _generics_
 - A _generic type_ is a class that accepts an input of any type in its constructor
@@ -1052,5 +1053,66 @@ println(babies)
 - Kotlin gives you the power of objects when you want them but the performance of primitive types when you need them (types are mapped back to their java counterparts at runtime)
 - Java uses fields and typically gates access via accessor and mutator methods. Kotlin features properties which restrict access to backing fields and may automatically expose accessors and mutators
 - Kotlin can by pass the need for using getter/setter syntax, meaning that you can use syntax that looks like you are accessing fields or properties directly while still maintaining encapsulation
+- A kotlin file can include classes, functions, and variables - all at the top level of the file. Top-level functions defined in Kotlin are represented as static methods in Java
+- Consider using _@JvmOverloads_ for an API that may be exposed to Java consumers so it is robust for both Java & Kotlin developers
+- Recall that Kotlin and Java handle class-level variables quite differently: Java uses fields with getter and setter methods, while Kotlin has properties with backing fields.
+- You can apply the _@JvmField_ annotation to a Kotlin property to expose its backing field to Java consumers and avoid the need for a getter method
+- The _@JvmStatic_ annotation works like _@JvmField_ to allow direct access to functions defined on companion objects
+
+
+### Referencing a top-level Kotlin function from java
+```
+public class Jhava {
+    public static void main(String[] args) {
+        System.out.println(HeroKt.makeProclamation());  // Kotlin compiler creates a class called HeroKt (to associate Hero.java)
+    }
+}
+```
+
+### Specifying compiled class name using JvmName at top of Hero.kt:
+```
+@file:JvmName("Hero")
+
+fun main(args: Array<String>) {
+}
+
+fun makeProclamation() = "Greetings, beast!"
+```
+
+### A function with default parameters:
+```
+fun handOverFood(leftHand: String = "berries", rightHand: String = "beef") {
+    println("Mmmm... you hand over some delicious $leftHand and $rightHand.")
+}
+```
+
+### Java has no concept of default method parameters so to over come that (Hero.kt):
+```
+@JvmOverloads
+fun handOverFood(leftHand: String = "berries", rightHand: String = "beef") {
+    println("Mmmm... you hand over some delicious $leftHand and $rightHand.")
+}
+```
+
+### Applying the @JvmField annotation:
+```
+class Spellbook {
+    @JvmField   //now you can access spells directly from java code
+    val spells = listOf("Magic Ms. L", "Lay on Hans") 
+}
+```
+
+### Adding the @JvmField annotation to the member of a companion object:
+```
+class Spellbook {
+    @JvmField
+    val spells = listOf("Magic Ms. L", "Lay on Hans")
+
+    companion object {
+        @JvmField
+        val MAX_SPELL_COUNT = 10
+    }
+}
+```
 
 ## Coroutines
