@@ -1059,7 +1059,7 @@ println(babies)
 - Recall that Kotlin and Java handle class-level variables quite differently: Java uses fields with getter and setter methods, while Kotlin has properties with backing fields.
 - You can apply the _@JvmField_ annotation to a Kotlin property to expose its backing field to Java consumers and avoid the need for a getter method
 - The _@JvmStatic_ annotation works like _@JvmField_ to allow direct access to functions defined on companion objects
-
+- Function types is made possible via the -> operator
 
 ### Referencing a top-level Kotlin function from java
 ```
