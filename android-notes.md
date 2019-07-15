@@ -11,3 +11,7 @@
 `apply plugin: kotlin-kapt` to add annotation processors (see JSR 269) support in Kotlin then libraries such as Dagger can be used however the dependency has to be added using `kapt` configuration
 
 `apply plugin: kotlin-android-extensions` to add support for view binding with Kotlin Android Extensions
+
+`classpath 'com.android.tools.build:gradle:3.4.2'` Android Studio Gradle Plugin that provides integration of Gradle into Android Studio. The version will match the version of Android Studio being used
+
+`distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip` in _gradle-wrapper.properties_ which specifies the version of Gradle itself being used
