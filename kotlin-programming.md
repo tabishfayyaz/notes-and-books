@@ -1035,6 +1035,19 @@ class LootBox<T : Loot>(vararg item: T) {
 ```
 
 ## Extensions
+- allow you to add functionality to a type without directly modifying the type's definition, you can use them with own types or from the Kotlin standard library (List, String)
+- a good option when you want to add functionality to a class you do not control or that is ineligible for subclassing
+- 
+
+### Adding extension to string:
+```
+fun String.addEnthusiasm(amount: Int = 1) = this + "!".repeat(amount)
+```
+
+### Extending Any (callable on all types e.g. Int)
+```
+fun Any.easyPrint() = println(this)
+```
 
 ## Functional Programming
 - functional programming style relies on data that is returned from a small number of higher-order functions (functions that accept or return another function) designed specifically to work on collections, and it favors composing chains of operations
