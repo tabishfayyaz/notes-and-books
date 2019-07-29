@@ -45,7 +45,7 @@
 - If items don't have enough details or need more information those gaps can be filled so that there aren't any blockers or time wasters during the actual sprint planning meeting
 
 #### Sprint Planning Meeting
-- 1. Retrospective Recap 2. Product and Marketing Updates 3. Planning conversation
+- A) Retrospective Recap B) Product and Marketing Updates C) Planning conversation
 - Starts with Scrum Master presenting any relevant action items from the retrospective and then product owner provides any product or market updates
 - Product Owner does the actual planning conversation (Sprint Goal + Velocity) by working with the development team
 - One of the biggest challenge is often prioritization so a focused sprint goal and velocity will help
@@ -58,3 +58,11 @@
 - 15 minute daily meetings to plan for the next 24 hours
 - Help eliminate other meetings, identify blockers and build a shared understanding of what everyone is working on
 - Two commong ways to do standups: Round Robin (What did I work on yesterday, What am I working on Today, What is blocking me) or Walking the Board (Team walks through all the work you have on your board, who owns it and if there are any blockers, move right to left so to talk about pieces of work that are closest to done)
+
+### Sprint Review Meetings or Demo
+- Gather everyone (development, designer, writer ...)
+- Rule of thumb: 5 minutes per person to demo their work
+- Review what's done and not done (Product Owner)
+- Demo the work (Development Team)
+- Review key metrics (
+- Review and revise the product backlog
