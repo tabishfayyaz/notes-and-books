@@ -64,7 +64,7 @@
 - Rule of thumb: 5 minutes per person to demo their work
 - Review from product backlog what's done and not done (Product Owner)
 - Demo: what was done and why, time to review what was actually delivered before pushing to production (Development Team)
-- Review key metrics, what is demo-ed is going to move metrics (performance, customer behavior or measurable outcome)
+- Review key metrics, make sure what was demo-ed is going to move metrics (performance, customer behavior or measurable outcome etc.)
 - Review and revise the product backlog (new user stories, remove old ones based on any findings in demo)
 
 #### Retrospective
