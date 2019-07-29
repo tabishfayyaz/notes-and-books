@@ -975,6 +975,7 @@ class Goblin(name: String = "Goblin",
 ```
 
 ## Generics
+- A data of some type that is not known when we write the class
 - Lists can hold any type because of _generics_
 - A _generic type_ is a class that accepts an input of any type in its constructor
 - Generics types, like other types in Kotlin, support type inference
@@ -1037,7 +1038,6 @@ class LootBox<T : Loot>(vararg item: T) {
 ## Extensions
 - allow you to add functionality to a type without directly modifying the type's definition, you can use them with own types or from the Kotlin standard library (List, String)
 - a good option when you want to add functionality to a class you do not control or that is ineligible for subclassing
-- 
 
 ### Adding extension to string:
 ```
@@ -1047,6 +1047,14 @@ fun String.addEnthusiasm(amount: Int = 1) = this + "!".repeat(amount)
 ### Extending Any (callable on all types e.g. Int)
 ```
 fun Any.easyPrint() = println(this)
+```
+
+### Make a function chainable:
+```
+fun Any.easyPrint(): Any {
+    println(this)
+    return this
+}
 ```
 
 ## Functional Programming
