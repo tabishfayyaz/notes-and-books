@@ -38,7 +38,7 @@
 - Usually discuss two key questions: In order to achieve the sprint goal what can we deliver during the upcoming sprint and how will we deliver that work
 - Can be a three-step process: Backlog Grooming, Sprint Planning Meeting, Creating Action Items 
 
-#### Backlog Grooming
+#### Backlog Grooming (Story Time)
 - Meeting before the meeting, usually developers cringe at it but they can be excused from it. 
 - The purpose is to save time during the actual sprint planning session and make it more productive. 
 - Best done beforehand in a separate meeting with the product owner and scrum master. 
