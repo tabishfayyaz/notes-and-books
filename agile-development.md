@@ -45,7 +45,7 @@
 - If items don't have enough details or need more information those gaps can be filled so that there aren't any blockers or time wasters during the actual sprint planning meeting
 
 #### Sprint Planning Meeting
-- A) Retrospective Recap B) Product and Marketing Updates C) Planning conversation
+- A) Retrospective Recap B) Product & Marketing Updates C) Planning conversation
 - Starts with Scrum Master presenting any relevant action items from the retrospective and then product owner provides any product or market updates
 - Product Owner does the actual planning conversation (Sprint Goal + Velocity) by working with the development team
 - One of the biggest challenge is often prioritization so a focused sprint goal and velocity will help
@@ -57,12 +57,25 @@
 #### Daily Standups
 - 15 minute daily meetings to plan for the next 24 hours
 - Help eliminate other meetings, identify blockers and build a shared understanding of what everyone is working on
-- Two commong ways to do standups: Round Robin (What did I work on yesterday, What am I working on Today, What is blocking me) or Walking the Board (Team walks through all the work you have on your board, who owns it and if there are any blockers, move right to left so to talk about pieces of work that are closest to done)
+- Two commong ways to do standups: Round Robin (What did I work on yesterday, What am I working on today, What is blocking me) or Walking the Board (Team walks through all the work you have on your board, who owns it and if there are any blockers, move right to left so to talk about pieces of work that are closest to done)
 
-### Sprint Review Meetings or Demo
+#### Sprint Review Meetings or Demo
 - Gather everyone (development, designer, writer ...)
 - Rule of thumb: 5 minutes per person to demo their work
-- Review what's done and not done (Product Owner)
-- Demo the work (Development Team)
-- Review key metrics (
-- Review and revise the product backlog
+- Review from product backlog what's done and not done (Product Owner)
+- Demo: what was done and why, time to review what was actually delivered before pushing to production (Development Team)
+- Review key metrics, what is demo-ed is going to move metrics (performance, customer behavior or measurable outcome)
+- Review and revise the product backlog (new user stories, remove old ones based on any findings in demo)
+
+#### Retrospective
+- after the sprint review and before next sprint planning meeting
+- 30 minutes per week of iteration so 1 hour for a two-week sprint
+- everyone should attend
+- facilitator can be anyone in the team, might as well rotate
+- A) Prepare B) Set the Stage C) What went well? D) What needs improvement? E) Next steps
+- Remind everyone: _Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand_
+- Leave the phones and laptops at the door and decide how far back are you going to retro.
+- Distribute sticky notes, pens and encourage all participants to write down as many ideas (set a 3 - 5 minutes timer)
+- Group similar ideas together to get a sense of any themes
+- Repeat above for _What needs improvement_
+- List action items for next steps and assign to owners with due date
