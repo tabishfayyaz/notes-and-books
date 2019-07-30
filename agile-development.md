@@ -68,10 +68,10 @@
 - Review and revise the product backlog (new user stories, remove old ones based on any findings in demo)
 
 #### Retrospective
-- after the sprint review and before next sprint planning meeting
+- After the sprint review and before next sprint planning meeting
 - 30 minutes per week of iteration so 1 hour for a two-week sprint
-- everyone should attend
-- facilitator can be anyone in the team, might as well rotate
+- Everyone should attend
+- Facilitator can be anyone in the team, might as well rotate
 - A) Prepare B) Set the Stage C) What went well? D) What needs improvement? E) Next steps
 - Remind everyone: _Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand_
 - Leave the phones and laptops at the door and decide how far back are you going to retro.
