@@ -229,7 +229,7 @@ fun configureGreetingFunction(): (String) -> String {
 - within **_let, it_** is a reference to the variable on which let is called, and is guaranteed to be non-null
 - **_let_** returns the results of your expression implicitly
 - _double bang operator_ or _non-null assertion operator_ (!!.): when a call is made to a non-existent thing you demand that a null pointer exception be thrown, generally advised not to be used unless you want to assert for non-null
-- _null coalesging operator_ (?:) if thing on the lefthand side of me is null, do the thing on the righthand side instead, sort of like providing a default
+- _null coalescing operator_ (?:) if the expression to the left of ?: is not null, the elvis operator returns it, otherwise it returns the expression to the right. Note that the right-hand side expression is evaluated only if the left-hand side is null.
 - in kotlin variables are non-nullable by default
 - exception represents an unrecoverable state unless it is handled, throwing an exception signals that the issue must be handled before execution continues
 - in Kotlin, all exceptions are **unchecked** so you are not forced by Kotlin to wrap all code that could produce an exception in a try/catch statement
