@@ -170,7 +170,7 @@ There is also **flatMapIterable** (emission into Iterable instead of an Observab
 Prefer **concatenation** when you care about ordering of emissions otherwise merging
 
 
-## Sample Code Structure
+## Sample Reactive Code Structure
 ```
 Observable{
      // The work you need to do
