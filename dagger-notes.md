@@ -25,3 +25,6 @@
 - the parent component has to provide an accessor for the subcomponent
 - **Component Dependencies:** Use this when you want to keep two components independent
 - **Subcomponents:** Use this when you want to keep two components coupled
+
+### Source
+https://www.youtube.com/playlist?list=PLrnPJCHvNZuA2ioi4soDZKz8euUQnJW65
