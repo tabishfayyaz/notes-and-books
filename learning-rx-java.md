@@ -170,11 +170,23 @@ There is also **flatMapIterable** (emission into Iterable instead of an Observab
 Prefer **concatenation** when you care about ordering of emissions otherwise merging
 
 
+## Sample Code Structure
+```
+Observable{
+     // The work you need to do
+}
+.subscribeOn(Schedulers.io) // thread you need the work to perform on
+.observeOn(AndroidSchedulers.mainThread()) // thread you need to handle the result on
+.subscribeWith(Observer{
+     // handle the result here
+})
+```
 
 
 ## References
 - <https://rxmarbles.com/> (marble diagrams, a popular form of Rx documentation)
 - <http://reactivex.io/documentation/operators.html> (comprehensive list of operators)
+- https://medium.com/gradeup/simplest-rxjava-tutorial-for-android-262013ce3545
 
 
 
