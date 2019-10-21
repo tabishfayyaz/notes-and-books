@@ -13,3 +13,4 @@ Please [purchase the book](https://www.amazon.com/Reactive-Programming-RxJava-As
 ### Resources
 - https://github.com/ReactiveX/Rxjava
 - https://github.com/ReactiveX/RxAndroid
+- http://reactivex.io/RxJava/javadoc/io/reactivex/package-summary.html
