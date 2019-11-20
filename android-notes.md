@@ -8,7 +8,7 @@
 **ideally:** `minSdkVersion (lowest possible) <= targetSdkVersion == compileSdkVersion (latest SDK)`
 
 
-`apply plugin: kotlin-kapt` to add annotation processors (see JSR 269) support in Kotlin then libraries such as Dagger can be used however the dependency has to be added using `kapt` configuration
+`apply plugin: kotlin-kapt` to add annotation processors (see JSR 269) support in Kotlin then libraries such as Dagger can be used however the dependency has to be added using `kapt` configuration, (_kapt_: kotlin annotations processing tool)
 
 `apply plugin: kotlin-android-extensions` to add support for view binding with Kotlin Android Extensions
 
