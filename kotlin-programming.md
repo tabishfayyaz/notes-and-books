@@ -20,7 +20,7 @@ Please [purchase the book](https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-
 - Unlike Java, Kotlin provides only one kind of type: reference types.
 - The Kotlin compiler will, where possible, use primitives in the Java bytecode, because they do indeed offer better performance
 
-## Any class can declare main:
+### Any class can declare main:
 ```
 fun main(args: Array<String>) {
 
