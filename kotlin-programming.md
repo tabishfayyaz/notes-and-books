@@ -31,18 +31,23 @@ Unlike Java, Kotlin provides only one kind of type: reference types.
 The Kotlin compiler will, where possible, use primitives in the Java bytecode, because they do indeed offer better performance
 
 ## Conditionals
+- `===` Evaluates whether the two instances point to the same reference.
+- `!==` Evaluates whether the two instances do not point to the same reference.
+- You use the _in_ keyword to check whether a value is within a range: `if (healthPoints in 75..89)`
+- a **_when_** expression behaves as though there were a == equality operator between the argument you provide in parentheses and the conditions you specify in the curly braces
+- **String templates:** `println("$name $healthStatus"), println("(Aura: $auraColor) (Blessed: ${if (isBlessed) "YES" else "NO"})")`
 
-`===`	Evaluates whether the two instances point to the same reference.
-`!==`	Evaluates whether the two instances do not point to the same reference.
-
-`1..5` includes 1, 2, 3, 4, and 5. Ranges can also be a sequence of characters.
-You use the in keyword to check whether a value is within a range: if (healthPoints in 75..89)
-
-the **_until_** function creates a range that excludes the upper bound of the range specified
-**_downTo_** function creates a range that descends rather than ascends
-a **_when_** expression behaves as though there were a == equality operator between the argument you provide in parentheses and the conditions you specify in the curly braces
-
-**String templates:** `println("$name $healthStatus"), println("(Aura: $auraColor) (Blessed: ${if (isBlessed) "YES" else "NO"})")`
+### Range Examples (Tools → Kotlin → REPL):
+```
+1 in 1..3     //includes 1, 2, 3. Ranges can also be a sequence of characters.
+(1..3).toList()
+1 in 3 downTo 1      //creates a range that descends rather than ascends and check for 1
+1 in 1 until 3       //creates a range that excludes the upper bound of the range specified and check for 1
+3 in 1 until 3
+2 in 1..3
+2 !in 1..3
+'x' in 'a'..'z'
+```
 
 ## Functions
 - Kotlin uses the **_Unit_** return type to signify exactly this: a function that returns no value. 
