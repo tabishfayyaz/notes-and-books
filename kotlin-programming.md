@@ -45,19 +45,23 @@ a **_when_** expression behaves as though there were a == equality operator betw
 **String templates:** `println("$name $healthStatus"), println("(Aura: $auraColor) (Blessed: ${if (isBlessed) "YES" else "NO"})")`
 
 ## Functions
+- Kotlin uses the **_Unit_** return type to signify exactly this: a function that returns no value. Another type that is related to Unit is the **_Nothing_** type
+- Single Expression functions has only one expression i.e. one statement to be evaluated, you can omit the return type, curly braces and return statement
+- Using Named Function Arguments you can pass arguments to a function in any order
 
-**single-expression-functions** - you can omit the return type, curly braces and return statement:
-`private fun foo(number: Int = 2) = println("")`
+### Named Function Arguments:
+```
+foo(healthStatus = "status", auraColor = "NONE", name = "Madrigal", isBlessed = true)
+```
 
-Kotlin uses the **_Unit_** return type to signify exactly this: a function that returns no value. Another type that is related to Unit is the **_Nothing_** type
-
-**named function arguments** - you can pass arguments in any order:
-`foo(healthStatus = "status", auraColor = "NONE", name = "Madrigal", isBlessed = true)`
+### Single Expression Function:
+```
+private fun foo(number: Int = 2) = println("")
+```
 
 ### Anatomy of a Function:
 ```
-private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) : String {
-}
+private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) : String {}
 ```
 
 ## Anonymous Function and the Function Type
