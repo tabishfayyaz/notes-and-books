@@ -478,6 +478,7 @@ patronList.removeIf { it.contains("o") }
 - **toSet, toList, toMutableSet, toMutableList** can be used to convert between collections
 - _IntArray_ is backed by a primitive type when compiled to bytecode unlike _List_
 - It is up to you to use _List_ in an immutable fashion, Kotlin does not enforce it
+- A list also offers the ability to destructure up to the first five elements it contains.
 
 ### Examples of Iteration:
 ```
