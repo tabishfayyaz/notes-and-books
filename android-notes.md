@@ -15,3 +15,7 @@
 `classpath 'com.android.tools.build:gradle:3.4.2'` Android Studio Gradle Plugin that provides integration of Gradle into Android Studio. The version will match the version of Android Studio being used
 
 `distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip` in _gradle-wrapper.properties_ which specifies the version of Gradle being used
+
+## Resources
+- Google’s Maven Repository: https://maven.google.com/web/index.html
+- MVN Repository: https://mvnrepository.com/
