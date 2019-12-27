@@ -19,3 +19,5 @@
 ## Resources
 - Google’s Maven Repository: https://maven.google.com/web/index.html
 - MVN Repository: https://mvnrepository.com/
+- RxJava: https://github.com/ReactiveX/Rxjava
+- RxAndroid: https://github.com/ReactiveX/RxAndroid
