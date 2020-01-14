@@ -16,8 +16,10 @@
 
 `distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip` in _gradle-wrapper.properties_ which specifies the version of Gradle being used
 
-## Resources
+## Links
 - Google’s Maven Repository: https://maven.google.com/web/index.html
 - MVN Repository: https://mvnrepository.com/
 - RxJava: https://github.com/ReactiveX/Rxjava
 - RxAndroid: https://github.com/ReactiveX/RxAndroid
+- Android Tutorials by MindOrks https://mindorks.com/android-tutorial
+- CodePath Android Guide https://guides.codepath.com/android
