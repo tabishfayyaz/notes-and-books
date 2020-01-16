@@ -46,9 +46,13 @@ A **style** is an XML resource that contains attributes that describe how a widg
 A **theme** is a collection of styles. Structurally, a theme is itself a style resource whose attributes point to other style resources.
 
 **Screen density** means how many pixels appear within a constant area of the display, dots per inch = dpi
+
 **Screen size** means amount of physical space available for displaying an interface, screen's diagonal, inch
+
 **Screen resolution** means number of pixels available in the display
+
 **density-independent pixel = dp or dip**, virtual pixel that is independent of the screen density. When your display is a higher density, density independent pixels will expand to fill a larger number of screen pixels. One dp is always 1/160th of an inch on a device’s screen.
+
 **scale-independent pixel = sp**, scale-independent pixels are density-independent pixels that also take into account the user’s font size preference. You will almost always use sp to set display text size.
 
 When an attribute name begins with layout_, that attribute is a direction to that widget’s parent. They tell the parent layout how to arrange the child element within the parent.
@@ -62,6 +66,7 @@ When an attribute name begins with layout_, that attribute is a direction to tha
 One option is to use the saved instance state mechanism. You can store the ID for example as a normal instance variable, save the ID in onSaveInstanceState(Bundle) and snag it from the Bundle in onCreate(Bundle). However, this solution is hard to maintain. In future if you add another argument, you may not remember to save the argument in onSaveInstanceState(Bundle).
 
 **Back button**: takes you to where you were last (temporal navigation)
+
 **Up button**: take you up the app hierarchy, achieved by setting a parentActivityName (ancestral navigation)
 Even though they accomplish the same result, behind the scenes they are doing very different things. Depending on the application, navigating up may pop the user back multiple activities in the back stack. When the user navigates up from a child activity, an intent like the following is created:
 
@@ -75,6 +80,7 @@ FLAG_ACTIVITY_CLEAR_TOP tells Android to look for an existing instance of the ac
 An unfortunate side effect of the way ancestral navigation is implemented in Android is that the activity that you navigate up to will be completed re-created from scratch. This means that any instance variables will be lost and it also means that any saved instance state will be lost as well. This parent activity is seen as a completely new activity.
 
 **Explicit intent:** you specify the class of the activity to start, and the OS will start it
+
 **Implicit Intent:** you describe to the OS the job that you want done. The OS then starts the activity that has advertised itself as capable of doing that job.
 
 Instances of **ContentProvider** wrap databases and make it available to other applications. You can access a ContentProvider through a ContentResolver.
@@ -86,7 +92,9 @@ If you are storing files to share with other apps or receiving files from other 
 Screen size qualifiers (small, normal, large, xlarge) were deprecated in Android 3.2 in favor of qualifiers that allow you to test for the dimensions of the device. With a -sw600dp qualifier, you are saying, “Use this resource on any device whose smallest dimension is 600dp or greater”. This is a good rule of thumb for specifying a tablet-sized screen.
 
 wXXXdp: width is greater than or equal to XXX dp
+
 hXXXdp: height is greater than or equal to XXX dp
+
 swXXXdp: width or height (whichever is smaller) greater than or equal to XXX dp. The height or width may swap depending on the orientation of the device. sw stands for smallest width
 
 Let’s say that you wanted to specify a layout that would only be used if the display were at least 300dp wide. In that case, you could use an available width qualifier and put your layout file in res/layout-w300dp. You can also do the same thing for height by using an “h”
@@ -146,8 +154,11 @@ If you use **AsyncTasks** to load data, you are responsible for managing its lif
 Why would you use a loader instead of, say, as AsyncTask directly? Well the most compelling reason is that the **LoaderManager** will keep your component’s loaders alive, along with their data, between configuration changes like rotation. **LoaderManager** is responsible for starting, stopping, and maintaining the lifecycle of any **Loaders** associated with your component. If, after any configuration change, you initialize a loader that has already finished loading its data, it can deliver that data immediately rather than trying to fetch it again. This works whether your fragment is retained or not, which can make your life easier because you do not have to consider the lifecycle complications that retained fragments can introduce.
 
 **Message:**
+
 *what* - a user-defined int that describes the message
+
 *obj* - a user-specified object to be sent with the message
+
 *target* - the Handler that will handle the message
 
 It is better to build the message by calling Handler.obtainmessage(..). You pass the other message fields into this method, and it automatically sets the target to the Handler object the method was called on for you. Usually, you do not set a message’s target Handler by hand. 
@@ -164,9 +175,9 @@ There are two methods available for setting repeating alarms: AlarmManager.setRe
 
 Custom views have two broad categories:
 
-simple - it has no child views, will almost always perform custom rendering. **View** is a blank canvas so pick it as its superclass. 
+*simple* - it has no child views, will almost always perform custom rendering. **View** is a blank canvas so pick it as its superclass. 
 
-composite - typically manage child views but do not perform custom rendering. Instead rendering is delegated to each child view. Choose an appropriate superclass such as **FrameLayout**.
+*composite* - typically manage child views but do not perform custom rendering. Instead rendering is delegated to each child view. Choose an appropriate superclass such as **FrameLayout**.
 
 **Canvas** - The methods you call on Canvas determine where and what you draw - a line, a circle, a word, or a rectangle
 
