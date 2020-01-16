@@ -95,40 +95,41 @@ Let’s say that you wanted to specify a layout that would only be used if the d
 
 **Resources** can store sounds. With sounds stored as resources, you can do all the usual resource things, like having a different sounds for different orientations, languages, versions of Android, and so on. However if you have lots of sounds dealing with them all one by one in the resources system would be cumbersome. It would be nice to just ship them all out in one big folders, but resources do not let you do this, nor do they allow you to give your resources anything other than a totally flat structure. This is exactly what the assets system is great for. **Assets** are like a little filesystem that ships with your packaged application. With assets, you can use whatever folder structure you want. Since they give you this kind of organizational ability, assets are commonly used for loading graphics and sound in applications that have a lot of those things, like games. 
 
-Asset file paths will not work if you try to open them with a File; you must use them with an AssetManager.
+Asset file paths will not work if you try to open them with a File; you must use them with an **AssetManager**.
 
-Remember that earlier we said that Android has two systems, assets and resources? Well, the resources system has a nice big lookup system. But some big resources are too big to fit inside that system. So these big resources - images and raw sound files, usually - are actually stored in the assets system. Under the hood, Android opens these things itself using the AssetManager.openNonAsset methods, not all of which are publicly available. 
+Remember that earlier we said that Android has two systems, assets and resources? Well, the resources system has a nice big lookup system. But some big resources are too big to fit inside that system. So these big resources - images and raw sound files, usually - are actually stored in the assets system. Under the hood, Android opens these things itself using the AssetManager.**openNonAsset** methods, not all of which are publicly available. 
 
-Android has a variety of different audio streams, each of which has its own independent volume settings. This is why turning down the music does not also turn down your alarms. Check out the documentation for the AUDIO_* constants in AudioManager to see the other options. STREAM_MUSIC will put you on the same volume setting as music and games on the device.
+Android has a variety of different audio streams, each of which has its own independent volume settings. This is why turning down the music does not also turn down your alarms. Check out the documentation for the AUDIO_* constants in **AudioManager** to see the other options. STREAM_MUSIC will put you on the same volume setting as music and games on the device.
 
-The main benefit of using a SoundPool over some other method of playing audio is that SoundPool is responsive: when you tell it to play a sound, it will play the sound immediately, with no lag.
+The main benefit of using a **SoundPool** over some other method of playing audio is that SoundPool is responsive: when you tell it to play a sound, it will play the sound immediately, with no lag.
 
-Parcelable, like Serializable, is an API for saving an object out to a stream of bytes. Objects are stashed in Java by putting them in a Bundle, or by marking them Serializable so that they can be serialized, or by implementing the Parcelable interface. 
+**Parcelable**, like **Serializable**, is an API for saving an object out to a stream of bytes. Objects are stashed in Java by putting them in a **Bundle**, or by marking them **Serializable** so that they can be serialized, or by implementing the **Parcelable** interface. 
 
 Fragments have a feature that you can use to keep its instances alive across configuration change: retainInstances
 The retained state is only entered into when two conditions are met:
-setRetainInstance(true) has been called on the fragments
-The hosting activity is being destroyed for a configuration change (typically rotation)
+- setRetainInstance(true) has been called on the fragments
+- The hosting activity is being destroyed for a configuration change (typically rotation)
+
 A fragment is only in the retained state for an extremely brief interval - the time between being detached from the old activity & being reattached to the new activity that is immediately created.
 
 You may wonder why you would not retain every fragment?
-The first reasons is simply that retained fragments are more complicated than unretained fragments. When something goes wrong with them, it takes longer to get to the bottom of what went wrong.
-The other reasons is that fragments that handle rotation using saved instance state handle all lifecycle situations, but retained fragments only handle the case when an activity is destroyed for a configuration change. If your activity is destroyed because the OS needs to reclaim memory, then all your retained fragments are destroyed, too, which may mean you lose some data.
+- The first reasons is simply that retained fragments are more complicated than unretained fragments. When something goes wrong with them, it takes longer to get to the bottom of what went wrong.
+- The other reasons is that fragments that handle rotation using saved instance state handle all lifecycle situations, but retained fragments only handle the case when an activity is destroyed for a configuration change. If your activity is destroyed because the OS needs to reclaim memory, then all your retained fragments are destroyed, too, which may mean you lose some data.
 
-If your app does not have any problems with rotation, it is because the default behavior of onSaveInstanceState(..) is working. This is what onSaveInstanceState(...) was designed to do - save out and restore the UI state of your app.
+If your app does not have any problems with rotation, it is because the default behavior of **onSaveInstanceState(..)** is working. This is what **onSaveInstanceState(...)** was designed to do - save out and restore the UI state of your app.
 
-The major difference between overriding Fragment.onSaveInstanceState(...) and retaining the fragment is how long the preserved data lasts. If it only needs to last long enough to survive configurations changes, then retaining the fragment is much less work. If an activity is destroyed to reclaim memory after the user has been away for a while, then any retained fragments are destroyed just like their unretained brethren. Therefore, if you have something in your activity or fragment that should last a long time, then you should tie it to the activity record’s lifetime by overriding onSaveInstanceState(Bundle) to save its state so that you can restore it later.
+The major difference between overriding **Fragment.onSaveInstanceState(...)** and retaining the fragment is how long the preserved data lasts. If it only needs to last long enough to survive configurations changes, then retaining the fragment is much less work. If an activity is destroyed to reclaim memory after the user has been away for a while, then any retained fragments are destroyed just like their unretained brethren. Therefore, if you have something in your activity or fragment that should last a long time, then you should tie it to the activity record’s lifetime by overriding **onSaveInstanceState(Bundle)** to save its state so that you can restore it later.
 
-Styles allow you to define a set of attributes in one place & then apply them to as many widgets as you want. The downside of style is that you have to apply them to each & every widget, one at a time. In an app with lots of buttons that could be a huge task. That is where themes come in. In a theme you can say e.g. “I want all buttons to use this style.” Theme attributes can store a reference to concrete resources, such as colors, and they can also store a reference to styles. 
+**Styles** allow you to define a set of attributes in one place & then apply them to as many widgets as you want. The downside of style is that you have to apply them to each & every widget, one at a time. In an app with lots of buttons that could be a huge task. That is where themes come in. In a theme you can say e.g. “I want all buttons to use this style.” **Theme** attributes can store a reference to concrete resources, such as colors, and they can also store a reference to styles. 
 
 The AppCompat library comes with three main themes:
-Theme.AppCompat - a dark theme
-Theme.AppCompat.Light - a light theme
-Theme.AppCompat.Light.DarkActionBar - a light theme with a dark toolbar
+- Theme.AppCompat - a dark theme
+- Theme.AppCompat.Light - a light theme
+- Theme.AppCompat.Light.DarkActionBar - a light theme with a dark toolbar
 
 To discover different style attributes you often have to Cmd-Click theme names and go up the inheritance & look up the style attributes to use. There is not much documentation for styling attributes.
 
-android:background=”?attr/colorAccent” - When referencing a concrete value in XML, such as a color, you use the @ notation. The ? notation says to use the resource that the colorAccent attribute on your theme points to.
+android:background=”?attr/colorAccent” - When referencing a concrete value in XML, such as a color, you use the @ notation. The ? notation says to use the resource that the **colorAccent** attribute on your theme points to.
 
 Android calls anything that is intended to be drawn to the screen a drawable, whether it is an abstract shape, a clever bit of code that subclasses the Drawable class, or a bitmap image. State list drawables, shape drawables and layer list drawables are few types.
 
@@ -136,37 +137,37 @@ Layer list drawables allow you to combine two XML drawables into one.
 
 Launchable main activities are simple activities with intent filters that include a MAIN action and a LAUNCHER category.
 
-Each application opened from Android’s default launcher app gets its own task. A task is a stack of activities. When you press the Back button, you are popping the top activity off of this stack. By default, new activities are started in the current task. Sometimes, when you start an activity, you want the activity added to the current task. Other times, you want it started in a new task.
+Each application opened from Android’s default launcher app gets its own **task**. A task is a stack of activities. When you press the Back button, you are popping the top activity off of this stack. By default, new activities are started in the current task. Sometimes, when you start an activity, you want the activity added to the current task. Other times, you want it started in a new task.
 
 Android app starts life with a main thread which sits in an infinite loop and waits for events initiated by the user or the system. Then it executes code in response to those vents as they occur.
 
-If you use AsyncTasks to load data, you are responsible for managing its lifecycle during configuration changes, such as rotation, and stashing its data somewhere that lives through them. Often, this is simplified by using setRetainInstance(true) on a Fragment but there are still situations where you have to intervene and code you have to write in order to ensure that everything happens correctly. Such situations include the user pressing the Back button while the AsyncTask is running, or the fragment that launched the AsyncTask getting destroyed during execution by the OS due to a low-memory situation. Using a Loader is an alternative solution that takes some (but not all) of this responsibility off your hands. A loader is designed to load some kind of data (an object) from some source. This source could be a disk, a database, a ContentProvider, the network, or another process. AsyncTaskLoader is an abstract Loader that uses an AsyncTask to move the work of loading data to another thread. 
+If you use **AsyncTasks** to load data, you are responsible for managing its lifecycle during configuration changes, such as rotation, and stashing its data somewhere that lives through them. Often, this is simplified by using **setRetainInstance(true)** on a Fragment but there are still situations where you have to intervene and code you have to write in order to ensure that everything happens correctly. Such situations include the user pressing the Back button while the AsyncTask is running, or the fragment that launched the AsyncTask getting destroyed during execution by the OS due to a low-memory situation. Using a **Loader** is an alternative solution that takes some (but not all) of this responsibility off your hands. A loader is designed to load some kind of data (an object) from some source. This source could be a disk, a database, a ContentProvider, the network, or another process. **AsyncTaskLoader** is an abstract Loader that uses an AsyncTask to move the work of loading data to another thread. 
 
-Why would you use a loader instead of, say, as AsyncTask directly? Well the most compelling reason is that the LoaderManager will keep your component’s loaders alive, along with their data, between configuration changes like rotation. LoaderManager is responsible for starting, stopping, and maintaining the lifecycle of any Loaders associated with your component. If, after any configuration change, you initialize a loader that has already finished loading its data, it can deliver that data immediately rather than trying to fetch it again. This works whether your fragment is retained or not, which can make your life easier because you do not have to consider the lifecycle complications that retained fragments can introduce.
+Why would you use a loader instead of, say, as AsyncTask directly? Well the most compelling reason is that the **LoaderManager** will keep your component’s loaders alive, along with their data, between configuration changes like rotation. **LoaderManager** is responsible for starting, stopping, and maintaining the lifecycle of any **Loaders** associated with your component. If, after any configuration change, you initialize a loader that has already finished loading its data, it can deliver that data immediately rather than trying to fetch it again. This works whether your fragment is retained or not, which can make your life easier because you do not have to consider the lifecycle complications that retained fragments can introduce.
 
-Message:
-what - a user-defined int that describes the message
-obj - a user-specified object to be sent with the message
-target - the Handler that will handle the message
+**Message:**
+*what* - a user-defined int that describes the message
+*obj* - a user-specified object to be sent with the message
+*target* - the Handler that will handle the message
 
 It is better to build the message by calling Handler.obtainmessage(..). You pass the other message fields into this method, and it automatically sets the target to the Handler object the method was called on for you. Usually, you do not set a message’s target Handler by hand. 
 
-By default, the Handler will attach itself to the Looper for the thread it is initialized in.
+By default, the **Handler** will attach itself to the Looper for the thread it is initialized in.
 
 A service’s intents are called commands.
 
-AlarmManager is a system service that can send Intents for you.
+**AlarmManager** is a system service that can send Intents for you.
 
 There are two methods available for setting repeating alarms: AlarmManager.setRepeating() and AlarmManager.setInexactRepeating(). If your interval requirements are flexible you should give the system flexibility to group your alarm with others. This is called “inexact repeating”. This allows the system to batch your alarm with others and minimize the amount of wake time needed.
 
-JobScheduler allows you to define services to run particular jobs, and then schedule them to run only when particular conditions apply.
+**JobScheduler** allows you to define services to run particular jobs, and then schedule them to run only when particular conditions apply.
 
 Custom views have two broad categories:
 
-simple - it has no child views, will almost always perform custom rendering. View is a blank canvas so pick it as its superclass. 
+simple - it has no child views, will almost always perform custom rendering. **View** is a blank canvas so pick it as its superclass. 
 
-composite - typically manage child views but do not perform custom rendering. Instead rendering is delegated to each child view. Choose an appropriate superclass such as FrameLayout.
+composite - typically manage child views but do not perform custom rendering. Instead rendering is delegated to each child view. Choose an appropriate superclass such as **FrameLayout**.
 
-Canvas - The methods you call on Canvas determine where and what you draw - a line, a circle, a word, or a rectangle
+**Canvas** - The methods you call on Canvas determine where and what you draw - a line, a circle, a word, or a rectangle
 
 **Paint** - The class determines how the above operations are done - whether shapes are filled, which font text is drawn in, and what color lines are
