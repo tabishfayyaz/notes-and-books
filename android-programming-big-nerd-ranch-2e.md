@@ -70,12 +70,14 @@ One option is to use the saved instance state mechanism. You can store the ID fo
 **Up button**: take you up the app hierarchy, achieved by setting a parentActivityName (ancestral navigation)
 Even though they accomplish the same result, behind the scenes they are doing very different things. Depending on the application, navigating up may pop the user back multiple activities in the back stack. When the user navigates up from a child activity, an intent like the following is created:
 
+```
 Intent intent = new Intent(this, ParentActivity.class);
 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 startActivity(intent);
 finish();
+```
 
-FLAG_ACTIVITY_CLEAR_TOP tells Android to look for an existing instance of the activity in the stack, and if there is one, pop every other activity off the stack so that the activity being started will be top most.
+`FLAG_ACTIVITY_CLEAR_TOP` tells Android to look for an existing instance of the activity in the stack, and if there is one, pop every other activity off the stack so that the activity being started will be top most.
 
 An unfortunate side effect of the way ancestral navigation is implemented in Android is that the activity that you navigate up to will be completed re-created from scratch. This means that any instance variables will be lost and it also means that any saved instance state will be lost as well. This parent activity is seen as a completely new activity.
 
