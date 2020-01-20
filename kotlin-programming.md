@@ -569,15 +569,8 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 
 ## Classes
 - A class is often declared in a file matching its name, but it does not have to be. You can define multiple classes in the same file
-- The class declaration consists of the class name, the class header (type parameters, visibility modifier, primary constructor) and the class body, surrounded by curly braces. Header and body are optional: `class Person constructor(firstName: String) { /*...*/ }`
-- If the class has no body, curly braces can be omitted: `class Empty`
-- If the primary constructor does not have any annotations or visibility modifiers, the constructor keyword can be omitted: `class Person(firstName: String) { /*...*/ }`
-- Parameters of the primary constructor can be used in the initializer blocks. They can also be used in property initializers declared in the class body: `class Customer(name: String) { val customerKey = name.toUpperCase()}`
 - _class functions:_ functions defined within a class
 - _class properties:_ data defintions within a class
-- For declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax: `class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }`
-- If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s).
-- Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed before the secondary constructor body.
 - When an instance of a class is constructed, all of its properties must have values i.e. class properties must be assigned an initial value
 - for each property you define, Kotlin will generate a _field_, a _getter_ and if needed a _setter_. 
 - Data for the property is stored in the field. You cannot directly define a field on a class. Kotlin encapsulates the fields for you, protecting the data in the field and exposing it via getters and setters
@@ -587,6 +580,16 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - Internal visibility is useful for sharing classes within a module (include such things as source code, build scripts, unit tests, and so on). It is a great choice for building libraries in Kotlin as your classes are shared only within a module.
 - Java by default uses _package private_ visibility but Kotlin differs from Java in that aspect
 - The difference between using the _var_ and _val_ keyword is the absence of a setter in decompiled bytecode
+
+### Additional Notes
+- The class declaration consists of the class name, the class header (type parameters, visibility modifier, primary constructor) and the class body, surrounded by curly braces. Header and body are optional: `class Person constructor(firstName: String) { /*...*/ }`
+- If the class has no body, curly braces can be omitted: `class Empty`
+- If the primary constructor does not have any annotations or visibility modifiers, the constructor keyword can be omitted: `class Person(firstName: String) { /*...*/ }`
+- Parameters of the primary constructor can be used in the initializer blocks. They can also be used in property initializers declared in the class body: `class Customer(name: String) { val customerKey = name.toUpperCase()}`
+- For declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax: `class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }`
+- If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s)
+- Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed before the secondary constructor body
+
 
 ### Calling a class Primary Constructor:
 ```
@@ -1174,7 +1177,7 @@ class Spellbook {
 - If thread cannot move forward to the next work to process until the current (possibly long - running) completes this is called _blocking a thread_
 
 
-# Links
+# Links:
 - Classes & Inheritance: https://kotlinlang.org/docs/reference/classes.html
 - Object Expressions and Declarations: https://kotlinlang.org/docs/reference/object-declarations.html
 
