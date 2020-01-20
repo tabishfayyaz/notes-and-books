@@ -74,3 +74,9 @@ I own this book and made these notes for my own learning. Please [purchase the b
 * Resist the urge to "try" things to achieve a desired effect. Use the time you would have spent trying things to do some research to find the correct solution. If you have to, call the company responsible for your operating system and talk to their developer support group. That's better than coming up with oddball implementations that may break in the future.
 * Write your code in chunks small enough to thoroughly test, and don't skimp on your testing. Remember, if you don't test your code, it's possible that nobody will. Whatever you do, don't expect the testing group to test your code for you.
 * Determine what the priorities are for your group and follow them: Correctness, Global Efficiency, Testability, Size, Local efficiency, Maintainability, Consistency, Personal Convenience, Personal Expression?
+
+## Infograph
+
+![writing solid code 1](https://github.com/tabishfayyaz/book-club/blob/master/images/writing-solid-code-part1.png)
+
+![writing solid code 2](https://github.com/tabishfayyaz/book-club/blob/master/images/writing-solid-code-part2.png)
