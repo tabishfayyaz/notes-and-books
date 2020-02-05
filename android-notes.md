@@ -51,7 +51,9 @@ For these reasons, using AsyncTasks for long-running background tasks is general
 - Google’s Maven Repository: https://maven.google.com/web/index.html
 - MVN Repository: https://mvnrepository.com/
 - RxJava: https://github.com/ReactiveX/Rxjava
+- RxJava Docs: http://reactivex.io/RxJava/javadoc/io/reactivex/package-summary.html
 - RxAndroid: https://github.com/ReactiveX/RxAndroid
 - Android Tutorials by MindOrks https://mindorks.com/android-tutorial
 - CodePath Android Guide https://guides.codepath.com/android
 - Dagger: https://github.com/google/dagger
+
