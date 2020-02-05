@@ -56,4 +56,5 @@ For these reasons, using AsyncTasks for long-running background tasks is general
 - Android Tutorials by MindOrks https://mindorks.com/android-tutorial
 - CodePath Android Guide https://guides.codepath.com/android
 - Dagger: https://github.com/google/dagger
+- Gradle search: https://gradleplease.appspot.com/
 
