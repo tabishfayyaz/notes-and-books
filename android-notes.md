@@ -60,3 +60,4 @@ For these reasons, using AsyncTasks for long-running background tasks is general
 - Simple Date Format: https://developer.android.com/reference/java/text/SimpleDateFormat.html
 - Formatter: https://developer.android.com/reference/java/util/Formatter.html
 - API Distribution Stats: https://developer.android.com/about/dashboards/index.html
+- Java to Kotlin Cheatsheet: https://github.com/MindorksOpenSource/from-java-to-kotlin
