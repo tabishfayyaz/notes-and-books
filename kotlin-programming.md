@@ -1180,4 +1180,7 @@ class Spellbook {
 # Links:
 - Classes & Inheritance: https://kotlinlang.org/docs/reference/classes.html
 - Object Expressions and Declarations: https://kotlinlang.org/docs/reference/object-declarations.html
+- val on function parameter is not allowed: https://stackoverflow.com/a/40563463
+- This type has a constructor, and thus must be initialized here: https://stackoverflow.com/a/34249613
+
 
