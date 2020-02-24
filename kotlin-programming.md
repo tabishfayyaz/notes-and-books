@@ -584,6 +584,8 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 ### Additional Notes
 - The class declaration consists of the class name, the class header (type parameters, visibility modifier, primary constructor) and the class body, surrounded by curly braces. Header and body are optional: `class Person constructor(firstName: String) { /*...*/ }`
 - If the class has no body, curly braces can be omitted: `class Empty`
+- The primary constructor is part of the class header and cannot contain any code. Initialization code can be placed in initializer blocks
+- Initializer blocks are executed in the same order as they appear in the class body
 - If the primary constructor does not have any annotations or visibility modifiers, the constructor keyword can be omitted: `class Person(firstName: String) { /*...*/ }`
 - Parameters of the primary constructor can be used in the initializer blocks. They can also be used in property initializers declared in the class body: `class Customer(name: String) { val customerKey = name.toUpperCase()}`
 - For declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax: `class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }`
@@ -603,6 +605,21 @@ class Player {
     fun castFireball(numFireballs: Int = 2) =
             println("A glass of Fireball springs into existence. (x$numFireballs)")
 }
+```
+
+### Secondary constructor:
+```
+class Person {
+    var children: MutableList<Person> = mutableListOf<Person>();
+    constructor(parent: Person) {
+        parent.children.add(this)
+    }
+}
+```
+
+### Empty primary constructor with non-default visibility:
+```
+class DontCreateMe private constructor () { /*...*/ }
 ```
 
 ### Custom getter and a private setter:
