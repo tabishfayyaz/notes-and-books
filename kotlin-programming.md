@@ -573,7 +573,7 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - _class properties:_ data defintions within a class
 - When an instance of a class is constructed, all of its properties must have values i.e. class properties must be assigned an initial value
 - for each property you define, Kotlin will generate a _field_, a _getter_ and if needed a _setter_. 
-- Data for the property is stored in the field. You cannot directly define a field on a class. Kotlin encapsulates the fields for you, protecting the data in the field and exposing it via getters and setters
+- Data for the property is stored in the _field_. You cannot directly define a _field_ on a class. Kotlin encapsulates the fields for you, protecting the data in the _field_ and exposing it via getters and setters
 - You can define your own custom getters & setters
 - Any function or property without a visibility modifier is public
 - visibility modifiers: public (default, accessible outside of the class), private (accessible only within the same class), protected (accessible only within the same class or its subclass), internal (accessible within the same module)
@@ -592,6 +592,12 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s)
 - Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed before the secondary constructor body
 
+### Fields vs Properties
+- _Field_ of a property can only be accessed in the scope of a getter or setter
+- _Field_ is just a class member variable that hold a value. It can be read-only or mutable and marked with any access modifier such as public or private.
+- _Property_ is more complex element that contain a private field and accessors (getters and setters).
+- read-only property = private field + getter
+- mutable property = private field + getter + setter
 
 ### Calling a class Primary Constructor:
 ```
@@ -1199,5 +1205,6 @@ class Spellbook {
 - Object Expressions and Declarations: https://kotlinlang.org/docs/reference/object-declarations.html
 - val on function parameter is not allowed: https://stackoverflow.com/a/40563463
 - This type has a constructor, and thus must be initialized here: https://stackoverflow.com/a/34249613
+- Backing fields: https://kotlinlang.org/docs/reference/properties.html#backing-fields
 
 
