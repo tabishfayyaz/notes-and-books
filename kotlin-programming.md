@@ -594,7 +594,6 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 
 ### Fields vs Properties
 - _Field_ of a property can only be accessed in the scope of a getter or setter
-- _Field_ is just a class member variable that hold a value. It can be read-only or mutable and marked with any access modifier such as public or private.
 - _Property_ is more complex element that contain a private field and accessors (getters and setters).
 - read-only property = private field + getter
 - mutable property = private field + getter + setter
