@@ -978,6 +978,9 @@ sealed class ScreenState {
 - You can provide a default implementation for a property getters & functions in an interface
 - Abstract class cannot be instantiated but provide function implementation, they can also include abstract functions
 
+### Additional Notes
+- What makes interfaces different from abstract classes is that interfaces cannot store state. They can have properties but these need to be abstract or to provide accessor implementations.
+
 ### Define an interface
 ```
 interface Fightable {
