@@ -591,6 +591,8 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - For declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax: `class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }`
 - If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s)
 - Note that code in initializer blocks effectively becomes part of the primary constructor. Delegation to the primary constructor happens as the first statement of a secondary constructor, so the code in all initializer blocks and property initializers is executed before the secondary constructor body
+- A nested class marked as **_inner_** can access the members of its outer class. Inner classes carry a reference to an object of an outer class
+- On the JVM, if the object is an instance of a functional Java interface (i.e. a Java interface with a single abstract method), you can create it using a lambda expression prefixed with the type of the interface: `val listener = ActionListener { println("clicked") }`
 
 ### Fields vs Properties
 - _Field_ of a property can only be accessed in the scope of a getter or setter
