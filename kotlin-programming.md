@@ -597,6 +597,7 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 - _Property_ is more complex element that contain a private field and accessors (getters and setters).
 - read-only property = private field + getter
 - mutable property = private field + getter + setter
+- Getters always have the same visibility as the property
 
 ### Calling a class Primary Constructor:
 ```
@@ -1091,6 +1092,10 @@ class LootBox<T : Loot>(vararg item: T) {
 ## Extensions
 - allow you to add functionality to a type without directly modifying the type's definition, you can use them with own types or from the Kotlin standard library (List, String)
 - a good option when you want to add functionality to a class you do not control or that is ineligible for subclassing
+
+### Additional Notes
+- If a class has a companion object defined, you can also define extension functions and properties for the companion object.
+
 
 ### Adding extension to string:
 ```
