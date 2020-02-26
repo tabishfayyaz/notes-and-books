@@ -1215,5 +1215,5 @@ class Spellbook {
 - val on function parameter is not allowed: https://stackoverflow.com/a/40563463
 - This type has a constructor, and thus must be initialized here: https://stackoverflow.com/a/34249613
 - Backing fields: https://kotlinlang.org/docs/reference/properties.html#backing-fields
-
+- Objects Expressions & Declaration: https://kotlinlang.org/docs/reference/object-declarations.html
 
