@@ -25,3 +25,4 @@
 ## Resources
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
+- https://www.toptal.com/java/a-guide-to-everyday-mockito
