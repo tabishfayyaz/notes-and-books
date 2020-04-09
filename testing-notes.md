@@ -4,7 +4,7 @@
 
 **State-based Verification:** Verifies this method is called with those specific attributes.
 
-**Mock:** A generated class that doesn’t do anything, used for behavior verification.
+**Mock:** A generated class that doesn’t do anything, used for behavior verification. Mocks are used as a replacement for a dependency
 
 **Stub:** A hand-written class that returns a pre-defined response given certain input, used for state verification.
 
