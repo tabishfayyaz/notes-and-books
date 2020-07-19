@@ -137,6 +137,28 @@
    * if there is a complicated task that compromises of multiple smaller tasks, the greater task should be broken down into smaller tasks managed each by an element
    * re-usability is the advantage here
    * if an action needs to be repeated, it will be its own responsible component which is called whenever it is needed (DRY: don't repeat yourself)
+* OCP
+   * Software module should be upon for extension but closed from modification: abstraction and polymorphism are the key to make this happen
+   * Two options to make an enhancement: change existing code (disliked path), add a small new module of code
+   * if we want to change a class, we would either extend it or create an entirely new class
+   * changing existing component can break compatibility   
+* LSP
+   * if class A is subtype of B, then anywhere in the program, class B should be replaceable with class A without breaking the program
+   * inheritance should be used only for substitutability
+   * if an object of B should be used anywhere an object of A is used then use inheritance
+   * if an object of B should use an object of A then use composition/delegation
+   * inheritance demands more from a developer than composition or delegation does
+   * services of the derived class should require no more and promise no less than the corresponding services of the base class. Why? -> The user of a base class should be able to use an instance of a derivced class without knowing the difference
+   * Good example of this principle:
+      * public vs protected in base vs derived
+      * derived function can't throw any new checked exception not thrown by the base (unless the new exceptions extend old one)
+* ISP
+   * Components in a user interace such as buttons and labels should not be reliant on one another i.e. if one button breaks, the rest of the user interface should not malfunction
+* DIP
+   * high level components should not depend on low-level components and vice-versa rather they communicate via interfaces/abstraction
+   * if one fails the other continues functioning as they are not dependent on each other
+   * beause of this we can test classes independently of each other which makes testing easier
+   * we can create any kind of mock objects we want
 
 ## Credits
 - https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
