@@ -54,6 +54,8 @@
 
 ## Software Design Notes
 
-- Breakup into independent components yet have key dependencies so what you are doing doesn't impact all theo thers dependent on your compoonent/module/library
+- Breakup into independent components yet have key dependencies so what you are doing doesn't impact all the others dependent on your compoonent/module/library
 - Inspect your data objects and graph their interactions/where they flow. Keep classes simple. Keep one-way data flow/interactions simple
-
+- Simplicity - keep a small number of class types (controllers, views, data objects) avoid creating classes that aliases those classes (managers, coordinators, helpers, handlers, provider, executor). Keep data flow simple e.g. don't let views have business logic; views shouldn't need to communicate any data upstream
+- Keep data model objects pruned of business logic, except if the logic is part of the objects own state. Remove as much business logic as you can.
+- Single Responsibility Principle -> If you can't describe a class's responsibility straight forwardly, it's too complex (makes it easy to reason about things)
