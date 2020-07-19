@@ -69,3 +69,14 @@
 - Lazy initialization -> startup performance boost
 - Adapter Pattern: You could have many different types of objects with different methods and API, and then using an adapter you can have them all match a certain set of APIs and interfaces so they expose a common set of operations
 - Factory Pattern: Wrapper function around a constructor (possibly one in a different class). The key difference is that a factory method pattern requires the entire object to be built in a single method call, with all parameters pass in on a single line. The final object will be returned e.g. `FruitFactory.create(params)`
+- Builder Pattern: is in essence a wrapper object around all possible parameters you might want to pass into a constructor invocation. This allows you to use setter methods to slowly build up your parameter list. One additional method on a builder class is a build() method, which simply passes the builder object into the desired constructor, and returns the result e.g. `new FruitBuilder().setX().setY().setZ().build()`
+- Cohesion is the indication of the relationship with a module
+- Coupling is the indication of the relationship between modules
+- Impossible to achieve full decoupling without damaging cohesion and vice versa
+
+
+
+- **IDEAL** -> High Cohesion, Low Coupling
+
+## Credits
+- https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
