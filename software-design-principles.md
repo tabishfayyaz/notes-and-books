@@ -51,3 +51,9 @@
 - Have you analyzed and handled the case when any sub-component of the system fails (irrespective of the reason)
 
 - Have you examined that you have not over architectured or under architectured the system
+
+## Software Design Notes
+
+- Breakup into independent components yet have key dependencies so what you are doing doesn't impact all theo thers dependent on your compoonent/module/library
+- Inspect your data objects and graph their interactions/where they flow. Keep classes simple. Keep one-way data flow/interactions simple
+
