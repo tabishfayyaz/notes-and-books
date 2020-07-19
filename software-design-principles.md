@@ -54,29 +54,57 @@
 
 ## Software Design Notes
 
-- Breakup into independent components yet have key dependencies so what you are doing doesn't impact all the others dependent on your compoonent/module/library
-- Inspect your data objects and graph their interactions/where they flow. Keep classes simple. Keep one-way data flow/interactions simple
-- Simplicity - keep a small number of class types (controllers, views, data objects) avoid creating classes that aliases those classes (managers, coordinators, helpers, handlers, provider, executor). Keep data flow simple e.g. don't let views have business logic; views shouldn't need to communicate any data upstream
-- Keep data model objects pruned of business logic, except if the logic is part of the objects own state. Remove as much business logic as you can.
-- Single Responsibility Principle -> If you can't describe a class's responsibility straight forwardly, it's too complex (makes it easy to reason about things)
-- Inspect class composition (follow ownership graph). Follow the life of a child (composed) object to make sure that accesibility to and operations done on that object is managed.
-- Follow ownership graph -> which objects own which object? It is interesting to know as generally that is how data should flow as well, data should go from parent to child. If you have two parents modifying a single child there could be a conflict, easily given rise to bugs and may also have memory leaks.
-- Singletons can introduce a lot of two way data flow e.g. imagine the graph of 100 singletons (very complex). Might make sense for them to not communicate directly but issue notifications that other singletons can listen to, that would at-least take care of 2-way data flow so data is always flowing downwards from central notification hub and singleton are passively broadcasting but not expecting anyone to take action on that
-- Singletons: globals floating in the system. Use dependency injection to scope singleton and make them testable. Singletons often represent independent (uncoupled) objects which is good for representing independent execution flow.
-- One variation is Singleton could expose Publisher/Subscribe interface (one publisher object, many subscriber object listening to events), encourages nice one-way data flow. Delegate pattern in iOS is variation of this.
-- Chain of Responsbility Pattern: Hierarchical data flow - unhandled events bubble upwards to parent objects who should handle them, conflict with the idea of keeping one-way data flow so use with discrection
-- OOP inheritance can create tightly coupled hierarchical objects that are hard to refactor (object dependencies). Use composition pattern to allow flexibility in what the container object can do.
-- Lazy initialization -> startup performance boost
-- Adapter Pattern: You could have many different types of objects with different methods and API, and then using an adapter you can have them all match a certain set of APIs and interfaces so they expose a common set of operations
-- Factory Pattern: Wrapper function around a constructor (possibly one in a different class). The key difference is that a factory method pattern requires the entire object to be built in a single method call, with all parameters pass in on a single line. The final object will be returned e.g. `FruitFactory.create(params)`
-- Builder Pattern: is in essence a wrapper object around all possible parameters you might want to pass into a constructor invocation. This allows you to use setter methods to slowly build up your parameter list. One additional method on a builder class is a build() method, which simply passes the builder object into the desired constructor, and returns the result e.g. `new FruitBuilder().setX().setY().setZ().build()`
-- Cohesion is the indication of the relationship with a module
-- Coupling is the indication of the relationship between modules
-- Impossible to achieve full decoupling without damaging cohesion and vice versa
+* Breakup into independent components yet have key dependencies so what you are doing doesn't impact all the others dependent on your compoonent/module/library
+* Inspect your data objects and graph their interactions/where they flow. Keep classes simple. Keep one-way data flow/interactions simple
+* Simplicity - keep a small number of class types (controllers, views, data objects) avoid creating classes that aliases those classes (managers, coordinators, helpers, handlers, provider, executor). Keep data flow simple e.g. don't let views have business logic; views shouldn't need to communicate any data upstream
+* Keep data model objects pruned of business logic, except if the logic is part of the objects own state. Remove as much business logic as you can.
+* Single Responsibility Principle -> If you can't describe a class's responsibility straight forwardly, it's too complex (makes it easy to reason about things)
+* Inspect class composition (follow ownership graph). Follow the life of a child (composed) object to make sure that accesibility to and operations done on that object is managed.
+* Follow ownership graph -> which objects own which object? It is interesting to know as generally that is how data should flow as well, data should go from parent to child. If you have two parents modifying a single child there could be a conflict, easily given rise to bugs and may also have memory leaks.
+* Singletons can introduce a lot of two way data flow e.g. imagine the graph of 100 singletons (very complex). Might make sense for them to not communicate directly but issue notifications that other singletons can listen to, that would at-least take care of 2-way data flow so data is always flowing downwards from central notification hub and singleton are passively broadcasting but not expecting anyone to take action on that
+* Singletons: globals floating in the system. Use dependency injection to scope singleton and make them testable. Singletons often represent independent (uncoupled) objects which is good for representing independent execution flow.
+* One variation is Singleton could expose Publisher/Subscribe interface (one publisher object, many subscriber object listening to events), encourages nice one-way data flow. Delegate pattern in iOS is variation of this.
+* Chain of Responsbility Pattern: Hierarchical data flow - unhandled events bubble upwards to parent objects who should handle them, conflict with the idea of keeping one-way data flow so use with discrection
+* OOP inheritance can create tightly coupled hierarchical objects that are hard to refactor (object dependencies). Use composition pattern to allow flexibility in what the container object can do.
+* Lazy initialization -> startup performance boost
+* Adapter Pattern: You could have many different types of objects with different methods and API, and then using an adapter you can have them all match a certain set of APIs and interfaces so they expose a common set of operations
+* Factory Pattern: Wrapper function around a constructor (possibly one in a different class). The key difference is that a factory method pattern requires the entire object to be built in a single method call, with all parameters pass in on a single line. The final object will be returned e.g. `FruitFactory.create(params)`
+* Builder Pattern: is in essence a wrapper object around all possible parameters you might want to pass into a constructor invocation. This allows you to use setter methods to slowly build up your parameter list. One additional method on a builder class is a build() method, which simply passes the builder object into the desired constructor, and returns the result e.g. `new FruitBuilder().setX().setY().setZ().build()`
+* Cohesion is the indication of the relationship with a module
+* Coupling is the indication of the relationship between modules
+* Impossible to achieve full decoupling without damaging cohesion and vice versa
 
 ![Cohesion vs Coupling](https://github.com/tabishfayyaz/book-club/raw/master/images/coupling-cohesion.png)
 
 - **IDEAL** -> High Cohesion, Low Coupling
+
+![Cohesion vs Coupling Graph](https://github.com/tabishfayyaz/book-club/raw/master/images/cohesion-coupling-graph.png)
+
+* Good Design -> Easier to change but almost impossible to get it done right first time
+* Complexity -> Causes code difficult to change
+* Simple
+    * Keeps you focused
+    * Solves only real problem
+    * Fails less
+    * easier to understand
+ 
+* Ask -> What problem are you really trying to solve?
+* Good Design -> hides inherent (domain based e.g. Android) complexity and elimiates accidental (e.g. concurrency) complexity
+* Cost of implementing:
+    * Now vs Later (Postpone is not procrastination)
+    * $N  >  $L  -> postpone
+    * $N  ==  $L -> postpone
+    * $N  <  $L  -> postpone (how probably? high -> do it now, low -> postpone)
+* Good design -> easy to verify (automated testing)
+* If cohesive -> it has to change less frequently as we want software to change, but not too expensive
+* Our homes are highly cohesive and low coupled e.g. things that are for kitchen stay in kitchen
+* Worst form of coupling -> inheritance, try to see if you can remove coupling
+* Dependencies -> knock out before you mock out however can't remove all the dependencies
+    1. get rid of it
+    2. make it loose instead of tight
+* Depending on a class is tight coupling
+* Depending on an inheritance is loose coupling (use caution)
+
 
 ## Credits
 - https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
