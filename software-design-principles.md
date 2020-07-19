@@ -74,7 +74,7 @@
 - Coupling is the indication of the relationship between modules
 - Impossible to achieve full decoupling without damaging cohesion and vice versa
 
-
+![Cohesion vs Coupling](https://github.com/tabishfayyaz/book-club/raw/master/images/coupling-cohesion.png)
 
 - **IDEAL** -> High Cohesion, Low Coupling
 
