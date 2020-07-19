@@ -90,6 +90,8 @@
  
 * Ask -> What problem are you really trying to solve?
 * Good Design -> hides inherent (domain based e.g. Android) complexity and elimiates accidental (e.g. concurrency) complexity
+* When should I implement something?
+* How much do you know?
 * Cost of implementing:
     * Now vs Later (Postpone is not procrastination)
     * $N  >  $L  -> postpone
@@ -104,7 +106,37 @@
     2. make it loose instead of tight
 * Depending on a class is tight coupling
 * Depending on an inheritance is loose coupling (use caution)
-
+* Every piece of knowledge in a system should have single unambiguous representation
+* DRY (don't repeat yourself) -> reduces cost of development
+* There are tools to find duplication -> CPD, Semiyen
+* Focus on single responsibility:
+   * Ask the purpose of a class/method
+   * if answer is this class/method does X and Y and Z, the 'and' is giving you clues that it is probably doing way too much
+   * define primary responsbility of a class/method
+* Long methods are bad, why:
+   * hard to test
+   * hard to remember
+   * hard to read
+   * many reasons to change
+   * hard to reuse so leads to duplication
+   * can't be optimized by anything
+   * lack cohesion, high couplin
+   * hard to debug
+   * How long is long method? Do SLAP: Single Level of Abstraction Principle
+* Don't comment what, instead comment why
+* Compose method pattern -> focus on story as oppose to minor details
+* **SOLID Princples** - intended to make software designs more understandable, flexible and maintainable
+   * SRP - Single Responsbility Principle
+   * OCP - Open Closed Principle
+   * LSP - Liskov's Substitution Principle
+   * ISP - Interface Segregation Principle
+   * DIP - Dependency Inversion Principle
+* SRP
+   * each programming element (class, object, method) should be responsible for one task appropriate for its level
+   * elements should not dictate one or more tasks
+   * if there is a complicated task that compromises of multiple smaller tasks, the greater task should be broken down into smaller tasks managed each by an element
+   * re-usability is the advantage here
+   * if an action needs to be repeated, it will be its own responsible component which is called whenever it is needed (DRY: don't repeat yourself)
 
 ## Credits
 - https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
