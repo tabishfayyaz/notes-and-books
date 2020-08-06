@@ -27,7 +27,8 @@ In order to **enable Mockito annotation** (such as *@Spy, @Mock,* … ) - we nee
 - Call the method *MockitoAnnotations.initMocks(this)* to initialize annotated fields
 - Use the built-in runner *@RunWith(MockitoJUnitRunner.class)*
 
-## Resources
+## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
 - https://www.toptal.com/java/a-guide-to-everyday-mockito
+- https://www.baeldung.com/mockito-spy
