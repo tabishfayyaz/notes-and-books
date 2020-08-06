@@ -22,6 +22,11 @@
 - What should we do if we’re supplied an object instance with two required info?
 - What should we do if we’re supplied an object instance with more than two required info?
 
+In order to **enable Mockito annotation** (such as *@Spy, @Mock,* … ) - we need to do one of the following:
+
+- Call the method *MockitoAnnotations.initMocks(this)* to initialize annotated fields
+- Use the built-in runner *@RunWith(MockitoJUnitRunner.class)*
+
 ## Resources
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
