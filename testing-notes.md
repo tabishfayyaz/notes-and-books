@@ -29,6 +29,12 @@ In order to **enable Mockito annotation** (such as *@Spy, @Mock,* … ) - we nee
 
 ![alt text](https://github.com/tabishfayyaz/book-club/raw/master/images/mockvsspy.png "mock vs spy")
 
+- *Mock* is a bare double object. This object has the same methods signatures but realisation is empty and return default value - 0 and null
+- *Spy* is a cloned double object. New object is cloned based on a real object but you have a possibility to mock it
+- If there is an object with 8 methods and you have a test where you want to call 7 real methods and stub one method you have two options:
+  1. Using a mock you would have to set it up by invoking 7 *callRealMethod* and stub one method
+  2. Using a spy you have to set it up by stubbing one method
+
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
