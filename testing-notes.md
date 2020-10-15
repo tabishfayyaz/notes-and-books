@@ -35,6 +35,15 @@ In order to **enable Mockito annotation** (such as *@Spy, @Mock,* … ) - we nee
   1. Using a mock you would have to set it up by invoking 7 *callRealMethod* and stub one method
   2. Using a spy you have to set it up by stubbing one method
 
+### Sample Test Class:
+
+```
+@RunWith(MockitoJUnitRunner::class)
+class PlayerProviderTest {
+
+}
+```
+
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
