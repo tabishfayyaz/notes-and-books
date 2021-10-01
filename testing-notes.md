@@ -50,4 +50,5 @@ class PlayerProviderTest {
 - https://www.toptal.com/java/a-guide-to-everyday-mockito
 - https://www.baeldung.com/mockito-spy
 - https://www.baeldung.com/mockito-verify
+- https://www.baeldung.com/mockito-series
 - https://www.javadoc.io/doc/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html (seems to have good examples)
