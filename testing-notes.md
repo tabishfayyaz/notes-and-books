@@ -49,3 +49,4 @@ class PlayerProviderTest {
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
 - https://www.toptal.com/java/a-guide-to-everyday-mockito
 - https://www.baeldung.com/mockito-spy
+- https://www.javadoc.io/doc/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html (seems to have good examples)
