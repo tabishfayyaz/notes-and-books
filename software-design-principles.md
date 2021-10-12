@@ -16,7 +16,7 @@
 
 - Have you analyzed that the design is highly cohesive, loosely coupled and components have clearly defined communication boundaries that are not poorly selected
 
-- Have you inspested and abstracted the communication between sub-components
+- Have you inspected and abstracted the communication between sub-components
 
 - Have you inspected your data objects and graphed the flow of data
 
