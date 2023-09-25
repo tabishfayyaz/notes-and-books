@@ -143,6 +143,124 @@ In this test, we use `verify` from Mockito to check that the `getUserById(1)` me
 
 In summary, the stub is used to provide predefined responses for method calls, while the mock is used to verify interactions with the dependency. Both stubbing and mocking are useful techniques in testing, depending on the specific testing goals and scenarios.
 
+### Testing with Dependency Injection (Dagger) Example
+Certainly! Here's an example of testing with Dagger in a Java application. In this example, we have a simple Java application that uses Dagger for dependency injection, and we'll create a test for one of its components.
+
+Suppose we have the following classes:
+
+1. **UserService.java**: A class that depends on a `UserRepository` for fetching user data.
+
+```java
+public class UserService {
+    private UserRepository userRepository;
+
+    @Inject
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public String getUsernameById(int userId) {
+        User user = userRepository.getUserById(userId);
+        return user != null ? user.getUsername() : "User not found";
+    }
+}
+```
+
+2. **UserRepository.java**: An interface for fetching user data.
+
+```java
+public interface UserRepository {
+    User getUserById(int userId);
+}
+```
+
+3. **User.java**: A simple User class.
+
+```java
+public class User {
+    private int id;
+    private String username;
+
+    public User(int id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+}
+```
+
+4. **UserModule.java**: A Dagger module that provides a real implementation of `UserRepository`.
+
+```java
+@Module
+public class UserModule {
+    @Provides
+    UserRepository provideUserRepository() {
+        return new RealUserRepository();
+    }
+}
+```
+
+5. **RealUserRepository.java**: A real implementation of `UserRepository`.
+
+```java
+public class RealUserRepository implements UserRepository {
+    @Override
+    public User getUserById(int userId) {
+        // Fetch user data from a database or external source (not shown in this example)
+        return new User(1, "realUser");
+    }
+}
+```
+
+Now, let's create a test for the `UserService` class using Dagger for dependency injection:
+
+6. **UserServiceTest.java**: A test class for `UserService` that uses Dagger for dependency injection.
+
+```java
+@RunWith(MockitoJUnitRunner.class)
+public class UserServiceTest {
+
+    @Inject
+    UserService userService;
+
+    @Before
+    public void setup() {
+        // Initialize Dagger components/modules for testing
+        DaggerUserServiceTestComponent.builder()
+                .userModule(new UserModule())
+                .build()
+                .inject(this);
+    }
+
+    @Test
+    public void testGetUsernameById() {
+        String username = userService.getUsernameById(1);
+        assertEquals("realUser", username);
+    }
+
+    @Component(modules = {UserModule.class})
+    interface UserServiceTestComponent {
+        void inject(UserServiceTest test);
+    }
+}
+```
+
+In this test class:
+
+- We use the `@RunWith(MockitoJUnitRunner.class)` annotation to run the test with Mockito.
+
+- In the `setup()` method, we initialize Dagger components and modules for testing using the `DaggerUserServiceTestComponent` and inject dependencies into the test class.
+
+- In the `testGetUsernameById()` method, we test the `UserService` by invoking its `getUsernameById()` method and asserting that the result matches the expected value.
+
+- The `UserServiceTestComponent` interface defines the Dagger component for testing and includes the `UserModule` to provide dependencies.
+
+By using Dagger for dependency injection in testing, we can provide real or mock dependencies as needed, allowing us to test the `UserService` in isolation and control its behavior during testing.
+
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
