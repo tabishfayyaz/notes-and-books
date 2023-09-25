@@ -44,6 +44,105 @@ class PlayerProviderTest {
 }
 ```
 
+### Stub vs Mock Example
+Let's illustrate the difference between a stub and a mock in JUnit using a simple example. In this example, we'll create a `UserService` class that depends on a `UserRepository` to retrieve user data. We'll use JUnit along with the Mockito library to demonstrate stubbing and mocking.
+
+Assume that our `UserRepository` interface and `UserService` class look like this:
+
+```java
+public interface UserRepository {
+    User getUserById(int userId);
+}
+
+public class UserService {
+    private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public String getUsernameById(int userId) {
+        User user = userRepository.getUserById(userId);
+        return user != null ? user.getUsername() : "User not found";
+    }
+}
+```
+
+Now, let's create tests for the `UserService` class using JUnit and Mockito:
+
+1. **Stub Example**:
+
+In this example, we'll use a stub to provide predefined responses from the `UserRepository`:
+
+```java
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class UserServiceTest {
+
+    @Test
+    public void testGetUsernameByIdWithStub() {
+        // Create a UserRepository stub
+        UserRepository userRepositoryStub = mock(UserRepository.class);
+
+        // Define stub behavior
+        when(userRepositoryStub.getUserById(1)).thenReturn(new User(1, "stubUser"));
+
+        // Create the UserService with the stub
+        UserService userService = new UserService(userRepositoryStub);
+
+        // Test the getUsernameById method
+        String username = userService.getUsernameById(1);
+
+        // Assert that the result matches the stubbed value
+        assertEquals("stubUser", username);
+    }
+}
+```
+
+In this test, we use `when` and `thenReturn` from Mockito to specify that when `getUserById(1)` is called on the `UserRepository` stub, it should return a predefined `User` object with the username "stubUser."
+
+2. **Mock Example**:
+
+In this example, we'll use a mock to verify interactions with the `UserRepository`:
+
+```java
+import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+public class UserServiceTest {
+
+    @Test
+    public void testGetUsernameByIdWithMock() {
+        // Create a UserRepository mock
+        UserRepository userRepositoryMock = mock(UserRepository.class);
+
+        // Define mock behavior
+        when(userRepositoryMock.getUserById(1)).thenReturn(new User(1, "mockUser"));
+
+        // Create the UserService with the mock
+        UserService userService = new UserService(userRepositoryMock);
+
+        // Test the getUsernameById method
+        String username = userService.getUsernameById(1);
+
+        // Verify that getUserById(1) was called on the mock
+        verify(userRepositoryMock).getUserById(1);
+
+        // Assert that the result matches the mock response
+        assertEquals("mockUser", username);
+    }
+}
+```
+
+In this test, we use `verify` from Mockito to check that the `getUserById(1)` method was called on the `UserRepository` mock, and we also specify that it should return a predefined `User` object.
+
+In summary, the stub is used to provide predefined responses for method calls, while the mock is used to verify interactions with the dependency. Both stubbing and mocking are useful techniques in testing, depending on the specific testing goals and scenarios.
+
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
