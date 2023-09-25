@@ -44,7 +44,7 @@ class PlayerProviderTest {
 }
 ```
 
-### Stub vs Mock Example
+### Stub vs Mock JUnit Example
 Let's illustrate the difference between a stub and a mock in JUnit using a simple example. In this example, we'll create a `UserService` class that depends on a `UserRepository` to retrieve user data. We'll use JUnit along with the Mockito library to demonstrate stubbing and mocking.
 
 Assume that our `UserRepository` interface and `UserService` class look like this:
@@ -143,8 +143,8 @@ In this test, we use `verify` from Mockito to check that the `getUserById(1)` me
 
 In summary, the stub is used to provide predefined responses for method calls, while the mock is used to verify interactions with the dependency. Both stubbing and mocking are useful techniques in testing, depending on the specific testing goals and scenarios.
 
-### Testing with Dependency Injection (Dagger) Example
-Certainly! Here's an example of testing with Dagger in a Java application. In this example, we have a simple Java application that uses Dagger for dependency injection, and we'll create a test for one of its components.
+### Testing with Dependency Injection (Dagger) Java Example
+In this example, we have a simple Java application that uses Dagger for dependency injection, and we'll create a test for one of its components.
 
 Suppose we have the following classes:
 
