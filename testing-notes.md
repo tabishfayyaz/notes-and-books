@@ -143,30 +143,12 @@ In this test, we use `verify` from Mockito to check that the `getUserById(1)` me
 
 In summary, the stub is used to provide predefined responses for method calls, while the mock is used to verify interactions with the dependency. Both stubbing and mocking are useful techniques in testing, depending on the specific testing goals and scenarios.
 
-### Testing with Dependency Injection (Dagger) Java Example
-In this example, we have a simple Java application that uses Dagger for dependency injection, and we'll create a test for one of its components.
+### Testing with Dependency Injection (Dagger) in Java using Mock and Real dependencies
+In this example, we will create a Java application with Dagger for dependency injection and then demonstrate testing with both real and mock dependencies. We'll create a `UserService` class that depends on a `UserRepository` for fetching user data.
 
-Suppose we have the following classes:
+Here are the key classes:
 
-1. **UserService.java**: A class that depends on a `UserRepository` for fetching user data.
-
-```java
-public class UserService {
-    private UserRepository userRepository;
-
-    @Inject
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public String getUsernameById(int userId) {
-        User user = userRepository.getUserById(userId);
-        return user != null ? user.getUsername() : "User not found";
-    }
-}
-```
-
-2. **UserRepository.java**: An interface for fetching user data.
+1. **UserRepository.java**: An interface for fetching user data.
 
 ```java
 public interface UserRepository {
@@ -174,7 +156,7 @@ public interface UserRepository {
 }
 ```
 
-3. **User.java**: A simple User class.
+2. **User.java**: A simple User class.
 
 ```java
 public class User {
@@ -192,7 +174,7 @@ public class User {
 }
 ```
 
-4. **UserModule.java**: A Dagger module that provides a real implementation of `UserRepository`.
+3. **UserModule.java**: A Dagger module that provides a real implementation of `UserRepository`.
 
 ```java
 @Module
@@ -204,7 +186,7 @@ public class UserModule {
 }
 ```
 
-5. **RealUserRepository.java**: A real implementation of `UserRepository`.
+4. **RealUserRepository.java**: A real implementation of `UserRepository`.
 
 ```java
 public class RealUserRepository implements UserRepository {
@@ -216,9 +198,27 @@ public class RealUserRepository implements UserRepository {
 }
 ```
 
-Now, let's create a test for the `UserService` class using Dagger for dependency injection:
+5. **UserService.java**: A class that depends on `UserRepository` for fetching user data.
 
-6. **UserServiceTest.java**: A test class for `UserService` that uses Dagger for dependency injection.
+```java
+public class UserService {
+    private UserRepository userRepository;
+
+    @Inject
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public String getUsernameById(int userId) {
+        User user = userRepository.getUserById(userId);
+        return user != null ? user.getUsername() : "User not found";
+    }
+}
+```
+
+Now, let's create tests for the `UserService` class using Dagger for dependency injection with both real and mock dependencies:
+
+6. **UserServiceTest.java**: A test class for `UserService` that uses Dagger for dependency injection with real and mock dependencies.
 
 ```java
 @RunWith(MockitoJUnitRunner.class)
@@ -229,7 +229,7 @@ public class UserServiceTest {
 
     @Before
     public void setup() {
-        // Initialize Dagger components/modules for testing
+        // Initialize Dagger components/modules for testing with real dependencies
         DaggerUserServiceTestComponent.builder()
                 .userModule(new UserModule())
                 .build()
@@ -237,9 +237,30 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testGetUsernameById() {
+    public void testGetUsernameByIdWithRealDependency() {
         String username = userService.getUsernameById(1);
         assertEquals("realUser", username);
+    }
+
+    @Test
+    public void testGetUsernameByIdWithMockDependency() {
+        // Create a mock UserRepository for testing
+        UserRepository mockRepository = mock(UserRepository.class);
+        when(mockRepository.getUserById(1)).thenReturn(new User(1, "mockUser"));
+
+        // Inject the mock dependency using Dagger
+        DaggerUserServiceTestComponent.builder()
+                .userModule(new UserModule() {
+                    @Override
+                    UserRepository provideUserRepository() {
+                        return mockRepository;
+                    }
+                })
+                .build()
+                .inject(this);
+
+        String username = userService.getUsernameById(1);
+        assertEquals("mockUser", username);
     }
 
     @Component(modules = {UserModule.class})
@@ -253,14 +274,15 @@ In this test class:
 
 - We use the `@RunWith(MockitoJUnitRunner.class)` annotation to run the test with Mockito.
 
-- In the `setup()` method, we initialize Dagger components and modules for testing using the `DaggerUserServiceTestComponent` and inject dependencies into the test class.
+- In the `setup()` method, we initialize Dagger components and modules for testing with real dependencies and inject dependencies into the test class.
 
-- In the `testGetUsernameById()` method, we test the `UserService` by invoking its `getUsernameById()` method and asserting that the result matches the expected value.
+- In `testGetUsernameByIdWithRealDependency()`, we test the `UserService` with real dependencies. We expect the result to be "realUser."
 
-- The `UserServiceTestComponent` interface defines the Dagger component for testing and includes the `UserModule` to provide dependencies.
+- In `testGetUsernameByIdWithMockDependency()`, we create a mock `UserRepository` and inject it into the `UserService` using Dagger. We then test the `UserService` with the mock dependency. We expect the result to be "mockUser."
 
-By using Dagger for dependency injection in testing, we can provide real or mock dependencies as needed, allowing us to test the `UserService` in isolation and control its behavior during testing.
+- The `UserServiceTestComponent` interface defines the Dagger component for testing and includes the `UserModule` to provide dependencies. For the second test, we override the `provideUserRepository()` method in the module to provide the mock dependency.
 
+By using Dagger for dependency injection in testing, we can easily switch between real and mock dependencies, allowing us to test the `UserService` with different scenarios and ensure its behavior is correct.
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
