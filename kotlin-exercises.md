@@ -2,11 +2,23 @@
 
 **Basic Syntax:**
 
-1. Write a Kotlin program to print "Hello, World!" to the console.
-2. Create a Kotlin program to calculate the area of a rectangle (length * width) and print the result.
+Write a Kotlin program to print "Hello, World!" to the console.
+```
+fun printHelloWorld(){
+    System.out.println("Hello World")
+}
+```
+
+Create a Kotlin program to calculate the area of a rectangle (length * width) and print the result.
+```
+fun rectArea(length:Int, width:Int) : Int {
+    return length * width
+}
+```   
+
 3. Write a Kotlin function to find the factorial of a number using recursion.
-4. Create a program that converts temperatures from Celsius to Fahrenheit and vice versa.
-5. Write a Kotlin program to find the sum of all even numbers between 1 and 100.
+5. Create a program that converts temperatures from Celsius to Fahrenheit and vice versa.
+6. Write a Kotlin program to find the sum of all even numbers between 1 and 100.
 
 **Data Types and Variables:**
 
