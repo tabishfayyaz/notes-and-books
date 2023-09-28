@@ -23,7 +23,9 @@ Write a Kotlin program to find the sum of all even numbers between 1 and 100.
 ```
 fun sumEvenTo100() : Int {
     val numbers = 1..100
-    val evenNumbers = numbers.filter {it % 2 == 0}  // or {element -> element % 2 == 0} to rename "it" for better readability
+
+    // or {element -> element % 2 == 0} to rename "it" for better readability
+    val evenNumbers = numbers.filter {it % 2 == 0}  
     var sum = 0;
     for (number in evenNumbers){
         sum += number
