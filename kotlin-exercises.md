@@ -18,7 +18,19 @@ fun rectArea(length:Int, width:Int) : Int {
 
 3. Write a Kotlin function to find the factorial of a number using recursion.
 5. Create a program that converts temperatures from Celsius to Fahrenheit and vice versa.
-6. Write a Kotlin program to find the sum of all even numbers between 1 and 100.
+
+Write a Kotlin program to find the sum of all even numbers between 1 and 100.
+```
+fun sumEvenTo100() : Int {
+    val numbers = 1..100
+    val evenNumbers = numbers.filter {it % 2 == 0}  // or {element -> element % 2 == 0} to rename "it" for better readability
+    var sum = 0;
+    for (number in evenNumbers){
+        sum += number
+    }
+    return sum;
+}
+```
 
 **Data Types and Variables:**
 
