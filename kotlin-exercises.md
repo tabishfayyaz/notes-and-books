@@ -16,8 +16,26 @@ fun rectArea(length:Int, width:Int) : Int {
 }
 ```   
 
-3. Write a function to find the factorial of a number using recursion.
-5. Create a program that converts temperatures from Celsius to Fahrenheit and vice versa.
+**Write a function to find the factorial of a number using recursion.**
+```
+fun factorial(number:Int) : Int {
+    var result = 1;
+    for (count in 1 .. number){
+        result *= count
+    }
+    return result
+}
+```
+**Create a program that converts temperatures from Celsius to Fahrenheit and vice versa.**
+```
+fun convertTemperature(temperature: Double, toCelsius: Boolean): Double {
+    if (toCelsius){
+        return (temperature - 32) * 5/9
+    } else {
+        return temperature * (9/5) + 32 
+    }
+}
+```
 
 **Write a program to find the sum of all even numbers between 1 and 100.**
 ```
