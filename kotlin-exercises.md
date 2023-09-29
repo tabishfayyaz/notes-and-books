@@ -52,12 +52,21 @@ fun sumEvenTo100() : Int {
 }
 ```
 
-**Data Types and Variables:**
+### Data Types and Variables:
 
-6. Create a Kotlin program to swap the values of two variables without using a temporary variable.
-7. Write a program to check if a given number is prime or not using Kotlin.
-8. Calculate the square root of a number using the `Math.sqrt` function.
-9. Create a program that converts a decimal number to a binary representation in Kotlin.
+**Create a Kotlin program to swap the values of two variables without using a temporary variable.**
+```
+   fun swap(a: Int, b: Int) {
+    var value1 = a
+    var value2 = b
+    println("value1: " + value1 + " value2 " + value2)
+    value1 = value2.also { value2 = value1 }
+    println("value1: " + value1 + " value2 " + value2)
+}
+```
+8. Write a program to check if a given number is prime or not using Kotlin.
+9. Calculate the square root of a number using the `Math.sqrt` function.
+10. Create a program that converts a decimal number to a binary representation in Kotlin.
 
 **Collections:**
 
