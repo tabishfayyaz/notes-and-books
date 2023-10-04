@@ -64,9 +64,21 @@ fun sumEvenTo100() : Int {
     println("value1: " + value1 + " value2 " + value2)
 }
 ```
-8. Write a program to check if a given number is prime or not using Kotlin.
-9. Calculate the square root of a number using the `Math.sqrt` function.
-10. Create a program that converts a decimal number to a binary representation in Kotlin.
+**Write a program to check if a given number is prime or not using Kotlin.**
+```
+   fun isPrime(number: Int) : Boolean {
+    var divisor = 2
+    while (divisor < number){
+        if (number % divisor == 0)
+            return false
+        ++divisor
+    }
+
+    return true
+}
+```
+10. Calculate the square root of a number using the `Math.sqrt` function.
+11. Create a program that converts a decimal number to a binary representation in Kotlin.
 
 **Collections:**
 
