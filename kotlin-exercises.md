@@ -77,8 +77,8 @@ fun sumEvenTo100() : Int {
     return true
 }
 ```
-10. Calculate the square root of a number using the `Math.sqrt` function.
-11. Create a program that converts a decimal number to a binary representation in Kotlin.
+
+**Create a program that converts a decimal number to a binary representation in Kotlin.**
 
 **Collections:**
 
