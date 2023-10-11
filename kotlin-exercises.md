@@ -79,6 +79,26 @@ fun sumEvenTo100() : Int {
 ```
 
 **Create a program that converts a decimal number to a binary representation in Kotlin.**
+```
+fun convertDecimalToBinary(number: Int): String{
+    
+    if (number == 0)
+    return "0"
+    /*
+        When we start dividing the decimal number by 2, the first remainder we obtain corresponds to the least significant bit (LSB) of the binary representation. 
+        This is because it represents the remainder when dividing by the smallest power of 2. The remainder from the last division represents the most significant bit (MSB) of the binary number.
+     */
+    var decimal = number;
+    var result = ""
+    while(decimal > 0){
+        var remainder = decimal % 2
+        result = remainder.toString() + result
+        decimal = decimal / 2
+    }
+    return result
+}
+```
+
 
 **Collections:**
 
