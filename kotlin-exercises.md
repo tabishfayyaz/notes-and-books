@@ -102,7 +102,22 @@ fun convertDecimalToBinary(number: Int): String{
 
 **Collections:**
 
-10. Write a Kotlin function to find the maximum element in an array.
+**Write a Kotlin function to find the maximum element in an array.**
+```
+fun maxElementInArray(values: Array<Int>) : Int{
+
+    if (values == null || values.isEmpty())
+        return -1
+
+    var maxValue = values[0];
+    for (i in values.indices){
+        if (values[i] > maxValue){
+            maxValue = values[i];
+        }
+    }
+    return maxValue
+}
+```
 11. Create a program to remove duplicates from a list using Kotlin.
 12. Write a Kotlin function to find the intersection of two arrays (common elements).
 13. Implement a function that checks if a list is sorted in ascending order.
