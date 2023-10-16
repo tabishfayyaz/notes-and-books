@@ -52,6 +52,15 @@ fun sumEvenTo100() : Int {
 }
 ```
 
+**Write a generic function to print contents of an Array**
+```
+fun <T> printArray(values: Array<T>){
+    for (value in values){
+        print(value.toString() + " ")
+    }
+}
+```
+
 ### Data Types and Variables:
 
 **Create a Kotlin program to swap the values of two variables without using a temporary variable.**
@@ -120,7 +129,19 @@ fun maxElementInArray(values: Array<Int>) : Int{
     return maxValue
 }
 ```
-11. Create a program to remove duplicates from a list using Kotlin.
+**Create a program to remove duplicates from a list using Kotlin.**
+```
+fun removeDuplicates(values: Array<Int>) : Array<Int> {
+
+    val set = mutableSetOf<Int>()
+
+    for (index in values.indices){
+        set.add(values[index])
+    }
+    return set.toTypedArray()
+}
+```
+
 12. Write a Kotlin function to find the intersection of two arrays (common elements).
 13. Implement a function that checks if a list is sorted in ascending order.
 14. Create a Kotlin program to count the frequency of words in a text document.
