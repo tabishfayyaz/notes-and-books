@@ -109,7 +109,7 @@ fun convertDecimalToBinary(number: Int): String{
 ```
 
 
-**Collections:**
+### Collections:
 
 **Write a Kotlin function to find the maximum element in an array.**
 ```
@@ -148,7 +148,7 @@ fun removeDuplicates(values: List<Int>) : List<Int> {
 13. Implement a function that checks if a list is sorted in ascending order.
 14. Create a Kotlin program to count the frequency of words in a text document.
 
-**Functions and Lambdas:**
+### Functions and Lambdas:
 
 15. Write a Kotlin function that takes a string and returns the reverse of that string.
 16. Implement a higher-order function that takes a list of numbers and a lambda to filter out even numbers.
