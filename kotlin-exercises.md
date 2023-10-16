@@ -131,14 +131,14 @@ fun maxElementInArray(values: Array<Int>) : Int{
 ```
 **Create a program to remove duplicates from a list using Kotlin.**
 ```
-fun removeDuplicates(values: Array<Int>) : Array<Int> {
+fun removeDuplicates(values: List<Int>) : List<Int> {
 
     val set = mutableSetOf<Int>()
 
     for (index in values.indices){
         set.add(values[index])
     }
-    return set.toTypedArray()
+    return set.toList()
 }
 ```
 
