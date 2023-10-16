@@ -104,6 +104,8 @@ fun convertDecimalToBinary(number: Int): String{
 
 **Write a Kotlin function to find the maximum element in an array.**
 ```
+// val values = arrayOf(1,8,3,4,5,6)
+
 fun maxElementInArray(values: Array<Int>) : Int{
 
     if (values == null || values.isEmpty())
