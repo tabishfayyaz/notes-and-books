@@ -144,7 +144,25 @@ fun removeDuplicates(values: List<Int>) : List<Int> {
 }
 ```
 
-12. Write a Kotlin function to find the intersection of two arrays (common elements).
+**Write a Kotlin function to find the intersection of two arrays (common elements).**
+```
+// val values1 = arrayOf(1,2,3,4,5,6)
+// val values2 = arrayOf(6,7,8,9,10,11,2)
+
+fun getCommonElements(values1: Array<Int>, values2: Array<Int>) : List<Int> {
+    val result = mutableListOf<Int>()
+
+    for (index1 in values1.indices){
+        for (index2 in values2.indices){
+            if (values2[index2] == values1[index1])
+                result.add(values2[index2])
+        }
+    }
+
+    return result
+}
+```
+
 13. Implement a function that checks if a list is sorted in ascending order.
 14. Create a Kotlin program to count the frequency of words in a text document.
 
