@@ -75,6 +75,12 @@ fun <T> printArray(values: Array<T>){
 ```
 **Write a program to check if a given number is prime or not using Kotlin.**
 ```
+    /*
+        for (i in 1 .. 25){
+            println("${i} isPrime: ${isPrime(i)}")
+        }
+    */
+
    fun isPrime(number: Int) : Boolean {
     var divisor = 2
     while (divisor < number){
@@ -163,8 +169,36 @@ fun getCommonElements(values1: Array<Int>, values2: Array<Int>) : List<Int> {
 }
 ```
 
-13. Implement a function that checks if a list is sorted in ascending order.
-14. Create a Kotlin program to count the frequency of words in a text document.
+**Implement a function that checks if a list is sorted in ascending order.**
+```
+fun isListAscending(values: List<Int>) : Boolean {
+    if (values.isEmpty() || values.size == 1)
+        return false
+
+    for (index in 0 until values.size - 1){
+        if (values[index] > values[index+1]){
+            return false
+        }
+    }
+    return true
+}
+```
+
+**Create a Kotlin program to count the frequency of words in a text document.**
+```
+fun frequencyOfWords(text: String) : Map<String, Int> {
+    val map = mutableMapOf<String, Int>()
+
+    val tokens = text.split(" ")
+    tokens.forEach { token -> 
+        var value : Int = map.getOrDefault(token, 0)
+        value++
+        map[token] = value
+    }
+
+    return map
+}
+```
 
 ### Functions and Lambdas:
 
