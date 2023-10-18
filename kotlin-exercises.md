@@ -216,9 +216,33 @@ fun filterList(list:List<Int>, predicate:(Int) -> Boolean): List<Int> {
     }
 }
 ```
-15. Write a Kotlin function that takes a string and returns the reverse of that string. 
+
+**Write a program to find the common elements in two lists using a lambda function.**
+```
+fun getCommonElements(list1: List<Int>, list2: List<Int>) : List<Int> {
+    return list1.filter { element1 ->
+        list2.any { element2 -> element1 == element2}
+    }
+}
+```
+
+**Write a Kotlin function that takes a string and returns the reverse of that string.**
+```
+fun reverseString(text: String) : String{
+    var start = 0
+    var end = text.length - 1
+
+    val charArray = text.toCharArray()
+    while (start < end){
+        val temp = charArray[start]
+        charArray[start] = charArray[end]
+        charArray[end] = temp
+        ++start
+        --end
+    }
+    return text + " -> " + String(charArray)
+}
+```
 17. Create a function that computes the nth Fibonacci number using recursion.
-18. Write a program to find the common elements in two lists using a lambda function.
 19. Implement a Kotlin program to calculate the sum of digits in a given number.
 20. Create a function that generates a random password with a specified length.
-
