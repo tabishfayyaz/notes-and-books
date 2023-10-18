@@ -202,8 +202,21 @@ fun frequencyOfWords(text: String) : Map<String, Int> {
 
 ### Functions and Lambdas:
 
-15. Write a Kotlin function that takes a string and returns the reverse of that string.
-16. Implement a higher-order function that takes a list of numbers and a lambda to filter out even numbers.
+**Implement a higher-order function that takes a list of numbers and a lambda to filter out even numbers.**
+```
+/*
+    val predicate = { item : Int ->
+        item % 2 == 0
+    }
+    println("filterList " + filterList(list, predicate))
+*/
+fun filterList(list:List<Int>, predicate:(Int) -> Boolean): List<Int> {
+    return list.filter { element -> 
+        predicate(element)
+    }
+}
+```
+15. Write a Kotlin function that takes a string and returns the reverse of that string. 
 17. Create a function that computes the nth Fibonacci number using recursion.
 18. Write a program to find the common elements in two lists using a lambda function.
 19. Implement a Kotlin program to calculate the sum of digits in a given number.
