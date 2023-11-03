@@ -47,10 +47,14 @@ fun main () {   //Executes in main thread
 
     println("Main program ends: ${Thread.currentThread().name}")
 
-    //application does not wait for all coroutines to exit the process so we add a fake wait
-    Thread.sleep(2000)
+    runBlocking { // Creates a coroutine that blocks the current main thread
+        delay(2000) //application does not wait for all coroutines to exit process so we add a fake wait
+    }
 }
 ```
+
+- `GlobalScope.launch()` is non-blocking in nature
+- `runBlocking()` blocks the thread in which it operates
 
 ![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/delay-vs-sleep.png)
 
