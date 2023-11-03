@@ -16,10 +16,10 @@ Using coroutines with memory consumption of one background thread you can perfor
 
 
 ```
-fun main () {
+fun main () {    // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")
 
-    thread {    //  creates a background thread (worker thread)
+    thread {    //  creates a background thread (worker thread) using lambda expression
         println("Fake work starts: ${Thread.currentThread().name}")
         Thread.sleep(1000)  //  pretend doing some work ... may be file upload
         println("Fake work finished: ${Thread.currentThread().name}")
@@ -27,6 +27,27 @@ fun main () {
 
     println("Main program ends: ${Thread.currentThread().name}")
 
-    //application waits for all background threads to complete to exit process
+    //application waits for all background threads to complete to exit the process
+}
+```
+
+- Unlike threads, for coroutines, the application by default does not wait for it to complete to exit the process
+
+The coroutine equivalent of the above:
+
+```
+fun main () {   //Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")
+
+    GlobalScope.launch {    //  creates a background coroutines that runs on a background thread
+        println("Fake work starts: ${Thread.currentThread().name}")
+        Thread.sleep(1000)  //  pretend doing some work ... may be file upload
+        println("Fake work finished: ${Thread.currentThread().name}")
+    }
+
+    println("Main program ends: ${Thread.currentThread().name}")
+
+    //application does not wait for all coroutines to exit process so we add a fake wait
+    Thread.sleep(2000)
 }
 ```
