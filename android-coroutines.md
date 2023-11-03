@@ -45,31 +45,49 @@ fun main () {   //Executes in main thread
         println("Fake work finished: ${Thread.currentThread().name}")   // Either T1 or some other thread
     }
 
-    println("Main program ends: ${Thread.currentThread().name}")
-
     runBlocking { // Creates a coroutine that blocks the current main thread
         delay(2000) //application does not wait for all coroutines to exit process so we add a fake wait
     }
+
+    println("Main program ends: ${Thread.currentThread().name}")
 }
 ```
 
-Above code can also be written in a more cleaner way as:
+The above code can also be written in a cleaner way as:
 
 ```
 fun main () {   //Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")
 
-    runBlocking {// Creates a coroutine that blocks the current main thread
-        GlobalScope.launch {    //  creates a background coroutines that runs on a background thread
-            println("Fake work starts: ${Thread.currentThread().name}")
-            delay(1000) //  Coroutine is suspended but Thread (say T1) is free (not blocked)
+    runBlocking { // Creates a coroutine that blocks the current main thread
+
+        GlobalScope.launch {    // Thread: T1  
+            println("Fake work starts: ${Thread.currentThread().name}")    // Thread: T1
+            delay(1000)    // Coroutine is suspended but Thread (say T1) is free (not blocked)
             println("Fake work finished: ${Thread.currentThread().name}")   // Either T1 or some other thread
         }
 
-        println("Main program ends: ${Thread.currentThread().name}")
-
         delay(2000) //application does not wait for all coroutines to exit process so we add a fake wait
+
+        println("Main program ends: ${Thread.currentThread().name}")    // main thread
     }
+}
+```
+
+or as a `runBlocking` function:
+```
+fun main() = runBlocking {    //Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")
+
+    GlobalScope.launch {    //  creates a background coroutines that runs on a background thread
+        println("Fake work starts: ${Thread.currentThread().name}")
+        delay(1000) //  Coroutine is suspended but Thread (say T1) is free (not blocked)
+        println("Fake work finished: ${Thread.currentThread().name}")   // Either T1 or some other thread
+    }
+
+    println("Main program ends: ${Thread.currentThread().name}")
+
+    delay(2000) //application does not wait for all coroutines to exit process so we add a fake wait
 }
 ```
 
