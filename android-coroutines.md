@@ -104,7 +104,10 @@ fun main() = runBlocking {    //Executes in main thread
 
 ![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/global-scope-launch.png)
 
-- local launch will inherit coroutine scope and thread of immediate parent coroutine:
+local `launch` builder (aka fire & forget because you don't block the calling code or wait for the result):
+- launches a new coroutine without blocking the current thread
+- will inherit coroutine scope and thread of immediate parent coroutine
+- returns a reference to `Job` object which you can use for cancellation or wait for the coroutine to finish
 
 ```
 fun main() = runBlocking {    // Executes in main thread
