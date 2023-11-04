@@ -87,7 +87,7 @@ fun main() = runBlocking {    //Executes in main thread
 
     println("Main program ends: ${Thread.currentThread().name}")
 
-    delay(2000) //application does not wait for all coroutines to exit process so we add a fake wait
+    delay(2000) //application does not wait for all coroutines to exit the process so we add a fake wait
 }
 ```
 
@@ -99,5 +99,7 @@ fun main() = runBlocking {    //Executes in main thread
 - A function with a `suspend` modifier is known as a suspending function
 - The suspending functions are only allowed to be called from a coroutine or from another suspending function
 - They cannot be called from outside a coroutine
+- 3 most important coroutine builders: `launch & GlobalScope.launch, async & GlobalScope.launch, runBlocking`
 
-  
+![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/global-scope-launch.png)
+
