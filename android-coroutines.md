@@ -85,9 +85,9 @@ fun main() = runBlocking {    //Executes in main thread
         println("Fake work finished: ${Thread.currentThread().name}")   // Either T1 or some other thread
     }
 
-    println("Main program ends: ${Thread.currentThread().name}")
-
     delay(2000) //application does not wait for all coroutines to exit the process so we add a fake wait
+
+    println("Main program ends: ${Thread.currentThread().name}")
 }
 ```
 
