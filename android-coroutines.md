@@ -104,3 +104,20 @@ fun main() = runBlocking {    //Executes in main thread
 
 ![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/global-scope-launch.png)
 
+- local launch will inherit coroutine scope and thread of immediate parent coroutine:
+
+```
+fun main() = runBlocking {    // Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")  //  main thread
+
+    launch {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
+        println("Fake work starts: ${Thread.currentThread().name}")
+        delay(1000) //  Coroutine is suspended but Thread: main is free (not blocked)
+        println("Fake work finished: ${Thread.currentThread().name}")   // Either main thread or some other thread
+    }
+
+    delay(2000) //main thread: wait for all coroutines to finish before exiting the process so we add a fake wait
+
+    println("Main program ends: ${Thread.currentThread().name}")    //  main thread
+}
+```
