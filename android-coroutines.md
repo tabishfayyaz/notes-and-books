@@ -110,17 +110,16 @@ local `launch` builder (aka fire & forget because you don't block the calling co
 - returns a reference to `Job` object which you can use for cancellation or wait for the coroutine to finish
 
 ```
-fun main() = runBlocking {    // Executes in main thread
+fun main() = runBlocking {    //Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")  //  main thread
 
-    launch {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
+    val job : Job = launch {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
         println("Fake work starts: ${Thread.currentThread().name}")
         delay(1000) //  Coroutine is suspended but Thread: main is free (not blocked)
         println("Fake work finished: ${Thread.currentThread().name}")   // Either main thread or some other thread
     }
 
-    delay(2000) //main thread: wait for all coroutines to finish before exiting the process so we add a fake wait
-
+    job.join()
     println("Main program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
