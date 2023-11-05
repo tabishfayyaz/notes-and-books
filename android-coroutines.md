@@ -123,3 +123,22 @@ fun main() = runBlocking {    //Executes in main thread
     println("Main program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
+
+`async` lets you get a deferred return value
+
+```
+fun main() = runBlocking {    //Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")  //  main thread
+
+    val jobDeferred : Deferred<String> = async {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
+        println("Fake work starts: ${Thread.currentThread().name}")
+        delay(1000) //  Coroutine is suspended but Thread: main is free (not blocked)
+        println("Fake work finished: ${Thread.currentThread().name}")   // Either main thread or some other thread
+        "Hello Async"
+    }
+
+    val value : String = jobDeferred.await()
+//    jobDeferred.join()
+    println("Main program ends: ${Thread.currentThread().name}")    //  main thread
+}
+```
