@@ -36,7 +36,7 @@ fun main () {    // Executes in main thread
 - The coroutine equivalent of the above:
 
 ```
-fun main () {   //Executes in main thread
+fun main () {   // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")
 
     GlobalScope.launch {    //  creates a background coroutines that runs on a background thread
@@ -56,7 +56,7 @@ fun main () {   //Executes in main thread
 The above code can also be written in a cleaner way as:
 
 ```
-fun main () {   //Executes in main thread
+fun main () {   // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")
 
     runBlocking { // Creates a coroutine that blocks the current main thread
@@ -76,7 +76,7 @@ fun main () {   //Executes in main thread
 
 or as a `runBlocking` function:
 ```
-fun main() = runBlocking {    //Executes in main thread
+fun main() = runBlocking {    // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")
 
     GlobalScope.launch {    //  creates a background coroutines that runs on a background thread
@@ -100,7 +100,7 @@ fun main() = runBlocking {    //Executes in main thread
 - The suspending functions are only allowed to be called from a coroutine or from another suspending function
 - They cannot be called from outside a coroutine
 - 3 most important coroutine builders/creators: `launch` & `GlobalScope.launch`, `async` & `GlobalScope.launch`, `runBlocking`
-- GlobalScope.launch (discouraged as if you lose reference to it'll run till the process ends) for things like file download, play music whereas local scope launch for things like some data computation, login operation
+- `GlobalScope.launch` (discouraged as if you lose reference to it'll run till the process ends) for things like file download, play music whereas local scope launch for things like some data computation, login operation
 
 ![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/global-scope-launch.png)
 
@@ -110,7 +110,7 @@ local `launch` builder (aka fire & forget because you don't block the calling co
 - returns a reference to `Job` object which you can use for cancellation or wait for the coroutine to finish
 
 ```
-fun main() = runBlocking {    //Executes in main thread
+fun main() = runBlocking {    // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")  //  main thread
 
     val job : Job = launch {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
@@ -127,7 +127,7 @@ fun main() = runBlocking {    //Executes in main thread
 using `async` coroutine builder you can return some data in addition to doing everything that you can do with `launch` and `Job`
 
 ```
-fun main() = runBlocking {    //Executes in main thread
+fun main() = runBlocking {    // Executes in main thread
     println("Main program starts: ${Thread.currentThread().name}")  //  main thread
 
     val jobDeferred : Deferred<String> = async {    //  local launch will inherit coroutine scope and thread of immediate parent coroutine
