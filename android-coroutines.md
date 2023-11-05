@@ -138,7 +138,17 @@ fun main() = runBlocking {    //Executes in main thread
     }
 
     val value : String = jobDeferred.await()
-//    jobDeferred.join()
+    //jobDeferred.join()
     println("Main program ends: ${Thread.currentThread().name}")    //  main thread
+}
+```
+
+`runBlocking` is generally used to write test cases to test suspending functions
+
+```
+@Test
+fun myFirstTest() = runBlocking {
+    myOwnSuspendingFunc()
+    Assert.assertEquals(10, 5+5)
 }
 ```
