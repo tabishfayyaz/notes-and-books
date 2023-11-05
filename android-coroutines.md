@@ -124,7 +124,7 @@ fun main() = runBlocking {    //Executes in main thread
 }
 ```
 
-`async` lets you get a deferred return value
+using `async` coroutine builder you can return some data in addition to doing everything that you can do with `launch` and `Job`
 
 ```
 fun main() = runBlocking {    //Executes in main thread
