@@ -154,8 +154,8 @@ fun myFirstTest() = runBlocking {
 ```
 
 To make a coroutine cancellable it has to be **cooperative:**
-- Periodically invoke a suspending function that checks if a coroutine was canceled
-- Only those suspending functions that belong to `kotlinx.coroutines` package will make coroutine cooperative: `delay(), yield(), withContext(), withTimeout()` etc.
+- Periodically invoke a suspending function that checks if a coroutine was canceled, only those suspending functions that belong to `kotlinx.coroutines` package will make the coroutine cooperative: `delay(), yield(), withContext(), withTimeout()` etc.
+- explicitly check for the cancellation status within the coroutine: `CoroutineScope.isActive` boolean flag
 
 ```
 fun main() = runBlocking {    //Executes in main thread
