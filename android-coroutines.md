@@ -119,7 +119,7 @@ fun main() = runBlocking {    // Executes in main thread
         println("Fake work finished: ${Thread.currentThread().name}")   // Either main thread or some other thread
     }
 
-    job.join()
+    job.join()    //waits for coroutine to finish
     println("Main program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
@@ -150,5 +150,29 @@ fun main() = runBlocking {    // Executes in main thread
 fun myFirstTest() = runBlocking {
     myOwnSuspendingFunc()
     Assert.assertEquals(10, 5+5)
+}
+```
+
+To make a coroutine cancellable it has to be **cooperative:**
+- Periodically invoke a suspending function that checks if a coroutine was canceled
+- Only those suspending functions that belong to `kotlinx.coroutines` package will make coroutine cooperative: `delay(), yield(), withContext(), withTimeout()` etc.
+
+```
+fun main() = runBlocking {    //Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")  //  main thread
+
+    val job : Job = launch {
+        for (i in 0..500){
+            print("$i.")
+            delay(50)
+        }
+    }
+
+    delay(200)  //let's print few values before we cancel
+    // job.cancel()
+    // job.join()  //cancel but waits for coroutine to finish
+    job.cancelAndJoin()
+
+    println("\nMain program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
