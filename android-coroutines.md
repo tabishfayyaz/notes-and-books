@@ -164,7 +164,7 @@ fun main() = runBlocking {    //Executes in main thread
     val job : Job = launch {
         for (i in 0..500){
             print("$i.")
-            delay(50)
+            delay(50)    // or yield() or any other suspending function as per your need
         }
     }
 
