@@ -176,3 +176,30 @@ fun main() = runBlocking {    //Executes in main thread
     println("\nMain program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
+
+Handle `CancellationException`:
+
+```
+fun main() = runBlocking {    //    Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")  //  main thread
+
+    val job : Job = launch (Dispatchers.Default) {
+        try {
+            for (i in 0..500){
+                print("$i.")
+                delay(5)    //    or yield() or any other suspending function as per your need
+            }
+        } catch (ex: CancellationException) {   //    a suspending function will throw cancellable exception
+            println("Exception caught safely")
+        } finally {
+            println("\nClose resources in finally")
+        }
+
+    }
+
+    delay(10)  //    let's print few values before we cancel
+    job.cancelAndJoin()
+
+    println("\nMain program ends: ${Thread.currentThread().name}")    //  main thread
+}
+```
