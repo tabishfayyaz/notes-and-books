@@ -177,7 +177,8 @@ fun main() = runBlocking {    //Executes in main thread
 }
 ```
 
-Handle `CancellationException`:
+- If you want to execute a suspending function from a `finally` block then wrap the code within `withContext(NonCancellable)` function 
+- Handle `CancellationException`:
 
 ```
 fun main() = runBlocking {    //    Executes in main thread
