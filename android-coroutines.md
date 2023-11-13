@@ -314,3 +314,30 @@ suspend fun getMessageTwo(): String {
     return "World!"
 }
 ```
+
+- Each coroutine has its own `CoroutineScope` instance attached to it
+- Each coroutine irrespective of parent or child has its own scope
+- `CoroutineScope` represents what kind of coroutine you have created
+
+```
+fun main() = runBlocking {
+    println("runBlocking: $this")
+
+    launch {
+        println("launch: $this")
+
+        launch {
+            println("child launch: $this")  //different object hash in log
+        }
+    }
+
+    val job = async {
+        println("async: $this")
+    }
+}
+```
+
+- Similar to `CoroutineScope` each coroutine has its own `CoroutineContext` (dispatcher, job)
+    - dispatcher determines the thread of a coroutine
+- `CoroutineContext` can be inherited from parent coroutine to child coroutine
+- 
