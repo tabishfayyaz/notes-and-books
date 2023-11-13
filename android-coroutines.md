@@ -259,7 +259,7 @@ suspend fun getMessageTwo(): String {
 }
 ```
 
-- To get concurrent execution:
+- To get concurrent execution you can use `async` or `launch` as child coroutine builders:
 
 ```
 fun main() = runBlocking {    //Executes in main thread
