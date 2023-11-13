@@ -204,3 +204,30 @@ fun main() = runBlocking {    //    Executes in main thread
     println("\nMain program ends: ${Thread.currentThread().name}")    //  main thread
 }
 ```
+
+`withTimeout` and `withTimeoutOrNull` and also coroutine builders:
+
+```
+withTimeout(2000) {
+        try {
+            for (i in 0..500){
+                print("$i.")
+                delay(500)
+            }
+        } catch (ex: TimeoutCancellationException) {
+            //  ..code
+        } finally {
+            //  ..code
+        }
+    }
+```
+
+```
+val result: String? = withTimeoutOrNull(2000) {
+    for (i in 0..500) {
+        print("$i.")
+        delay(500)
+    }
+    "I am done"
+}
+```
