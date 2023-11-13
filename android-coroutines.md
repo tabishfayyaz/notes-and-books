@@ -285,3 +285,32 @@ suspend fun getMessageTwo(): String {
     return "World"
 }
 ```
+
+Only execute the coroutine if the result is used in the code:
+
+```
+fun main() = runBlocking {    //Executes in main thread
+    println("Main program starts: ${Thread.currentThread().name}")  //  main thread
+
+    val time = measureTimeMillis {
+        val msgOne : Deferred<String> = async (start = CoroutineStart.LAZY) { getMessageOne() }
+        val msgTwo : Deferred<String> = async (start = CoroutineStart.LAZY) { getMessageTwo() }
+        //    println("The entire message is: ${msgOne.await() + msgTwo.await()}")  // uncomment this line to see lazy coroutine execution
+    }
+
+    println("Completed in $time ms")
+    println("\nMain program ends: ${Thread.currentThread().name}")    //  main thread
+}
+
+suspend fun getMessageOne(): String {
+    delay(1000L)    //  pretend to do some work
+    println("After working in getMessageOne()")
+    return "Hello "
+}
+
+suspend fun getMessageTwo(): String {
+    delay(1000L)    // pretend to do some work
+    println("After working in getMessageTwo()")
+    return "World!"
+}
+```
