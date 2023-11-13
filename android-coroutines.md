@@ -205,7 +205,7 @@ fun main() = runBlocking {    //    Executes in main thread
 }
 ```
 
-`withTimeout` and `withTimeoutOrNull` and also coroutine builders:
+- `withTimeout` and `withTimeoutOrNull` and also coroutine builders:
 
 ```
 withTimeout(2000) {
@@ -232,7 +232,7 @@ val result: String? = withTimeoutOrNull(2000) {
 }
 ```
 
-Code execution within coroutine is by default sequential, all methods execute in sequence:
+- Code execution within coroutine is by default sequential, all methods execute in sequence:
 
 ```
 fun main() = runBlocking {    //Executes in main thread
@@ -259,7 +259,7 @@ suspend fun getMessageTwo(): String {
 }
 ```
 
-To get concurrent execution:
+- To get concurrent execution:
 
 ```
 fun main() = runBlocking {    //Executes in main thread
@@ -286,7 +286,7 @@ suspend fun getMessageTwo(): String {
 }
 ```
 
-Only execute the coroutine if the result is used in the code:
+- Only execute the coroutine if the result is used in the code:
 
 ```
 fun main() = runBlocking {    //Executes in main thread
