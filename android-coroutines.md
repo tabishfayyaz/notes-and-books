@@ -339,7 +339,7 @@ fun main() = runBlocking {
 
 - Similar to `CoroutineScope` each coroutine has its own `CoroutineContext` (dispatcher, job)
     - dispatcher determines the thread of a coroutine
-- `CoroutineContext` can be inherited from parent coroutine to child coroutine:
+- `CoroutineContext` can be inherited from parent coroutine to child coroutine (read comments):
 
 ```
 fun main() = runBlocking {  // Thread: main
