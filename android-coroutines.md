@@ -341,3 +341,7 @@ fun main() = runBlocking {
     - dispatcher determines the thread of a coroutine
 - `CoroutineContext` can be inherited from parent coroutine to child coroutine
 - 
+
+
+## Reference
+- https://www.youtube.com/watch?v=lmRzRKIsn1g
