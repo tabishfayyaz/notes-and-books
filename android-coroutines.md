@@ -397,6 +397,14 @@ fun main() = runBlocking {  // Thread: main
 }
 ```
 
+## Additional Notes
+
+- Co-Routines: Cooperating Functions: It can execute a few lines of functionA and then execute a few lines of functionB and then again a few lines of functionA and so on. This will be helpful when a thread is sitting idle, in which case it can execute a few lines of another function.
+- Threads are managed by the OS and coroutines by the users. Coroutines do not replace threads, it's more like a framework to manage them.
+- Coroutines are lightweight threads: A lightweight thread means it doesn't map on the native thread, so it doesn't require context switching on the processor, so they are faster.
+- 
+
+
 
 ## Reference
 - https://www.youtube.com/watch?v=lmRzRKIsn1g
