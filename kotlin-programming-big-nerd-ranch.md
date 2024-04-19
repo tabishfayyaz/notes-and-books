@@ -84,10 +84,10 @@ fun shouldReturnAString(): String {
   - it can accept at-least 0 arguments
   - `it` can be used when there is only one parameter involved however bad for readability when complexity involved
   - `it` cannot be used when more than one parameter involved then you use multiple named parameters
-  - anonymous functions are referred to as **lambdas** and their defintion as *lambda expressions*.
+  - anonymous functions are referred to as **lambdas** and their defintion as *lambda expressions*. :pushpin:
   - anonymous function return is referred to as *lambda result*
-  - lambda is an object instance on the JVM so it has a memory cost for itself and all the variables accessible to it but _inline_ enables to remove lambda memory overhead. 
-  - an inline lambda body is just copy pasted by the compiler instead of invoking an object instance
+  - lambda is an object instance on the JVM so it has a memory cost for itself and all the variables accessible to it but _inline_ enables to remove lambda memory overhead. :pushpin:
+  - an inline lambda body is just copy pasted by the compiler instead of invoking an object instance :pushpin:
   - function references (::) can be useful for named function
   - you can return a function
   - lambdas also called closures because they "close over" the variables in the outer scope that they are defined within
