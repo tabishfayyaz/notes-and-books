@@ -11,13 +11,13 @@ Please [purchase the book](https://www.amazon.com/Kotlin-Programming-Nerd-Ranch-
 
 ## Variables, Constants & Types
 - **static type checking:** type checking performed as code is entered or edited, and it tells you about programming mistakes before you even compile the program
-- _String, Char, Boolean, Int, Double, List, Set, Map_ are Kotlin built-in types
+- _String, Char, Boolean, Int, Double, List, Set, Map_ are Kotlin built-in types :pushpin:
 - If you ever have a question about the type of a variable, click on its name and press **Control-Shift-P**. IntelliJ will display its type
 - There are special cases where a **val** can return different values
 - A **compile-time constant** (const val MAX_EXPERIENCE: Int = 5000) must be defined outside of any function, including **main**, because its value must be assigned at compile time. A compile-time constant exists before any of these assignments take place. **main** and your other functions are called during runtime (when the program is executed), and the variables within them are assigned their values then. 
 - Basic types for a compile-time constant: _String, Int, Double, Float, Long, Short, Byte, Char, Boolean_
 - Press the Shift key twice to open the Search Everywhere dialog. Begin entering **show kotlin bytecode** in the search box
-- Unlike Java, Kotlin provides only one kind of type: reference types.
+- Unlike Java, Kotlin provides only one kind of type: reference types. :pushpin:
 - The Kotlin compiler will, where possible, use primitives in the Java bytecode, because they do indeed offer better performance
 
 ### Any class can declare main:
