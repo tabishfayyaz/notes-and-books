@@ -236,7 +236,7 @@ fun configureGreetingFunction(): (String) -> String {
 
 ## Null Safety & Exceptions
 - if a _var_ or _val_ can accept null then kotlin requires a special declaration which helps with avoiding crashes
-- _null_ is not 0 but the absence of any value
+- _null_ is not 0 but the absence of any value 📌
 - _nullable_: can be assigned a value of null, _non-nullable_: cannot be assigned a value of null
 - Kotlin is a _compiled language_ (the program is translated into machine-language instructions before execution by the compiler) so compiler checks whether null is assigned correctly type or not. 📌
 - Compile-time errors are preferable to _runtime errors_ (mistakes that happen when program is already running) so you find the problem earlier than later
