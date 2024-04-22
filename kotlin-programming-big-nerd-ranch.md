@@ -329,7 +329,7 @@ require(swordsJuggling >= 3, { "Juggle at least 3 swords to be exciting." })
 ## Strings
 - escape sequences: `\t` tab character, `\b` backspace character, `\n` newline character, `\r` carriage return, `\"` double quotation mark, `\'` single quotation mark, `\\` backslash, `\$` dollar sign, `\u` unicode character
 - whether you define one with _var_ or _val_ all strings in Kotlin are immutable just like java, anything that seems like is changing value of string (like `replace`) in reality creates a new string
-- for checking string equality use `==` for checking string referential equality use `===`, java uses `==` for referential equality of objects
+- for checking string equality use `==` for checking string referential equality use `===`, java uses `==` for referential equality of objects 📌
 - a **Char** is a Unicode Character which is designed to support diverse languages, string consists of an ordered sequence of characters
 - not all characters are available on keyboard so then you use unicode
 
