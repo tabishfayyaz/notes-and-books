@@ -567,7 +567,7 @@ mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0) -= "Mordoc" //minus assign oper
 mutableMapOf("Mordoc" to 6.0, "Jebediah" to 1.0).clear(){}  //clear operator
 ```
 
-## Classes
+## Classes 📌
 - A class is often declared in a file matching its name, but it does not have to be. You can define multiple classes in the same file
 - _class functions:_ functions defined within a class
 - _class properties:_ data defintions within a class
