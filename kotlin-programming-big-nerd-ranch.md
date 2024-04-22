@@ -976,7 +976,7 @@ sealed class ScreenState {
 ```
 
 ## Interfaces & Abstract Classes
-- Interface: specifying _what_ without the _how_, Abstract class: hybrid between interface and class
+- Interface: specifying _what_ without the _how_, Abstract class: hybrid between interface and class 📌
 - Use : operator to implement an interface
 - You can provide a default implementation for a property getters & functions in an interface
 - Abstract class cannot be instantiated but provide function implementation, they can also include abstract functions
@@ -1031,7 +1031,7 @@ class Goblin(name: String = "Goblin",
 ```
 
 ## Generics
-- A data of some type that is not known when we write the class
+- A data of some type that is not known when we write the class 📌
 - Lists can hold any type because of _generics_
 - A _generic type_ is a class that accepts an input of any type in its constructor
 - Generics types, like other types in Kotlin, support type inference
