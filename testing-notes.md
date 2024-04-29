@@ -283,6 +283,25 @@ In this test class:
 - The `UserServiceTestComponent` interface defines the Dagger component for testing and includes the `UserModule` to provide dependencies. For the second test, we override the `provideUserRepository()` method in the module to provide the mock dependency.
 
 By using Dagger for dependency injection in testing, we can easily switch between real and mock dependencies, allowing us to test the `UserService` with different scenarios and ensure its behavior is correct.
+
+### Why can't we use real dependencies in a Unit test
+
+In unit testing, we aim to isolate the unit under test and verify its behavior independently of its dependencies. By using real dependencies, the unit test can become more of an integration test, as it may be testing the interaction between the unit and its dependencies rather than the unit itself.
+
+Here are some reasons why we typically mock dependencies in unit tests:
+
+1. **Isolation**: Unit tests should focus on testing a single unit of code in isolation. When we use real dependencies, the behavior of those dependencies can affect the outcome of the test, making it harder to isolate the unit under test.
+
+2. **Controlled Environment**: With mocked dependencies, we have full control over their behavior, allowing us to simulate different scenarios and edge cases that may be difficult to reproduce with real dependencies.
+
+3. **Speed**: Mocking dependencies can make tests run faster because we're not performing actual I/O operations or accessing external resources. Mock objects are lightweight and don't incur the overhead of setting up and tearing down real resources.
+
+4. **Consistency**: Real dependencies may change over time, leading to test instability or false positives/negatives. Mocking allows us to maintain consistency in test behavior regardless of changes in the actual dependencies.
+
+However, it's essential to strike a balance between using real dependencies and mocks. While unit tests should primarily use mocks to isolate units of code, integration tests are necessary to verify the interaction between real components in a more realistic environment.
+
+In cases where it's crucial to test the integration between components, integration tests or end-to-end tests using real dependencies are more appropriate. These tests ensure that the system functions correctly as a whole, including its interactions with external components.
+
 ## References
 - https://androidessence.com/test-driven-development
 - Sample test example: https://gist.github.com/AdamMc331/c815f3ae7579409b01b0fbfd5c9984aa
