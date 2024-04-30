@@ -18,6 +18,50 @@ However, it's essential to strike a balance between using real dependencies and 
 
 In cases where it's crucial to test the integration between components, integration tests or end-to-end tests using real dependencies are more appropriate. These tests ensure that the system functions correctly as a whole, including its interactions with external components.
 
+### What is difference between mock and stub
+
+Consider a scenario where we have a `Calculator` interface with an `add` method, and we want to test a `CalculatorService` class that depends on this interface.
+
+1. **Stub Example**:
+
+Suppose we have a stub implementation of the `Calculator` interface:
+
+```kotlin
+interface Calculator {
+    fun add(a: Int, b: Int): Int
+}
+
+class CalculatorStub : Calculator {
+    override fun add(a: Int, b: Int): Int {
+        // Stub implementation that always returns a fixed value
+        return 5
+    }
+}
+```
+
+In this case, `CalculatorStub` is a stub implementation of the `Calculator` interface. It provides a fixed implementation of the `add` method that always returns `5`. We can use this stub to provide predetermined responses during testing, regardless of the input parameters.
+
+2. **Mock Example**:
+
+Now, let's consider a mock object for the `Calculator` interface:
+
+```kotlin
+import org.mockito.Mockito.*
+
+val calculatorMock = mock(Calculator::class.java)
+
+`when`(calculatorMock.add(2, 3)).thenReturn(5)
+```
+
+In this example, `calculatorMock` is a mock object created using a mocking framework like Mockito. We use `when(calculatorMock.add(2, 3)).thenReturn(5)` to specify the behavior of the mock object. This configuration tells Mockito that when the `add` method of the mock object is called with parameters `2` and `3`, it should return `5`. Unlike a stub, a mock allows us to verify interactions, such as method calls, during testing.
+
+In summary:
+
+- **Stub**: A stub provides predetermined responses to method calls and is used to simulate the behavior of real objects in a controlled manner. Stubs are primarily used to provide input to the unit under test and are not concerned with verifying interactions.
+
+- **Mock**: A mock object records method calls and their parameters during test execution and allows us to verify interactions between the unit under test and its dependencies. Mocks are used to specify expectations about how the unit under test should interact with its dependencies and to verify these expectations after test execution.
+
+
 ## Notes
 
 **TDD:** developers write tests prior to writing the code itself which would result in a bunch of failing tests that cover our expected behavior and will fail until required code is written to make them pass. 
