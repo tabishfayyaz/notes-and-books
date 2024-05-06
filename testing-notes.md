@@ -61,6 +61,23 @@ In summary:
 
 - **Mock**: A mock object records method calls and their parameters during test execution and allows us to verify interactions between the unit under test and its dependencies. Mocks are used to specify expectations about how the unit under test should interact with its dependencies and to verify these expectations after test execution.
 
+### What and how many types of test doubles are there
+
+Test doubles are objects or components used in unit testing to replace real dependencies and facilitate isolated testing. There are several types of test doubles commonly used in unit testing:
+
+1. **Dummy**: Dummy objects are placeholders that are passed around but never actually used. They are used when a parameter is required by the method being tested but the actual value is irrelevant to the test.
+
+2. **Stub**: Stubs provide canned responses to method calls made during the test. They are used to simulate the behavior of real objects, providing predefined responses to specific method calls.
+
+3. **Fake**: Fakes are simplified implementations of dependencies that behave similarly to the real object but are optimized for testing purposes. They typically have limited functionality compared to the real implementation.
+
+4. **Mock**: Mocks are objects with pre-programmed expectations about the behavior of the code being tested. They record interactions with the mocked object and allow assertions to be made about those interactions.
+
+5. **Spy**: Spies are real objects that have been instrumented to record their interactions with the code being tested. They allow you to verify that certain methods are called or to inspect the behavior of the object during the test.
+
+6. **Double**: This is a generic term used to refer to any kind of test double.
+
+These types of test doubles are used in various combinations to isolate the code under test from its dependencies and to verify its behavior in isolation. Each type of test double serves a specific purpose and can be used to test different aspects of the code being tested.
 
 ## Notes
 
