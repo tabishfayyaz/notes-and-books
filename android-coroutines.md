@@ -409,7 +409,60 @@ fun main() = runBlocking {  // Thread: main
     - IO: IO thread, suitable for performing data-related operations, such as network requests, reading/writing from databases, or file I/O
     - Unconfined: runs the coroutine in the caller’s thread, inherit the context of the caller
 
+## QA
 
+### What is difference between suspend and blocking
+
+In Kotlin coroutines, the concepts of suspension and blocking are important to understand as they affect the behavior of asynchronous code execution:
+
+1. **Suspending Functions**:
+   - **Suspend Functions**: These are functions that can be paused (suspended) and resumed later without blocking the thread. They are marked with the `suspend` keyword in Kotlin.
+   - **Non-blocking**: When a coroutine encounters a suspend function, it can pause its execution without blocking the thread it's running on. This allows other coroutines to run concurrently on the same thread, making more efficient use of resources.
+   - **Asynchronous Operations**: Suspending functions are commonly used to perform asynchronous operations such as network requests or database queries. They allow the coroutine to suspend its execution while waiting for the operation to complete, without blocking the thread.
+
+2. **Blocking Functions**:
+   - **Blocking Functions**: These are functions that block the thread they are called on until they complete their operation. They typically perform synchronous operations that may take some time to complete.
+   - **Thread Blocking**: When a coroutine calls a blocking function, it blocks the thread it's running on until the function returns. This means that no other coroutines can execute on the same thread while the blocking function is running.
+   - **Avoiding in Coroutines**: Using blocking functions in coroutines should be avoided whenever possible, especially on the main/UI thread, as it can lead to poor performance and unresponsive user interfaces.
+
+In summary, suspend functions allow coroutines to suspend their execution without blocking the thread, enabling efficient asynchronous programming, while blocking functions halt the execution of coroutines and potentially block the thread, which can lead to performance issues in asynchronous code.
+
+### is `launch` a blocking function?
+
+No, `launch` is not a blocking function in Kotlin coroutines. It is a coroutine builder function that starts a new coroutine without blocking the current thread.
+
+When you call `launch { ... }`, it creates a new coroutine and starts executing the code inside the lambda expression concurrently with the caller coroutine or thread. The `launch` function returns a `Job` object immediately, allowing the caller to continue execution without waiting for the launched coroutine to complete.
+
+The key points about `launch` are:
+
+1. It is non-blocking and does not suspend the current thread or coroutine.
+2. It starts a new coroutine in the specified CoroutineScope and CoroutineContext.
+3. The launched coroutine runs concurrently with the caller.
+4. The caller can optionally await or join the launched coroutine using the returned Job object.
+
+In contrast, functions like `runBlocking` are blocking because they start a new coroutine but also block the current thread until that coroutine completes. `runBlocking` is typically used in main functions or tests to bridge regular blocking code with suspending code.
+
+So in summary, `launch` is a non-blocking coroutine builder that allows you to start new coroutines without blocking the current thread or suspending the caller coroutine, enabling lightweight concurrency and asynchronous programming.
+
+### is `await` a blocking function?
+
+No, `await` is not a blocking function in Kotlin coroutines. It is a suspending function that suspends the coroutine's execution until the awaited value is available, without blocking the underlying thread.
+
+Here are the key points about `await`:
+
+1. `await` is an extension function on the `Deferred<T>` interface, which is returned by the `async { ... }` coroutine builder.
+
+2. When you call `await()` on a `Deferred<T>` object, it suspends the current coroutine until the asynchronous operation represented by the `Deferred` completes and its result becomes available.
+
+3. While the coroutine is suspended at the `await()` call, the underlying thread is not blocked. Instead, it is released and can be used by other coroutines or operations.
+
+4. Once the awaited value is ready, the suspended coroutine is resumed transparently with the awaited value, without the need for callbacks or manual thread management.
+
+5. `await` is a suspending function, which means it can only be called from another coroutine or suspending function, not from regular functions or blocking code.
+
+In contrast, blocking functions like `Thread.sleep()` or `runBlocking { ... }` actually block the underlying thread, preventing it from doing any other work until the operation completes. This can lead to inefficient resource utilization and potential performance issues, especially in scenarios involving I/O operations or delays.
+
+By using `await` and other suspending functions, Kotlin coroutines enable efficient utilization of threads, improved responsiveness, and better scalability compared to traditional blocking approaches. The non-blocking nature of `await` is a key aspect of coroutines' lightweight concurrency model.
 
 ## Reference
 - https://www.youtube.com/watch?v=lmRzRKIsn1g
