@@ -464,7 +464,7 @@ In contrast, blocking functions like `Thread.sleep()` or `runBlocking { ... }` a
 
 By using `await` and other suspending functions, Kotlin coroutines enable efficient utilization of threads, improved responsiveness, and better scalability compared to traditional blocking approaches. The non-blocking nature of `await` is a key aspect of coroutines' lightweight concurrency model.
 
-### what is the difference between launch and async
+### What is the difference between `launch` and `async`
 
 The main difference between `launch` and `async` in Kotlin coroutines lies in how they handle the result of the coroutine and their return types:
 
@@ -485,6 +485,45 @@ To summarize:
 - `async` provides structured concurrency and exception handling, while `launch` requires explicit handling of exceptions.
 
 Both `launch` and `async` are non-blocking and start new coroutines concurrently, but `async` allows you to retrieve the result and handle exceptions more explicitly.
+
+### What is the difference between `coroutineScope` vs `supervisorScope`
+
+1. **`coroutineScope`**:
+   - The `coroutineScope` function is a **suspending function** that creates a new coroutine scope.
+   - **Behavior**:
+     - It **waits** for all its child coroutines to complete.
+     - If any child coroutine fails (throws an exception), it **cancels** all other children immediately.
+     - Essentially, it follows a **fail-fast** approach: any failure propagates up the hierarchy, leading to cancellation of the entire scope.
+   - **Use Case**:
+     - Use `coroutineScope` when you want to **cancel the entire scope** if any child coroutine fails.
+     - For example, when you need to perform multiple network requests and want to ensure that all of them succeed or fail together.
+
+2. **`supervisorScope`**:
+   - The `supervisorScope` function also creates a new coroutine scope.
+   - **Behavior**:
+     - It **isolates** failures within its scope.
+     - If any child coroutine fails, it **does not cancel** other children.
+     - The supervisor scope continues executing other child coroutines even if one of them throws an exception.
+   - **Use Case**:
+     - Use `supervisorScope` when you want to **continue with other tasks** even if some child coroutines fail.
+     - For example, when handling multiple independent tasks (e.g., downloading images) and you don't want one failure to affect the others.
+
+3. **Example**:
+   - Suppose you have two network requests (async coroutines) within a scope:
+     ```kotlin
+     suspend fun main() {
+         println(compute())
+     }
+     
+     suspend fun compute(): String = supervisorScope {
+         val color = async { delay(60_000); "purple" }
+         val height = async<Double> { delay(100); throw HttpException() }
+         "The box is %.1f inches tall and it's %s".format(height.await(), color.await())
+     }
+     ```
+   - In this example, even though `height.await()` throws an exception, the `color.await()` still completes successfully because we're using `supervisorScope`.
+
+Remember to choose the appropriate scope based on your use case: whether you want to cancel everything on failure (`coroutineScope`) or continue with other tasks (`supervisorScope`)!
 
 
 ## Reference
