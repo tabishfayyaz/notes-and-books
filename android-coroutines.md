@@ -99,7 +99,7 @@ fun main() = runBlocking {    // Executes in main thread
 - A function with a `suspend` modifier is known as a suspending function
 - The suspending functions are only allowed to be called from a coroutine or from another suspending function
 - They cannot be called from outside a coroutine
-- 3 most important coroutine builders/creators: `launch` & `GlobalScope.launch`, `async` & `GlobalScope.launch`, `runBlocking`
+- 3 most important coroutine builders/creators: `launch` & `GlobalScope.launch`, `async` & `GlobalScope.async`, `runBlocking`
 - `GlobalScope.launch` (discouraged as if you lose reference to it'll run till the process ends) for things like file download, play music whereas local scope launch for things like some data computation, login operation
 
 ![](https://github.com/tabishfayyaz/notes-and-books/blob/master/images/global-scope-launch.png)
