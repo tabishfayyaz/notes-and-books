@@ -464,5 +464,28 @@ In contrast, blocking functions like `Thread.sleep()` or `runBlocking { ... }` a
 
 By using `await` and other suspending functions, Kotlin coroutines enable efficient utilization of threads, improved responsiveness, and better scalability compared to traditional blocking approaches. The non-blocking nature of `await` is a key aspect of coroutines' lightweight concurrency model.
 
+### what is the difference between launch and async
+
+The main difference between `launch` and `async` in Kotlin coroutines lies in how they handle the result of the coroutine and their return types:
+
+1. `launch` returns a `Job` object and does not carry any resulting value from the coroutine. It is used for fire-and-forget style coroutines where you don't need to get the result back. For example, updating a database or performing a side-effect operation.
+
+2. `async` returns a `Deferred<T>` object, which represents the future result `T` of the coroutine. The `Deferred` object has an `await()` function that returns the result when it becomes available. This is useful when you need to get the result of the coroutine for further processing.
+
+Another key difference is how they handle exceptions:
+
+3. If an exception occurs inside the `launch` block, it crashes the application if not handled properly.
+
+4. If an exception occurs inside the `async` block, it is stored inside the resulting `Deferred` object and is not propagated further unless you explicitly handle it using `await()`.
+
+To summarize:
+
+- Use `launch` when you want to start a coroutine for its side-effects and don't need to get the result back.
+- Use `async` when you need to perform an asynchronous operation and get the result to use in further processing.
+- `async` provides structured concurrency and exception handling, while `launch` requires explicit handling of exceptions.
+
+Both `launch` and `async` are non-blocking and start new coroutines concurrently, but `async` allows you to retrieve the result and handle exceptions more explicitly.
+
+
 ## Reference
 - https://www.youtube.com/watch?v=lmRzRKIsn1g
