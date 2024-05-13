@@ -403,7 +403,11 @@ fun main() = runBlocking {  // Thread: main
 - Threads are managed by the OS and coroutines by the users. Coroutines do not replace threads, it's more like a framework to manage them.
 - Coroutines are lightweight threads: A lightweight thread means it doesn't map on the native thread, so it doesn't require context switching on the processor, so they are faster.
 - One can think of a coroutine as a light-weight thread. Like threads, coroutines can run in parallel, wait for each other and communicate. The biggest difference is that coroutines are very cheap, almost free: we can create thousands of them, and pay very little in terms of performance. True threads, on the other hand, are expensive to start and keep around. A thousand threads can be a serious challenge for a modern machine.
-- There are majorly three types of Dispatchers which are IO (network and disk-related work), Default (CPU-intensive work) and Main (UI thread of Android).
+- There are four types of Dispatchers:
+    - Default: default background thread, for complex and long-running calculations e.g. if you need to perform thousands of calculations that might block the main thread
+    - Main: main thread also known as the UI thread
+    - IO: IO thread, suitable for performing data-related operations, such as network requests, reading/writing from databases, or file I/O
+    - Unconfined: runs the coroutine in the caller’s thread, inherit the context of the caller
 
 
 
