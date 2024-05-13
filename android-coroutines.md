@@ -525,6 +525,39 @@ Both `launch` and `async` are non-blocking and start new coroutines concurrently
 
 Remember to choose the appropriate scope based on your use case: whether you want to cancel everything on failure (`coroutineScope`) or continue with other tasks (`supervisorScope`)!
 
+### How do you convert a callback to coroutine
+
+### What is Coroutine Context
+
+### What is coroutine scope, context and job
+
+### What is suspendCoroutine and suspendCancellableCoroutine
+
+### What is lifecycleScope, viewModelScope and GlobalScope
+
+### How to make a network call using Kotlin coroutines
+
+### How to make network calls in series using Kotlin coroutines
+
+### How to make network calls in parallel using Kotlin coroutines
+
+### How to fetch or insert entity in database using Kotlin Coroutines
+
+### How to run a long running task using Kotlin Coroutines
+
+### How to run two long running tasks in parallel using Kotlin Coroutines
+
+### How to add timeout to a task using Kotlin Coroutines
+
+### How to handle error in Kotlin Coroutines using Try-Catch
+
+### How to handle error in Kotlin Coroutines using CoroutineExceptionHandler
+
+### How to use supervisorScope to ignore error of a task and continue with other task.
+
+### How write unit-test for ViewModel which uses Kotlin Coroutines and LiveData
+
+
 
 ## Reference
 - https://www.youtube.com/watch?v=lmRzRKIsn1g
