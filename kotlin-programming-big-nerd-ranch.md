@@ -1203,12 +1203,6 @@ class Spellbook {
 }
 ```
 
-## Coroutines
-- A thread is a pipeline that handles a sequence of work to be performed.
-- The main thread of an Android application is reserved for work that keeps UI responsive: handling button presses, scroll updates, textbox updates
-- If thread cannot move forward to the next work to process until the current (possibly long - running) completes this is called _blocking a thread_
-
-
 # Links:
 - Classes & Inheritance: https://kotlinlang.org/docs/reference/classes.html
 - Object Expressions and Declarations: https://kotlinlang.org/docs/reference/object-declarations.html
