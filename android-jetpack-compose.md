@@ -260,3 +260,7 @@ fun ItemList(items: List<String>) {
     }
 }
 ```
+
+## Links
+* https://developer.android.com/develop/ui/compose/modifiers
+* https://developer.android.com/develop/ui/compose/modifiers-list
