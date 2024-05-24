@@ -2,8 +2,6 @@
 
 ## Summary
 
-#### Coding Checklist
-
 **Design**
 - **Risk Consideration**: Evaluate risks in implementation, maintenance, and usage.
 - **Behavior Analysis**: Avoid undefined, meaningless, or rare behaviors.
