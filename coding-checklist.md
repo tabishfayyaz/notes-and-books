@@ -1,5 +1,51 @@
 *Source: Writing Solid Code by Steve Maguire*
 
+## Summary
+
+#### Coding Checklist
+
+**Design**
+- **Risk Consideration**: Evaluate risks in implementation, maintenance, and usage.
+- **Behavior Analysis**: Avoid undefined, meaningless, or rare behaviors.
+- **Flexibility and Assumptions**: Eliminate unnecessary flexibility and assumptions.
+- **Data Handling**: Avoid static or global buffers, ensure functions are single-tasked.
+- **Special Cases**: Isolate special case handling.
+- **Inputs and Outputs**: Ensure each represents a single type of data.
+- **Function Calls**: Make functions intuitive and prevent common misuse.
+- **Error Handling**: Redefine functions to minimize error conditions.
+- **Testing Feasibility**: Choose designs that can be validated through unit tests.
+
+**Implementation**
+- **Design Consistency**: Ensure implementation matches the design.
+- **Assumption Minimization**: Avoid nonportable data types and arbitrary implementations.
+- **Expression Safety**: Prevent overflows, underflows, and risky expressions.
+- **Code Readability**: Use understandable, mainstream C over arcane constructs.
+- **Task Simplification**: Avoid special-case code; aim for single code paths.
+- **Error Handling**: Eliminate calls to functions that return errors where possible.
+- **Memory Safety**: Avoid referencing released memory and respect memory allocation limits.
+
+**Adding Debug Support**
+- **Assertions**: Validate function arguments and assumptions, detect illegal behavior.
+- **Defensive Programming**: Use assertions to find bugs instead of fixing them invisibly.
+- **Clarity**: Ensure assertions are clear and commented.
+- **Debug Code**: Set and destroy memory contents for easier bug detection.
+- **Algorithm Verification**: Use secondary debug algorithms for critical checks.
+- **Startup Checks**: Perform early bug detection, especially for data tables.
+
+**Testing**
+- **Compiler Warnings**: Ensure code compiles without warnings and passes lint tests.
+- **Debugger Use**: Step through new code, focusing on data flow.
+- **Code Cleanup**: Treat cleaned-up code as new and thoroughly test it.
+- **Unit Tests**: Write unit tests for new code.
+
+**Debugging**
+- **Bug Tracking**: Confirm the bug's presence in the reported version.
+- **Root Cause**: Identify the true cause of the bug, not just its symptoms.
+- **Prevention Guidelines**: Develop guidelines to prevent future occurrences.
+- **Automatic Detection**: Use assertions, debug code, and process changes to catch similar bugs.
+
+By adhering to these guidelines, you can ensure robust, maintainable, and error-resistant code.
+
 ## Coding Checklist
 
 To make effective use of these checklists, review them each time you add new code to your project. From a practical standpoint, “each time” really means the “next few times” you write new code. After that, you should have developed a sixth sense for code that bends or breaks the guidelines.
