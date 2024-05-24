@@ -1,12 +1,67 @@
+## Summary
+
+#### Core Principle
+- Aim to balance pragmatism with idealism as there is no such thing as perfect design.
+
+#### Process Blueprint
+1. **Learning**: Begin with the best knowledge and resources.
+2. **Optimization**: Adjust based on what works and what doesn't.
+3. **Almost Perfection**: Use insights to create a balanced, high-quality solution.
+
+#### Software Design Checklist
+- Identify the problem clearly.
+- Define responsibilities of components concisely.
+- Break down into independent components and key dependencies.
+- Ensure high cohesion and loose coupling.
+- Define clear communication boundaries between components.
+- Inspect and abstract sub-component interactions and data flow.
+- Prefer unidirectional data flow and avoid excessive two-way data flow.
+- Minimize business logic in data model objects.
+- Focus on models, views, and controllers, avoiding excess classes like managers or helpers.
+- Ensure views do not handle business logic or communicate data upstream.
+- Track object ownership and lifecycle.
+- Prefer composition over inheritance and avoid "God objects."
+- Simplify by eliminating non-essential complexity.
+- Make the design testable and open for extension with minimal modifications.
+- Use design patterns like lazy initialization, adapter, and factory/builder where needed.
+- Handle both system-wide and sub-component failures.
+- Avoid over or under-architecting the system.
+
+#### Software Design Notes
+- Keep components independent with key dependencies.
+- Simplify class interactions and data flow.
+- Follow the Single Responsibility Principle for clarity and simplicity.
+- Inspect class composition and ownership.
+- Manage singletons carefully to avoid complex two-way data flows.
+- Use design patterns appropriately (e.g., Chain of Responsibility, Adapter, Factory, Builder).
+- Aim for high cohesion and low coupling.
+- Emphasize simplicity and focus on solving real problems.
+
+#### Key Principles
+- **SOLID Principles**:
+  - **SRP (Single Responsibility Principle)**: Each element should handle one task.
+  - **OCP (Open Closed Principle)**: Software should be open for extension but closed for modification.
+  - **LSP (Liskov Substitution Principle)**: Derived classes should be replaceable with base classes.
+  - **ISP (Interface Segregation Principle)**: Avoid relying on interfaces that are too broad.
+  - **DIP (Dependency Inversion Principle)**: High-level modules should not depend on low-level modules.
+
+#### Best Practices
+- Avoid long methods for better readability, testing, and reuse.
+- Focus on cohesive, single-purpose components.
+- Implement good design to manage complexity, making the system easier to change and test.
+- Apply principles like DRY (Don't Repeat Yourself) to reduce development costs and improve maintainability.
+
+## Software Design Principles
+
 *There is no such thing as perfect design so aim to balance pragmatism with idealism.*
 
-## Process Blueprint 
+### Process Blueprint 
 
 - Stage 1 - Learning: start the work based on your best knowledge and resources
 - Stage 2 - Optimization: change things based on what worked and what didn't work
 - Stage 3 - Almost Perfection: Use your findings & experiences to build something that balances quality and reality
 
-## Software Design Checklist
+### Software Design Checklist
 
 - Have you identified what problem are you really trying to solve
 
@@ -52,7 +107,7 @@
 
 - Have you examined that you have not over architectured or under architectured the system
 
-## Software Design Notes
+### Software Design Notes
 
 * Breakup into independent components yet have key dependencies so what you are doing doesn't impact all the others dependent on your compoonent/module/library
 
@@ -179,4 +234,5 @@
    * we can create any kind of mock objects we want
 
 ## Credits
+
 - https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
