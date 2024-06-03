@@ -230,12 +230,7 @@ The **SOLID principles** are a set of five design principles intended to make so
 
 4. **Interface Segregation Principle (ISP)**: No client should be forced to depend on interfaces it does not use. This encourages the creation of more specific interfaces rather than a large, general-purpose one.
 
-5. **Dependency Inversion Principle (DIP)**: High-level modules should not depend on low-level modules. Both should depend on abstractions. Additionally, abstractions should not depend on details. Details should depend on abstractions. This principle helps reduce the coupling between different parts of the code.
- 
-High-level modules should not depend on low-level modules. Both should depend on abstractions.
-Abstractions should not depend on details. Details should depend on abstractions.
-
-This principle helps reduce the coupling between different parts of the code by ensuring that both high-level and low-level modules depend on abstractions rather than concrete implementations.
+5. **Dependency Inversion Principle (DIP)**: High-level modules should not depend on low-level modules. Both should depend on abstractions. Additionally, abstractions should not depend on details. Details should depend on abstractions. This principle helps reduce the coupling between different parts of the code by ensuring that both high-level and low-level modules depend on abstractions rather than concrete implementations.
 
 **Why DIP?**
 
