@@ -1,3 +1,75 @@
+## Summary
+
+**General Guideline:**
+- There is no perfect design. Aim to balance pragmatism with idealism.
+
+**Process Blueprint:**
+1. **Learning**: Start with the best knowledge and resources.
+2. **Optimization**: Adjust based on successes and failures.
+3. **Almost Perfection**: Balance quality and practicality with findings and experiences.
+
+**Software Design Checklist:**
+- Identify the core problem you're solving.
+- Clearly define the responsibility of components/classes/methods/modules.
+- Break down into independent components and identify key dependencies.
+- Ensure high cohesion, loose coupling, and clear communication boundaries.
+- Abstract communication between sub-components.
+- Graph the flow of data and inspect data objects.
+- Aim for unidirectional data flow.
+- Ensure singletons encourage one-way data flow.
+- Remove business logic from data model objects, unless it's part of the object's state.
+- Avoid overuse of classes like manager, coordinators, helpers, handlers, providers, executors.
+- Ensure views do not communicate data upstream or contain business logic.
+- Inspect object ownership and lifecycle.
+- Prefer composition over inheritance.
+- Avoid God objects with high coupling and cohesion.
+- Hide domain-specific complexity and eliminate non-essential complexity.
+- Ensure your design is testable.
+- Design should be open for extension but minimize modifications.
+- Use lazy initialization, adapter, factory/builder patterns as necessary.
+- Plan for system and sub-component failure.
+- Avoid over or under-architecting the system.
+
+**Software Design Notes:**
+- Break into independent components with key dependencies.
+- Keep data flow and class interactions simple.
+- Minimize the number of class types (controllers, views, data objects).
+- Keep business logic out of data model objects.
+- Single Responsibility Principle: Classes should have a straightforward, single responsibility.
+- Inspect class composition and object ownership.
+- Ensure singletons are scoped and testable.
+- Prefer one-way data flow in singletons (Publisher/Subscriber pattern).
+- Use Chain of Responsibility pattern with discretion.
+- Use composition over inheritance to avoid tight coupling.
+- Lazy initialization boosts startup performance.
+- Adapter Pattern standardizes different APIs.
+- Factory Pattern wraps constructors for single method calls.
+- Builder Pattern allows gradual parameter buildup for constructors.
+- Aim for high cohesion and low coupling.
+- Simplicity makes code easier to change and understand.
+
+**Cohesion vs Coupling:**
+- High Cohesion, Low Coupling is ideal.
+- Complexity makes code difficult to change.
+
+**Good Design:**
+- Focuses on real problems, is easier to verify, and minimizes accidental complexity.
+- Ensures the system is cohesive and loosely coupled.
+- Uses DRY (Don't Repeat Yourself) to reduce development costs.
+
+**Focus on Single Responsibility:**
+- Define the primary responsibility of a class/method.
+- Avoid long methods as they are hard to test, remember, read, and reuse.
+- Use SLAP (Single Level of Abstraction Principle).
+- Comment on why, not what.
+- Use compose method pattern for clarity.
+
+**SOLID Principles:**
+1. **Single Responsibility Principle (SRP)**: One class, one responsibility.
+2. **Open/Closed Principle (OCP)**: Open for extension, closed for modification.
+3. **Liskov Substitution Principle (LSP)**: Subtypes should be replaceable for their base types.
+4. **Interface Segregation Principle (ISP)**: Specific interfaces over general ones.
+5. **Dependency Inversion Principle (DIP)**: Depend on abstractions, not concretions.
 
 
 ## Software Design Principles
