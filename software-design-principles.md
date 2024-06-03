@@ -1,55 +1,4 @@
-## Summary
 
-#### Core Principle
-- Aim to balance pragmatism with idealism as there is no such thing as perfect design.
-
-#### Process Blueprint
-1. **Learning**: Begin with the best knowledge and resources.
-2. **Optimization**: Adjust based on what works and what doesn't.
-3. **Almost Perfection**: Use insights to create a balanced, high-quality solution.
-
-#### Software Design Checklist
-- Identify the problem clearly.
-- Define responsibilities of components concisely.
-- Break down into independent components and key dependencies.
-- Ensure high cohesion and loose coupling.
-- Define clear communication boundaries between components.
-- Inspect and abstract sub-component interactions and data flow.
-- Prefer unidirectional data flow and avoid excessive two-way data flow.
-- Minimize business logic in data model objects.
-- Focus on models, views, and controllers, avoiding excess classes like managers or helpers.
-- Ensure views do not handle business logic or communicate data upstream.
-- Track object ownership and lifecycle.
-- Prefer composition over inheritance and avoid "God objects."
-- Simplify by eliminating non-essential complexity.
-- Make the design testable and open for extension with minimal modifications.
-- Use design patterns like lazy initialization, adapter, and factory/builder where needed.
-- Handle both system-wide and sub-component failures.
-- Avoid over or under-architecting the system.
-
-#### Software Design Notes
-- Keep components independent with key dependencies.
-- Simplify class interactions and data flow.
-- Follow the Single Responsibility Principle for clarity and simplicity.
-- Inspect class composition and ownership.
-- Manage singletons carefully to avoid complex two-way data flows.
-- Use design patterns appropriately (e.g., Chain of Responsibility, Adapter, Factory, Builder).
-- Aim for high cohesion and low coupling.
-- Emphasize simplicity and focus on solving real problems.
-
-#### Key Principles
-- **SOLID Principles**:
-  - **SRP (Single Responsibility Principle)**: Each element should handle one task.
-  - **OCP (Open Closed Principle)**: Software should be open for extension but closed for modification.
-  - **LSP (Liskov Substitution Principle)**: Derived classes should be replaceable with base classes.
-  - **ISP (Interface Segregation Principle)**: Avoid relying on interfaces that are too broad.
-  - **DIP (Dependency Inversion Principle)**: High-level modules should not depend on low-level modules.
-
-#### Best Practices
-- Avoid long methods for better readability, testing, and reuse.
-- Focus on cohesive, single-purpose components.
-- Implement good design to manage complexity, making the system easier to change and test.
-- Apply principles like DRY (Don't Repeat Yourself) to reduce development costs and improve maintainability.
 
 ## Software Design Principles
 
@@ -198,40 +147,18 @@
    * How long is long method? Do SLAP: Single Level of Abstraction Principle
 * Don't comment what, instead comment why
 * Compose method pattern -> focus on story as oppose to minor details
-* **SOLID Princples** - intended to make software designs more understandable, flexible and maintainable
-   * SRP - Single Responsbility Principle
-   * OCP - Open Closed Principle
-   * LSP - Liskov's Substitution Principle
-   * ISP - Interface Segregation Principle
-   * DIP - Dependency Inversion Principle
-* SRP
-   * each programming element (class, object, method) should be responsible for one task appropriate for its level
-   * elements should not dictate one or more tasks
-   * if there is a complicated task that compromises of multiple smaller tasks, the greater task should be broken down into smaller tasks managed each by an element
-   * re-usability is the advantage here
-   * if an action needs to be repeated, it will be its own responsible component which is called whenever it is needed (DRY: don't repeat yourself)
-* OCP
-   * Software module should be upon for extension but closed from modification: abstraction and polymorphism are the key to make this happen
-   * Two options to make an enhancement: change existing code (disliked path), add a small new module of code
-   * if we want to change a class, we would either extend it or create an entirely new class
-   * changing existing component can break compatibility   
-* LSP
-   * if class A is subtype of B, then anywhere in the program, class B should be replaceable with class A without breaking the program
-   * inheritance should be used only for substitutability
-   * if an object of B should be used anywhere an object of A is used then use inheritance
-   * if an object of B should use an object of A then use composition/delegation
-   * inheritance demands more from a developer than composition or delegation does
-   * services of the derived class should require no more and promise no less than the corresponding services of the base class. Why? -> The user of a base class should be able to use an instance of a derivced class without knowing the difference
-   * Good example of this principle:
-      * public vs protected in base vs derived
-      * derived function can't throw any new checked exception not thrown by the base (unless the new exceptions extend old one)
-* ISP
-   * Components in a user interace such as buttons and labels should not be reliant on one another i.e. if one button breaks, the rest of the user interface should not malfunction
-* DIP
-   * high level components should not depend on low-level components and vice-versa rather they communicate via interfaces/abstraction
-   * if one fails the other continues functioning as they are not dependent on each other
-   * beause of this we can test classes independently of each other which makes testing easier
-   * we can create any kind of mock objects we want
+
+The **SOLID principles** are a set of five design principles intended to make software designs more understandable, flexible, and maintainable. They are:
+
+1. **Single Responsibility Principle (SRP)**: A class should have only one reason to change, meaning it should have only one job or responsibility. This makes the class easier to maintain and understand.
+
+2. **Open/Closed Principle (OCP)**: Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification. This means you should be able to add new functionality without changing existing code.
+
+3. **Liskov Substitution Principle (LSP)**: Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. This ensures that derived classes extend the base class without altering its behavior.
+
+4. **Interface Segregation Principle (ISP)**: No client should be forced to depend on interfaces it does not use. This encourages the creation of more specific interfaces rather than a large, general-purpose one.
+
+5. **Dependency Inversion Principle (DIP)**: High-level modules should not depend on low-level modules. Both should depend on abstractions. Additionally, abstractions should not depend on details. Details should depend on abstractions. This principle helps reduce the coupling between different parts of the code.
 
 ## Credits
 
