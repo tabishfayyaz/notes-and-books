@@ -224,7 +224,7 @@ The **SOLID principles** are a set of five design principles intended to make so
 
 1. **Single Responsibility Principle (SRP)**: A class should have only one reason to change, meaning it should have only one job or responsibility. This makes the class easier to maintain and understand.
 
-2. **Open/Closed Principle (OCP)**: Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification. This means you should be able to add new functionality without changing existing code.
+2. **Open/Closed Principle (OCP)**: Software entities (classes, modules, functions, etc.) should be open for extension (polymorphism, inheritance enables that) but closed for modification. This means you should be able to add new functionality without changing existing code.
 
 3. **Liskov Substitution Principle (LSP)**: Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. This ensures that derived classes extend the base class without altering its behavior.
 
