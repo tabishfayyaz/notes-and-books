@@ -232,8 +232,8 @@ The **SOLID principles** are a set of five design principles intended to make so
 
 5. **Dependency Inversion Principle (DIP)**: High-level modules should not depend on low-level modules. Both should depend on abstractions. Additionally, abstractions should not depend on details. Details should depend on abstractions. This principle helps reduce the coupling between different parts of the code.
  
-1. **High-level modules should not depend on low-level modules. Both should depend on abstractions.**
-2. **Abstractions should not depend on details. Details should depend on abstractions.**
+**High-level modules should not depend on low-level modules. Both should depend on abstractions.**
+**Abstractions should not depend on details. Details should depend on abstractions.**
 
 This principle helps reduce the coupling between different parts of the code by ensuring that both high-level and low-level modules depend on abstractions rather than concrete implementations.
 
