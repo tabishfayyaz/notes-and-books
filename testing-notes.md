@@ -1,4 +1,281 @@
-## Questions & Answers
+# Unit Testing Cheat Sheet: Failure-Driven Discovery Approach
+
+## The Philosophy: Let Failures Guide You
+
+Instead of trying to mock everything upfront, let compilation errors and runtime failures tell you exactly what you need. This is faster and more accurate than guessing dependencies.
+
+## Step-by-Step Process
+
+### 1. Start with the Bare Minimum Test Structure
+
+```kotlin
+@Test
+fun methodName_scenario_expectedBehavior() = runTest {
+    // Arrange - Start empty, build as failures demand
+    val viewModel = YourViewModel(
+        // Leave constructor empty initially
+    )
+    
+    // Act
+    viewModel.yourMethod()
+    
+    // Assert - Figure out later
+}
+```
+
+**Key Principle:** Don't mock anything until the compiler or runtime forces you to.
+
+### 2. Fix Compilation Errors First
+
+When the compiler complains about missing constructor parameters:
+
+```kotlin
+val viewModel = YourViewModel(
+    param1 = mockk(),     // Add these one by one
+    param2 = mockk(),     // as compiler demands
+    param3 = mockk(),
+)
+```
+
+**Pro Tip:** Use your IDE's auto-complete to see required parameters instead of guessing.
+
+### 3. Handle Runtime Exceptions with Relaxed Mocks
+
+When you get `MockKException` or similar runtime errors:
+
+```kotlin
+// Quick fix: Make ALL mocks relaxed initially
+val viewModel = YourViewModel(
+    param1 = mockk(relaxed = true),
+    param2 = mockk(relaxed = true),
+    param3 = mockk(relaxed = true),
+)
+```
+
+**Why relaxed mocks:** They return sensible defaults (false for Boolean, 0 for Int, empty collections) and let your test run to reveal the actual behavior.
+
+### 4. Debug Specific Mock Issues
+
+When you get specific exceptions like `KotlinNothingValueException`:
+
+#### For Flow/Collection Issues
+```kotlin
+// Problem: dependency.someFlow.collect { ... }
+// Solution: Mock the Flow properly
+val mockFlow = MutableSharedFlow<YourDataType>()
+every { dependency.someFlow } returns mockFlow
+```
+
+#### For Method Chain Issues
+```kotlin
+// Problem: repository.getShoppingList().shoppingListCollectionInfo
+// Solution: Mock the entire chain
+val mockShoppingList = mockk<ShoppingList>(relaxed = true)
+every { mockShoppingList.shoppingListCollectionInfo } returns mockFlow
+
+val repository = mockk<Repository>(relaxed = true)
+every { repository.getShoppingList(any()) } returns mockShoppingList
+```
+
+#### For Constructor/Init Block Issues
+Remember: Exceptions during ViewModel creation happen in `init` blocks, not your test method. Set up all required mocks **before** creating the ViewModel.
+
+### 5. Test Coroutines and Flow Emissions
+
+For methods that emit to SharedFlow/StateFlow:
+
+```kotlin
+@Test
+fun methodName_scenario_emitsExpectedValue() = runTest {
+    // Arrange
+    val viewModel = // ... set up as above
+    
+    val emissions = mutableListOf<YourEmissionType>()
+    val job = launch {
+        viewModel.yourPublicFlow.collect { 
+            emissions.add(it) 
+        }
+    }
+    
+    // Act
+    viewModel.yourMethod()
+    advanceUntilIdle() // Let coroutines complete
+    
+    // Assert
+    assertEquals(1, emissions.size)
+    // Verify emission content...
+    
+    job.cancel()
+}
+```
+
+**Key Points:**
+- Use `runTest` for coroutine testing
+- Collect emissions in a separate coroutine
+- Use `advanceUntilIdle()` to let coroutines complete
+- Always cancel collection jobs
+
+## Real Example Walkthrough
+
+**Method to test:** ViewModel method that launches coroutine and emits `Event<AddToCart>` to a SharedFlow.
+
+### Step 1: Start Simple
+```kotlin
+@Test
+fun addAllToCart_triggersCorrectEvent() = runTest {
+    val viewModel = YourViewModel() // ❌ Compiler error - missing params
+}
+```
+
+### Step 2: Fix Constructor
+```kotlin
+val viewModel = YourViewModel(
+    param1 = mockk(),
+    param2 = mockk(), // ❌ Runtime error - MockKException
+)
+```
+
+### Step 3: Make Mocks Relaxed
+```kotlin
+val viewModel = YourViewModel(
+    param1 = mockk(relaxed = true),
+    param2 = mockk(relaxed = true), // ❌ Still failing - KotlinNothingValueException
+)
+```
+
+### Step 4: Debug Specific Issue
+**Error:** `KotlinNothingValueException` on line: `shoppingListRepository.getShoppingList().shoppingListCollectionInfo.collect`
+
+**Analysis:** The ViewModel init block is trying to collect from a Flow, but our mock doesn't provide a real Flow.
+
+**Solution:**
+```kotlin
+val emptySharedFlow = MutableSharedFlow<Resource<ShoppingListCollectionInfo>>()
+
+val mockShoppingList = mockk<ShoppingList>(relaxed = true)
+every { mockShoppingList.shoppingListCollectionInfo } returns emptySharedFlow
+
+val shoppingListRepository = mockk<ShoppingListRepository>(relaxed = true)
+every { shoppingListRepository.getShoppingList(any()) } returns mockShoppingList
+```
+
+### Step 5: Complete the Test
+```kotlin
+@Test
+fun addAllToCart_triggersCorrectEvent() = runTest {
+    // Arrange
+    val emptySharedFlow = MutableSharedFlow<Resource<ShoppingListCollectionInfo>>()
+    val mockShoppingList = mockk<ShoppingList>(relaxed = true)
+    every { mockShoppingList.shoppingListCollectionInfo } returns emptySharedFlow
+    
+    val shoppingListRepository = mockk<ShoppingListRepository>(relaxed = true)
+    every { shoppingListRepository.getShoppingList(any()) } returns mockShoppingList
+    
+    val viewModel = YourViewModel(
+        param1 = mockk(relaxed = true),
+        param2 = shoppingListRepository,
+    )
+    
+    val emissions = mutableListOf<Event<AddToCart>>()
+    val job = launch {
+        viewModel.addToCartEvents.collect { emissions.add(it) }
+    }
+    
+    // Act
+    viewModel.addAllToCart()
+    advanceUntilIdle()
+    
+    // Assert
+    assertEquals(1, emissions.size)
+    emissions.first().process { addToCart ->
+        assertEquals(ButtonChoice.ADD_ALL_TO_CART, addToCart.buttonChoice)
+        assertEquals(Method.PICKUP, addToCart.method)
+    }
+    
+    job.cancel()
+}
+```
+
+## Common Patterns & Solutions
+
+### Mock Method with Parameters
+```kotlin
+// Use any() for quick discovery
+every { repository.getShoppingList(any()) } returns mockResult
+
+// Use specific values when needed
+every { repository.getShoppingList("specific-id") } returns mockResult
+
+// Capture actual parameters for verification
+val slot = slot<String>()
+every { repository.getShoppingList(capture(slot)) } returns mockResult
+// Later: assertEquals("expected-id", slot.captured)
+```
+
+### Mock Flows
+```kotlin
+// Empty flow (won't emit anything)
+val emptyFlow = MutableSharedFlow<DataType>()
+
+// Flow with test data
+val testFlow = MutableSharedFlow<DataType>()
+// Later: testFlow.emit(testData)
+
+// Simple single emission
+every { dependency.someFlow } returns flowOf(testData)
+```
+
+### Debug Mock Setup
+```kotlin
+// Test your mock chain before using it
+val testResult = repository.getShoppingList("test")
+println("Returned: $testResult")
+println("Flow: ${testResult.someFlow}")
+```
+
+### Handle Different Return Types
+```kotlin
+// For suspend functions
+coEvery { repository.fetchData() } returns testData
+
+// For functions returning nullable types
+every { repository.getData() } returns testData // or null
+
+// For functions with Unit return
+every { repository.doSomething() } just Runs
+```
+
+## Quick Debugging Checklist
+
+When your test fails:
+
+1. **Compilation Error?** → Add missing constructor parameters with `mockk()`
+2. **MockKException?** → Make mocks `relaxed = true`
+3. **KotlinNothingValueException?** → Look for Flow/collection issues, mock the Flow properly
+4. **Wrong mock variable?** → Double-check you're passing the right mock instances
+5. **Init block issues?** → Set up all mocks before ViewModel creation
+6. **Coroutine not completing?** → Add `advanceUntilIdle()`
+7. **No emissions collected?** → Check if your method actually emits, verify timing
+
+## Speed Tips
+
+- **Copy-paste-modify:** Once you have one working test, duplicate it for other scenarios
+- **Start with relaxed mocks:** Tighten them later if you need to verify specific interactions
+- **Use `any()` liberally:** Perfect for discovery phase, make specific later if needed
+- **Test one path at a time:** Don't try to handle all edge cases in your first test
+- **Let failures guide you:** Trust the process - failures reveal exactly what you need
+
+## The Result
+
+This approach gives you:
+- **Faster test writing** - No upfront guessing about dependencies
+- **Minimal mocking** - Only mock what's actually used
+- **Accurate tests** - Based on real behavior, not assumptions
+- **Easy maintenance** - Clear relationship between test failures and required mocks
+
+Remember: The goal is working tests quickly, not perfect mocks upfront. Let the failures teach you what your code actually needs!
+
+# Questions & Answers
 
 ### Why can't we use real dependencies in a Unit test
 
@@ -79,7 +356,7 @@ Test doubles are objects or components used in unit testing to replace real depe
 
 These types of test doubles are used in various combinations to isolate the code under test from its dependencies and to verify its behavior in isolation. Each type of test double serves a specific purpose and can be used to test different aspects of the code being tested.
 
-## Notes
+# Notes
 
 **TDD:** developers write tests prior to writing the code itself which would result in a bunch of failing tests that cover our expected behavior and will fail until required code is written to make them pass. 
 
