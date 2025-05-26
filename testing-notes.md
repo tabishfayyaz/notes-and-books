@@ -189,7 +189,7 @@ fun addAllToCart_triggersCorrectEvent() = runTest {
     assertEquals(1, emissions.size)
     emissions.first().process { addToCart ->
         assertEquals(ButtonChoice.ADD_ALL_TO_CART, addToCart.buttonChoice)
-        assertEquals(Method.PICKUP, addToCart.method)
+        assertEquals(Method.DROPOFF, addToCart.method)
     }
     
     job.cancel()
