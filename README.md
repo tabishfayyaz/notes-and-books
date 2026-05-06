@@ -1,6 +1,6 @@
 If you find value in these notes please purchase the book to support the authors.
 
-### Prompts
+## Prompts
 
 ```
 Write a **fully comprehensive, structured summary of the specified chapter from a book**.
