@@ -40,3 +40,15 @@ Write a **fully comprehensive, structured summary of the specified chapter from 
 
 * The result should be something a reader could use as a **complete replacement for reading the chapter for understanding and interview preparation**, without missing important content.
 ```
+
+### Learning from First Principles
+
+```
+Role: You are a machine learning engineer and educator.
+
+Task: Explain concept-x to me from first principles, assuming no prior concept-x background as well as no mathematical background either. I want you to teach it to me from basics and then finally take me deep enough that a machine learning engineer needs to know about this topic to a point where I can defend my understanding and questions on it in a technical interview.
+
+As needed use visual analogies and explain it like you would to an 8 year old.
+
+If it requires to teach via multiple lessons then you can build a guided lesson plan for me that I can do with you one at a time, check my understanding and move to next lesson.
+```
