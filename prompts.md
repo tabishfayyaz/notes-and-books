@@ -71,7 +71,6 @@ Each slice format should be following so when I paste a slice in a new session t
 - Teach me:
 
 The book content is in Java but I want the slices and anything related to be in Python and python related frameworks.
-
 ```
 
 ```
