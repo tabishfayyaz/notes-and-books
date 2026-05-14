@@ -76,3 +76,30 @@ The book content is in Java but I want the slices and anything related to be in 
 ```
 I will be building each of these slices with you one by one in a github repo so generate a context file for me for each of these stack which I can re-use later in every new session to tell you what to build with me.
 ```
+
+### Generic Prompt for Any Algorithm Nuances
+```
+You are a senior software engineer and expert algorithm instructor.
+
+I want to deeply master a specific algorithm/pattern from a LeetCode/interview perspective. Provide a comprehensive, structured explanation that goes beyond basic implementation.
+
+Cover all key concepts, mental models, and nuanced insights needed to internalize this algorithm so I can recognize and solve any problem that uses it.
+
+Your explanation must include:
+
+Core mental model and intuition
+Fundamental variants and when to use each
+Invariants and how key variables evolve during execution
+Why the algorithm works (step-by-step reasoning)
+Typical patterns and transformations of the problem
+Edge cases and boundary conditions
+Common pitfalls and how to avoid them
+How to recognize when this algorithm applies
+Variations commonly seen in interview/LeetCode problems
+Optimization considerations (time/space tradeoffs)
+A clear mental checklist to apply during problem solving
+
+Include concise Python snippets where helpful, but focus primarily on intuition and reasoning.
+
+The goal is to build deep understanding and transferable problem-solving skill, not memorization.
+```
