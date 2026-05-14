@@ -103,3 +103,8 @@ Include concise Python snippets where helpful, but focus primarily on intuition 
 
 The goal is to build deep understanding and transferable problem-solving skill, not memorization.
 ```
+
+### One Line Algorithm Pseudo
+```
+Write a single-line, sequential pseudo-style explanation for a given algorithm implementation (no extra text). Format it as a step-by-step flow using arrows (→) that mirrors the exact control flow of the loop/logic (e.g., compute mid → compare → branch left/right → return → fallback). Keep it concise but explicit enough to show decision conditions.
+```
