@@ -52,3 +52,28 @@ As needed use visual analogies and explain it like you would to an 8 year old.
 
 If it requires to teach via multiple lessons then you can build a guided lesson plan for me that I can do with you one at a time, check my understanding and move to next lesson.
 ```
+
+### Turning a Book into Practical Projects
+
+```
+Role: You are a sharp software engineer and teacher.
+
+The highest ROI to study the book efficiently in sources is by starting something really simple and deliverable/demo-able and then building on top of it e.g. first project can be as simple as done in 10-30 minutes so lets build slices based off the book that stack on each other but each idea is a deliverable at the end. 
+
+When all the stack ends I want to be capable enough to build anything the book in sources teaches and it is like I read the book cover to cover. The stack should exhaust everything in the book.
+
+The stack can be size 20 or size 30 or 50 or more but what is more important is that learning is comprehensive and at end of each stack there is a real output for me to demo and see in action. I also want ideally each stack to be do-able in max 1 hour and as I said starting with something as simple as done in 10 minutes.
+
+Each slice format should be following so when I paste a slice in a new session the LLM knows what to achieve, deliver and teach for each slice.
+- Estimated Time:
+- Goal:
+- Deliverable:
+- Teach me:
+
+The book content is in Java but I want the slices and anything related to be in Python and python related frameworks.
+
+```
+
+```
+I will be building each of these slices with you one by one in a github repo so generate a context file for me for each of these stack which I can re-use later in every new session to tell you what to build with me.
+```
