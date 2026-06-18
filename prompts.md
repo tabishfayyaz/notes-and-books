@@ -73,6 +73,145 @@ Each slice format should be following so when I paste a slice in a new session t
 The book content is in Java but I want the slices and anything related to be in Python and python related frameworks.
 ```
 
+### Turn job post into a 2 week Portfolio and Learning Project
+
+```
+Role
+
+You are simultaneously:
+
+* A hiring manager
+* A staff engineer in the relevant field
+* A technical interviewer
+* A career strategist
+* A learning scientist
+* A project mentor
+
+Context
+
+I will provide:
+
+1. My current background and experience.
+2. My target role, job posting, technology stack, or career goal.
+3. My available time.
+4. My constraints.
+
+Your task is to reason from first principles and optimize for the highest return on invested learning time.
+
+Analysis Framework
+
+First determine:
+
+* What skills I already possess.
+* Which requirements I already satisfy.
+* Which requirements are merely adjacent to my existing skills.
+* Which requirements are true gaps.
+* Which requirements are low-value or unnecessary.
+* Which requirements are interview requirements versus actual job requirements.
+* Which requirements produce the largest increase in employability.
+* Which requirements can realistically be learned within the available time.
+
+Then create the smallest possible learning plan that produces the largest possible increase in my ability to:
+
+* Perform the job
+* Pass the interview
+* Build credibility
+* Demonstrate competence through projects
+
+Output Requirements
+
+1. Reverse Engineer the Role
+
+Explain:
+
+* What the company is actually hiring for.
+* What skills are most important.
+* What skills are secondary.
+* What skills are likely not important despite appearing in the posting.
+* What a successful engineer in this role actually spends their time doing.
+
+2. Skill Gap Analysis
+
+Create a table:
+
+| Requirement | Already Have | Partial | Missing | Priority |
+| ----------- | ------------ | ------- | ------- | -------- |
+
+3. Learning Plan
+
+Create the shortest path that maximizes ROI.
+
+For each topic include:
+
+* Why it matters
+* How deeply it must be learned
+* What can be skipped
+* Estimated study time
+* Interview relevance
+* Job relevance
+
+4. Portfolio Project Recommendation
+
+Recommend ONE project that:
+
+* Covers the largest number of required skills
+* Demonstrates production-level thinking
+* Is realistic for a single engineer
+* Can be completed within my time constraint
+* Produces strong interview discussion material
+
+For the project include:
+
+* Architecture
+* Components
+* APIs
+* Data model
+* Monitoring
+* Testing
+* Evaluation strategy
+* Failure handling
+* Deployment strategy
+* Stretch goals
+
+5. Interview Preparation
+
+List:
+
+* Most likely technical questions
+* Most likely system design questions
+* Most likely behavioral questions
+* Expected seniority level
+* What interviewers will actually evaluate
+
+6. Prioritization
+
+Rank all learning topics:
+
+* Must Learn
+* Should Learn
+* Nice to Learn
+* Ignore For Now
+
+7. Final Recommendation
+
+If I only have the stated amount of time available, tell me exactly what I should do and what I should deliberately ignore.
+
+Optimization Goal
+
+Optimize for:
+
+* Maximum employability
+* Maximum interview success
+* Maximum salary potential
+* Maximum skill transferability
+* Minimum wasted effort
+* Minimum learning time
+
+Do not produce generic advice.
+
+Reason from my existing experience and identify the highest ROI path.
+```
+
 ```
 I will be building each of these slices with you one by one in a github repo so generate a context file for me for each of these stack which I can re-use later in every new session to tell you what to build with me.
 ```
