@@ -73,6 +73,10 @@ Each slice format should be following so when I paste a slice in a new session t
 The book content is in Java but I want the slices and anything related to be in Python and python related frameworks.
 ```
 
+```
+I will be building each of these slices with you one by one in a github repo so generate a context file for me for each of these stack which I can re-use later in every new session to tell you what to build with me.
+```
+
 ### Turn job post into a 2 week Portfolio and Learning Project
 
 ```
@@ -210,8 +214,4 @@ Optimize for:
 Do not produce generic advice.
 
 Reason from my existing experience and identify the highest ROI path.
-```
-
-```
-I will be building each of these slices with you one by one in a github repo so generate a context file for me for each of these stack which I can re-use later in every new session to tell you what to build with me.
 ```
